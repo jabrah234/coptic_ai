@@ -8,7 +8,7 @@ _Alt tag_: Responsive chatbot interface displaying Coptic liturgical date and pr
 
 <h2>📷 Screenshots</h2>
 Home View:
-![DBC523F7-6139-43C9-8C79-6E31C5DBD81B_1_201_a](https://github.com/user-attachments/assets/942f5977-ffbe-4901-bf7c-eeba55c5694f)
+[![DBC523F7-6139-43C9-8C79-6E31C5DBD81B_1_201_a](https://github.com/user-attachments/assets/942f5977-ffbe-4901-bf7c-eeba55c5694f)](https://github-production-user-asset-6210df.s3.amazonaws.com/103787049/439367299-942f5977-ffbe-4901-bf7c-eeba55c5694f.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250430%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250430T184040Z&X-Amz-Expires=300&X-Amz-Signature=4817c0105f132c2665a22d1ec404be91f53ef88e84c9161825e1aa37eb548855&X-Amz-SignedHeaders=host)
 
 Buttons View:
 ![802EA17D-9CB2-4E58-A724-63CB756718FB_1_201_a](https://github.com/user-attachments/assets/95bebac3-05d5-4a65-b3bd-1f972f27c420)
