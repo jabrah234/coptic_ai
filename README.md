@@ -7,17 +7,15 @@ A web app that enriches Coptic Orthodox Christian spiritual lives with liturgica
 _Alt tag_: Responsive chatbot interface displaying Coptic liturgical date and prayer options
 
 <h2>📷 Screenshots</h2>
+
 Home View:
-![Image 4-30-25 at 2 41 PM](https://github.com/user-attachments/assets/9e2529ec-0cd3-4ada-8fa8-cfd7e989d99e)
-
-
+![14E84C64-FC2F-4115-884B-DD06256E5956_1_201_a](https://github.com/user-attachments/assets/93582a36-105c-4a40-83f7-71527fc41684)
 
 Buttons View:
 ![802EA17D-9CB2-4E58-A724-63CB756718FB_1_201_a](https://github.com/user-attachments/assets/95bebac3-05d5-4a65-b3bd-1f972f27c420)
 
+Output of the Buttons:
 ![D9311D91-224F-49AC-BAAD-84919F61BF84_1_201_a](https://github.com/user-attachments/assets/e6a31469-454c-4430-ba7f-2393d96f66b9)
-
-
 
 AI Chat View:
 ![8EF67809-6064-496A-BDDF-8AEA879628DE_1_201_a](https://github.com/user-attachments/assets/75afb431-45cd-46db-a03d-fb58bc0746e4)
