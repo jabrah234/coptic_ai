@@ -1,0 +1,6 @@
+transformers==4.35.0
+torch==2.0.1
+fastapi==0.103.0
+uvicorn==0.23.2
+urllib3==1.26.18
+numpy==1.26.4

@@ -1,0 +1,278 @@
+{
+    "books": [
+      {
+        "name": "Genesis",
+        "verses": [
+          { "chapter": 1, "verse": 1, "text": "In the beginning God created the heavens and the earth." },
+          { "chapter": 12, "verse": 3, "text": "I will bless those who bless you, And I will curse him who curses you; And in you all the families of the earth shall be blessed." }
+        ]
+      },
+      {
+        "name": "Exodus",
+        "verses": [
+          { "chapter": 20, "verse": 2, "text": "I am the Lord your God, who brought you out of the land of Egypt, out of the house of bondage." },
+          { "chapter": 14, "verse": 14, "text": "The Lord will fight for you, and you shall hold your peace." }
+        ]
+      },
+      {
+        "name": "Leviticus",
+        "verses": [
+          { "chapter": 19, "verse": 18, "text": "You shall not take vengeance, nor bear any grudge against the children of your people, but you shall love your neighbor as yourself: I am the Lord." },
+          { "chapter": 11, "verse": 44, "text": "For I am the Lord your God. You shall therefore consecrate yourselves, and you shall be holy; for I am holy." }
+        ]
+      },
+      {
+        "name": "Numbers",
+        "verses": [
+          { "chapter": 6, "verse": 24, "text": "The Lord bless you and keep you;" },
+          { "chapter": 23, "verse": 19, "text": "God is not a man, that He should lie, Nor a son of man, that He should repent. Has He said, and will He not do? Or has He spoken, and will He not make it good?" }
+        ]
+      },
+      {
+        "name": "Deuteronomy",
+        "verses": [
+          { "chapter": 6, "verse": 4, "text": "Hear, O Israel: The Lord our God, the Lord is one!" },
+          { "chapter": 31, "verse": 6, "text": "Be strong and of good courage, do not fear nor be afraid of them; for the Lord your God, He is the One who goes with you. He will not leave you nor forsake you." }
+        ]
+      },
+      {
+        "name": "Joshua",
+        "verses": [
+          { "chapter": 1, "verse": 9, "text": "Have I not commanded you? Be strong and of good courage; do not be afraid, nor be dismayed, for the Lord your God is with you wherever you go." },
+          { "chapter": 24, "verse": 15, "text": "But as for me and my house, we will serve the Lord." }
+        ]
+      },
+      {
+        "name": "Judges",
+        "verses": [
+          { "chapter": 6, "verse": 12, "text": "And the Angel of the Lord appeared to him, and said to him, ‘The Lord is with you, you mighty man of valor!’" },
+          { "chapter": 16, "verse": 28, "text": "Then Samson called to the Lord, saying, ‘O Lord God, remember me, I pray! Strengthen me, I pray, just this once, O God, that I may with one blow take vengeance on the Philistines for my two eyes!’" }
+        ]
+      },
+      {
+        "name": "Ruth",
+        "verses": [
+          { "chapter": 1, "verse": 16, "text": "But Ruth said: ‘Entreat me not to leave you, Or to turn back from following after you; For wherever you go, I will go; And wherever you lodge, I will lodge; Your people shall be my people, And your God, my God.’" },
+          { "chapter": 2, "verse": 12, "text": "The Lord repay your work, and a full reward be given you by the Lord God of Israel, under whose wings you have come for refuge." }
+        ]
+      },
+      {
+        "name": "1 Samuel",
+        "verses": [
+          { "chapter": 16, "verse": 7, "text": "But the Lord said to Samuel, ‘Do not look at his appearance or at his physical stature, because I have refused him. For the Lord does not see as man sees; for man looks at the outward appearance, but the Lord looks at the heart.’" },
+          { "chapter": 17, "verse": 47, "text": "Then all this assembly shall know that the Lord does not save with sword and spear; for the battle is the Lord’s, and He will give you into our hands." }
+        ]
+      },
+      {
+        "name": "2 Samuel",
+        "verses": [
+          { "chapter": 7, "verse": 22, "text": "Therefore You are great, O Lord God. For there is none like You, nor is there any God besides You, according to all that we have heard with our ears." },
+          { "chapter": 22, "verse": 2, "text": "And he said: ‘The Lord is my rock and my fortress and my deliverer;’" }
+        ]
+      },
+      {
+        "name": "1 Kings",
+        "verses": [
+          { "chapter": 8, "verse": 57, "text": "May the Lord our God be with us, as He was with our fathers. May He not leave us nor forsake us," },
+          { "chapter": 18, "verse": 39, "text": "Now when all the people saw it, they fell on their faces; and they said, ‘The Lord, He is God! The Lord, He is God!’" }
+        ]
+      },
+      {
+        "name": "2 Kings",
+        "verses": [
+          { "chapter": 6, "verse": 16, "text": "So he answered, ‘Do not fear, for those who are with us are more than those who are with them.’" },
+          { "chapter": 19, "verse": 34, "text": "‘For I will defend this city, to save it For My own sake and for My servant David’s sake.’" }
+        ]
+      },
+      {
+        "name": "1 Chronicles",
+        "verses": [
+          { "chapter": 16, "verse": 11, "text": "Seek the Lord and His strength; Seek His face evermore!" },
+          { "chapter": 29, "verse": 11, "text": "Yours, O Lord, is the greatness, The power and the glory, The victory and the majesty; For all that is in heaven and in earth is Yours; Yours is the kingdom, O Lord, And You are exalted as head over all." }
+        ]
+      },
+      {
+        "name": "2 Chronicles",
+        "verses": [
+          { "chapter": 7, "verse": 14, "text": "If My people who are called by My name will humble themselves, and pray and seek My face, and turn from their wicked ways, then I will hear from heaven, and will forgive their sin and heal their land." },
+          { "chapter": 20, "verse": 15, "text": "And he said, ‘Listen, all you of Judah and you inhabitants of Jerusalem, and you, King Jehoshaphat! Thus says the Lord to you: “Do not be afraid nor dismayed because of this great multitude, for the battle is not yours, but God’s.”’" }
+        ]
+      },
+      {
+        "name": "Ezra",
+        "verses": [
+          { "chapter": 7, "verse": 10, "text": "For Ezra had prepared his heart to seek the Law of the Lord, and to do it, and to teach statutes and ordinances in Israel." },
+          { "chapter": 8, "verse": 23, "text": "So we fasted and entreated our God for this, and He answered our prayer." }
+        ]
+      },
+      {
+        "name": "Nehemiah",
+        "verses": [
+          { "chapter": 8, "verse": 10, "text": "Then he said to them, ‘Go your way, eat the fat, drink the sweet, and send portions to those for whom nothing is prepared; for this day is holy to our Lord. Do not sorrow, for the joy of the Lord is your strength.’" },
+          { "chapter": 1, "verse": 11, "text": "O Lord, I pray, please let Your ear be attentive to the prayer of Your servant, and to the prayer of Your servants who desire to fear Your name; and let Your servant prosper this day, I pray, and grant him mercy in the sight of this man." }
+        ]
+      },
+      {
+        "name": "Esther",
+        "verses": [
+          { "chapter": 4, "verse": 14, "text": "For if you remain completely silent at this time, relief and deliverance will arise for the Jews from another place, but you and your father’s house will perish. Yet who knows whether you have come to the kingdom for such a time as this?" },
+          { "chapter": 8, "verse": 17, "text": "And in every province and city, wherever the king’s command and decree came, the Jews had joy and gladness, a feast and a holiday. Then many of the people of the land became Jews, because fear of the Jews fell upon them." }
+        ]
+      },
+      {
+        "name": "Job",
+        "verses": [
+          { "chapter": 1, "verse": 21, "text": "And he said: ‘Naked I came from my mother’s womb, And naked shall I return there. The Lord gave, and the Lord has taken away; Blessed be the name of the Lord.’" },
+          { "chapter": 19, "verse": 25, "text": "For I know that my Redeemer lives, And He shall stand at last on the earth;" }
+        ]
+      },
+      {
+        "name": "Psalms",
+        "verses": [
+          { "chapter": 23, "verse": 1, "text": "The Lord is my shepherd; I shall not want." },
+          { "chapter": 46, "verse": 1, "text": "God is our refuge and strength, A very present help in trouble." },
+          { "chapter": 119, "verse": 105, "text": "Your word is a lamp to my feet And a light to my path." }
+        ]
+      },
+      {
+        "name": "Proverbs",
+        "verses": [
+          { "chapter": 3, "verse": 5, "text": "Trust in the Lord with all your heart, And lean not on your own understanding;" },
+          { "chapter": 16, "verse": 3, "text": "Commit your works to the Lord, And your thoughts will be established." }
+        ]
+      },
+      {
+        "name": "Ecclesiastes",
+        "verses": [
+          { "chapter": 3, "verse": 1, "text": "To everything there is a season, A time for every purpose under heaven:" },
+          { "chapter": 12, "verse": 13, "text": "Let us hear the conclusion of the whole matter: Fear God and keep His commandments, For this is man’s all." }
+        ]
+      },
+      {
+        "name": "Song of Solomon",
+        "verses": [
+          { "chapter": 2, "verse": 1, "text": "I am the rose of Sharon, And the lily of the valleys." },
+          { "chapter": 8, "verse": 7, "text": "Many waters cannot quench love, Nor can the floods drown it. If a man would give for love All the wealth of his house, It would be utterly despised." }
+        ]
+      },
+      {
+        "name": "Isaiah",
+        "verses": [
+          { "chapter": 40, "verse": 31, "text": "But those who wait on the Lord Shall renew their strength; They shall mount up with wings like eagles, They shall run and not be weary, They shall walk and not faint." },
+          { "chapter": 53, "verse": 5, "text": "But He was wounded for our transgressions, He was bruised for our iniquities; The chastisement for our peace was upon Him, And by His stripes we are healed." }
+        ]
+      },
+      {
+        "name": "Jeremiah",
+        "verses": [
+          { "chapter": 29, "verse": 11, "text": "For I know the thoughts that I think toward you, says the Lord, thoughts of peace and not of evil, to give you a future and a hope." },
+          { "chapter": 17, "verse": 7, "text": "Blessed is the man who trusts in the Lord, And whose hope is the Lord." }
+        ]
+      },
+      {
+        "name": "Lamentations",
+        "verses": [
+          { "chapter": 3, "verse": 22, "text": "Through the Lord’s mercies we are not consumed, Because His compassions fail not." },
+          { "chapter": 3, "verse": 25, "text": "The Lord is good to those who wait for Him, To the soul who seeks Him." }
+        ]
+      },
+      {
+        "name": "Ezekiel",
+        "verses": [
+          { "chapter": 36, "verse": 26, "text": "I will give you a new heart and put a new spirit within you; I will take the heart of stone out of your flesh and give you a heart of flesh." },
+          { "chapter": 37, "verse": 14, "text": "I will put My Spirit in you, and you shall live, and I will place you in your own land. Then you shall know that I, the Lord, have spoken it and performed it, says the Lord." }
+        ]
+      },
+      {
+        "name": "Daniel",
+        "verses": [
+          { "chapter": 3, "verse": 17, "text": "If that is the case, our God whom we serve is able to deliver us from the burning fiery furnace, and He will deliver us from your hand, O king." },
+          { "chapter": 6, "verse": 22, "text": "My God sent His angel and shut the lions’ mouths, so that they have not hurt me, because I was found innocent before Him; and also, O king, I have done no wrong before you." }
+        ]
+      },
+      {
+        "name": "Hosea",
+        "verses": [
+          { "chapter": 6, "verse": 6, "text": "For I desire mercy and not sacrifice, And the knowledge of God more than burnt offerings." },
+          { "chapter": 14, "verse": 9, "text": "Who is wise? Let him understand these things. Who is prudent? Let him know them. For the ways of the Lord are right; The righteous walk in them, But transgressors stumble in them." }
+        ]
+      },
+      {
+        "name": "Joel",
+        "verses": [
+          { "chapter": 2, "verse": 28, "text": "And it shall come to pass afterward That I will pour out My Spirit on all flesh; Your sons and your daughters shall prophesy, Your old men shall dream dreams, Your young men shall see visions." },
+          { "chapter": 2, "verse": 32, "text": "And it shall come to pass That whoever calls on the name of the Lord Shall be saved." }
+        ]
+      },
+      {
+        "name": "Amos",
+        "verses": [
+          { "chapter": 5, "verse": 24, "text": "But let justice run down like water, And righteousness like a mighty stream." },
+          { "chapter": 3, "verse": 7, "text": "Surely the Lord God does nothing, Unless He reveals His secret to His servants the prophets." }
+        ]
+      },
+      {
+        "name": "Obadiah",
+        "verses": [
+          { "chapter": 1, "verse": 15, "text": "For the day of the Lord upon all the nations is near; As you have done, it shall be done to you; Your reprisal shall return upon your own head." },
+          { "chapter": 1, "verse": 21, "text": "Then saviors shall come to Mount Zion To judge the mountains of Esau, And the kingdom shall be the Lord’s." }
+        ]
+      },
+      {
+        "name": "Jonah",
+        "verses": [
+          { "chapter": 2, "verse": 8, "text": "Those who regard worthless idols Forsake their own Mercy." },
+          { "chapter": 3, "verse": 10, "text": "Then God saw their works, that they turned from their evil way; and God relented from the disaster that He had said He would bring upon them, and He did not do it." }
+        ]
+      },
+      {
+        "name": "Micah",
+        "verses": [
+          { "chapter": 6, "verse": 8, "text": "He has shown you, O man, what is good; And what does the Lord require of you But to do justly, To love mercy, And to walk humbly with your God?" },
+          { "chapter": 5, "verse": 2, "text": "But you, Bethlehem Ephrathah, Though you are little among the thousands of Judah, Yet out of you shall come forth to Me The One to be Ruler in Israel, Whose goings forth are from of old, From everlasting." }
+        ]
+      },
+      {
+        "name": "Nahum",
+        "verses": [
+          { "chapter": 1, "verse": 7, "text": "The Lord is good, A stronghold in the day of trouble; And He knows those who trust in Him." },
+          { "chapter": 1, "verse": 15, "text": "Behold, on the mountains The feet of him who brings good tidings, Who proclaims peace! O Judah, keep your appointed feasts, Perform your vows. For the wicked one shall no more pass through you; He is utterly cut off." }
+        ]
+      },
+      {
+        "name": "Habakkuk",
+        "verses": [
+          { "chapter": 2, "verse": 20, "text": "But the Lord is in His holy temple. Let all the earth keep silence before Him." },
+          { "chapter": 3, "verse": 19, "text": "The Lord God is my strength; He will make my feet like deer’s feet, And He will make me walk on my high hills." }
+        ]
+      },
+      {
+        "name": "Zephaniah",
+        "verses": [
+          { "chapter": 3, "verse": 17, "text": "The Lord your God in your midst, The Mighty One, will save; He will rejoice over you with gladness, He will quiet you with His love, He will rejoice over you with singing." },
+          { "chapter": 1, "verse": 14, "text": "The great day of the Lord is near; It is near and hastens quickly. The noise of the day of the Lord is bitter; There the mighty men shall cry out." }
+        ]
+      },
+      {
+        "name": "Haggai",
+        "verses": [
+          { "chapter": 1, "verse": 7, "text": "Thus says the Lord of hosts: ‘Consider your ways!’" },
+          { "chapter": 2, "verse": 9, "text": "‘The glory of this latter temple shall be greater than the former,’ says the Lord of hosts. ‘And in this place I will give peace,’ says the Lord of hosts." }
+        ]
+      },
+      {
+        "name": "Zechariah",
+        "verses": [
+          { "chapter": 4, "verse": 6, "text": "So he answered and said to me: ‘This is the word of the Lord to Zerubbabel: “Not by might nor by power, but by My Spirit,” Says the Lord of hosts.’" },
+          { "chapter": 9, "verse": 9, "text": "Rejoice greatly, O daughter of Zion! Shout, O daughter of Jerusalem! Behold, your King is coming to you; He is just and having salvation, Lowly and riding on a donkey, A colt, the foal of a donkey." }
+        ]
+      },
+      {
+        "name": "Malachi",
+        "verses": [
+          { "chapter": 3, "verse": 1, "text": "Behold, I send My messenger, And he will prepare the way before Me. And the Lord, whom you seek, Will suddenly come to His temple, Even the Messenger of the covenant, In whom you delight. Behold, He is coming, Says the Lord of hosts." },
+          { "chapter": 4, "verse": 2, "text": "But to you who fear My name The Sun of Righteousness shall arise With healing in His wings; And you shall go out And grow fat like stall-fed calves." }
+        ]
+      }
+    ]
+  }

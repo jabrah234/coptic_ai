@@ -1,0 +1,19 @@
+{
+    "collection": "Sayings of the Desert Fathers (CHI)",
+    "figures": [
+      {
+        "name": "Chomas",
+        "saying": {
+          "number": 1,
+          "text": "It was said of Abba Chomas that at the point of death he said to his sons, 'Do not dwell with heretics, and do not have anything to do with rulers, then your hands will not be opened to gather together, but open to give.'"
+        }
+      },
+      {
+        "name": "Chaeremon",
+        "saying": {
+          "number": 1,
+          "text": "They said that Abba Chaeremon's cave was forty miles from the church and ten miles from the marsh and water. So when he took his manual work to his cave, he took with him two goatskin bottles, one beside the other, and he sat there, leading a quiet life."
+        }
+      }
+    ]
+  }

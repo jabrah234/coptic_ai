@@ -1,0 +1,68 @@
+{
+    "books": [
+      {
+        "name": "Tobit",
+        "verses": [
+          { "chapter": 4, "verse": 7, "text": "Give alms from your substance, and do not turn away your face from any pauper. For so it shall be that niether will the face of the Lord be turned away from you." },
+          { "chapter": 12, "verse": 8, "text": "Prayer with fasting is good, and almsgiving is better than hiding away gold in storage." }
+        ]
+      },
+      {
+        "name": "Judith",
+        "verses": [
+          { "chapter": 13, "verse": 17, "text": "Judith said: 'Prasie the Lord our God, who has not abandoned those who hope in Him." },
+          { "chapter": 16, "verse": 2, "text": "Call to the Lord with drums, sing to the Lord with cymbals, play for Him a new psalm, exalt and invoke His name." }
+        ]
+      },
+      {
+        "name": "Wisdom of Solomon",
+        "verses": [
+          { "chapter": 1, "verse": 7, "text": "For the spirit of the Lord has filled the world, and He who contains all things, retains knowledge of every voice." },
+          { "chapter": 3, "verse": 1, "text": "But the souls of the just are in the hand of God and no torment of death will touch them." }
+        ]
+      },
+      {
+        "name": "Sirach",
+        "verses": [
+          { "chapter": 2, "verse": 1, "text": "Son, when you apply yourself to the service of God, stand in justice and in fear, and prepare your soul in temptation." },
+          { "chapter": 4, "verse": 11, "text": "And then you shall be like an obedient son of the Most High, and He will take pity on you more than a motehr would." }
+        ]
+      },
+      {
+        "name": "Baruch",
+        "verses": [
+          { "chapter": 3, "verse": 13, "text": "For if you had walked in the way of God, you would certainly lived in peace." },
+          { "chapter": 5, "verse": 4, "text": "For your name will be given to you by God for eternity: the peace of justice and the honor of piety." }
+        ]
+      },
+      {
+        "name": "1 Maccabees",
+        "verses": [
+          { "chapter": 2, "verse": 60, "text": "Daniel in his simplicity, was delivered from the mouth of the lions." },
+          { "chapter": 4, "verse": 10, "text": "And now let us cry to heaven, and the Lord will have mercy on us, and he will remember the convenant of our fathers, and he will crush this army before our face this day." }
+        ]
+      },
+      {
+        "name": "2 Maccabees",
+        "verses": [
+          { "chapter": 7, "verse": 9, "text": "And when he had reached his last breath, he spoke in this way: 'You, indeed, O most wicked man, are destroying us in this prudent life. But the King of the world will raise us up, in eternal life at the resurrection, for we die on behalf of his laws." },
+          { "chapter": 12, "verse": 44, "text": "(for if he had not hoped that those who had fallen would be resurrected, it would have been superfluous and vain to pray for the dead,)" }
+        ]
+      },
+      {
+        "name": "Prayer of Manasseh",
+        "verses": [
+          { "chapter": 1, "verse": 8, "text": "Therefore, You, O Lord, God of the righteous, have not given repentance for the righteous, for Abraham and Isaac and Jacob, who had not sinned against You, but you have given repentance for me, the sinner."},
+          { "chapter": 1, "verse": 12, "text": "I have sinned, O Lord, I have sinned, and I know my lawless deeds." },
+          { "chapter": 1, "verse": 15, "text": "And I will praise You throughout all the days of my life, for the power of the heavens sing Your praise. For Yours is the glory, to the ages. Amen." }
+        ]
+      },
+      {
+        "name": "Psalm 151",
+        "verses": [
+          { "chapter": 151, "verse": 1, "text": "I was small among my brothers, and youngest in my father's house. I tended my father's sheep." },
+          { "chapter": 151, "verse": 4, "text": "He sent forth his angel and took me from my father's sheep, and he anointed me with His anointing oil." }
+        ]
+      }
+    ]
+  }

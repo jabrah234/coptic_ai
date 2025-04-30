@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ⲱⲟⲩⲛⲓⲁⲧⲕ: Coptic AI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="Coptic_cross.svg" />
+</head>
+
+<body>
+  <header>
+    <img src="Coptic_cross.svg" alt="Coptic Cross" id="coptic-cross" />
+    <h1>Ⲱⲟⲩⲛⲓⲁⲧⲕ: Coptic AI</h1>
+    <p id="liturgical-context">Liturgical context will be displayed here</p>
+  </header>
+
+  <main>
+    <div class="chat-container">
+      <div id="greetingBox"></div>
+      <div id="chatBox"></div>
+    </div>
+
+    <!-- External AI Toggle Section -->
+    <div class="external-ai-toggle">
+      <button id="toggleIframeButton" class="action-btn toggle-btn" data-tooltip="Toggle Extended AI Chat">
+        <i class="fas fa-robot"></i> Extended Coptic Guide AI Chat
+      </button>
+
+      <div class="external-ai-container" id="externalAiContainer" style="display: none;">
+        <div class="iframe-loading-overlay" id="iframeLoading">
+          <i class="fas fa-spinner fa-spin"></i> Loading Coptic Guide AI...
+        </div>
+        <div id="iframeWrapper"></div>
+        <div id="iframeError" style="display: none; color: #e6d5b8; text-align: center; padding: 1rem;">
+          Unable to load Coptic Guide AI. Please try again later.
+        </div>
+      </div>
+    </div>
+
+    <div id="actions">
+      <button id="saintButton" class="action-btn" data-tooltip="Saint">
+        <i class="fas fa-cross"></i>
+      </button>
+      <button id="agpeyaButton" class="action-btn" data-tooltip="Agpeya">
+        <i class="fas fa-book"></i>
+      </button>
+      <button id="scriptureButton" class="action-btn" data-tooltip="Scripture">
+        <i class="fas fa-bible"></i>
+      </button>
+      <button id="desertButton" class="action-btn" data-tooltip="Desert Fathers">
+        <i class="fas fa-church"></i>
+      </button>
+      <button id="clearChatButton" class="action-btn" data-tooltip="Clear">
+        <i class="fas fa-trash"></i>
+      </button>
+    </div>
+    <div id="loading" style="display:none;">
+      <i class="fas fa-spinner fa-spin"></i>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
