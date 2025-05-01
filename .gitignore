@@ -1,12 +1,8 @@
-# Python virtual environment
-venv/
-# Large model files (if you don’t want to upload them)
-fine_tuned_christian_model/
-# Temporary files
+# Example .gitignore (keep only necessary exclusions)
 *.pyc
 __pycache__/
-# IDE files
 .vscode/
 .idea/
-# macOS files
 .DS_Store
+venv/
+fine_tuned_christian_model/
