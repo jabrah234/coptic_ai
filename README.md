@@ -1,18 +1,47 @@
-<h1>Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI</h1> 
+<h1>Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI </h1> 
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ae26cc09-466f-430d-9456-2557e8fc2f72/deploy-status)](https://app.netlify.com/sites/coptic-ai/deploys)
+
+[![GitHub Stars](https://img.shields.io/github/stars/jabrah234/coptic_ai)](https://github.com/jabrah234/coptic_ai/stargazers)
 
 A web app that enriches Coptic Orthodox Christian spiritual lives with liturgical resources, scripture, and AI-powered guidance. Access Agpeya prayers, daily saints, Bible verses, and Desert Fathers wisdom through a responsive chatbot interface!
 
 Link to project: https://github.com/jabrah234/coptic_ai
 
 _Alt tag: Responsive chatbot interface displaying Coptic liturgical date and prayer options_
+
+<h2>🌐 Live Demo</h2>
+
+* Try Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI at 
+https://coptic-ai.netlify.app/
+
+<h2>🚀 Getting Started</h2>
+
+To run Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI locally:
+
+
+1. Clone the repository:
+
+        git clone https://github.com/jabrah234/coptic_ai.git
+
+2. Navigate to the project directory:
+
+        cd coptic_ai
+
+3. Serve the app using a local server (e.g., with VS Code’s Live Server extension or a simple HTTP server):
+
+        npx http-server
+
+4. Open http://localhost:8080 in your browser.
+   
+
+**Prerequisites**
+
+* Modern web browser (Chrome, Firefox, Safari, Edge)
+
+* Internet connection for fetching JSON data and AI integration via YesChat.ai
+
   
-    
-  
-
-
-
 <h2>📷 Screenshots</h2>
 
 Explore the Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI interface
@@ -22,9 +51,6 @@ Explore the Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI interface
 ![8EF67809-6064-496A-BDDF-8AEA879628DE_1_105_c](https://github.com/user-attachments/assets/534d383d-5943-491f-87b6-ca191a3f38ec)
 
 ![D9311D91-224F-49AC-BAAD-84919F61BF84_1_201_a](https://github.com/user-attachments/assets/c6212660-3dfa-481b-a4ff-94e3164159d1)
-
-
-
 
 
 <h2>🛠️ How It's Made</h2>
@@ -67,15 +93,84 @@ Key takeaways:
 
 Each challenge was a chance to grow, and I’m hooked on creating impactful, user-focused apps!
 
+<h2>🧪 Testing</h2>
+
+To test Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI
+
+1. Load the app in a browser.
+
+2. Verify the Coptic date displays correctly (e.g., April 29, 2025 → Baramouda 21, 1741).
+
+3. Test buttons for Agpeya prayers, Bible verses, and Desert Fathers sayings.
+
+4. Interact with the AI chatbot to ensure responses are relevant.
+
+Automated tests are not yet implemented but planned for future releases.
+
+
+<h2>📅 Project Status & Roadmap</h2>
+
+Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI is actively maintained. 
+
+Current version: 1.0.0.
+
+**Planned features**:
+
+1. Offline Mode for Prayers and Verses
+
+    * Enable offline access to essential prayers and liturgical verses.
+
+2. Multilingual Support
+
+    * Incorporate additional languages to make the app more accessible.
+
+3. IPA File for iPhone
+
+    * Build and export the app as an IPA file for iOS devices, enabling distribution either via the App Store or for direct installation.
+
+See the Issues page for planned tasks.
+
+<h2>🤝 Contributing</h2>
+
+We welcome contributions to enhance Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI! 
+
+To contribute:
+
+1. Fork the repository.
+
+2. Create a new branch (git checkout -b feature/your-feature).
+
+3. Commit your changes (git commit -m "Add your feature").
+
+4. Push to the branch (git push origin feature/your-feature).
+
+5. Open a pull request.
+
+Please check the Issues page for tasks or report bugs.
+
 <h2>📜 License</h2>
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/jabrah234/coptic_ai/blob/main/LICENSE)
 
 Licensed under the MIT License. See the LICENSE file for details.
 
+<h2>🙏 Acknowledgments</h2>
+
+* YesChat.ai for powering the Coptic Guide GPT.
+
+* Coptic Orthodox Church for liturgical resources and inspiration.
+
+* Open-source community for tools and tutorials.
+
 <h2>📬 Contact</h2>
 
-* Email: jacob.h.abraham@gmail.com
 * GitHub Issues: https://github.com/jabrah234/coptic_ai/issues
 
+<h2>🌟 Get Involved!</h2>
+
+Try Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI, share your feedback, and star the repo on GitHub to support the project. Let’s bring Coptic heritage to the digital age together!
+
+<h2>🙏 Footer</h2>
 
 _“Blessed are the blameless in the way, who walk in the law of the Lord.” — Psalm 118:1 
 Developed with ❤️ during the 2nd Week of Holy Fifty Days, Baramouda 21, 1741._
