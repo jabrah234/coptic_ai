@@ -168,9 +168,10 @@ Licensed under the MIT License. See the LICENSE file for details.
 
 <h2>🌟 Get Involved!</h2>
 
-Try Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI, share your feedback, and star the repo on GitHub to support the project. Let’s bring Coptic heritage to the digital age together!
+Try Ⲱⲩⲛⲓⲁⲧⲕ, share your feedback, and star the repo on GitHub to support the project. Let’s bring Coptic heritage to the digital age together!
 
 <h2>🙏 Footer</h2>
 
-_“Blessed are the blameless in the way, who walk in the law of the Lord.” — Psalm 118:1 
-Developed with ❤️ during the 2nd Week of Holy Fifty Days, Baramouda 21, 1741._
+_“Blessed are the blameless in the way, who walk in the law of the Lord.” — Psalm 118:1_
+
+_Developed with ❤️ during the Second Week of the Holy Fifty Days, Baramouda 21, 1741._
