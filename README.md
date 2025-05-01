@@ -1,8 +1,8 @@
 <h1>Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI </h1> 
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/ae26cc09-466f-430d-9456-2557e8fc2f72/deploy-status)](https://app.netlify.com/sites/coptic-ai/deploys)
-
 [![GitHub Stars](https://img.shields.io/github/stars/jabrah234/coptic_ai)](https://github.com/jabrah234/coptic_ai/stargazers)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ae26cc09-466f-430d-9456-2557e8fc2f72/deploy-status)](https://app.netlify.com/sites/coptic-ai/deploys)
 
 A web app that enriches Coptic Orthodox Christian spiritual lives with liturgical resources, scripture, and AI-powered guidance. Access Agpeya prayers, daily saints, Bible verses, and Desert Fathers wisdom through a responsive chatbot interface!
 
