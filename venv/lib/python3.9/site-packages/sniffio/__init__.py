@@ -1,17 +1,3 @@
-"""Top-level package for sniffio."""
-
-__all__ = [
-    "current_async_library",
-    "AsyncLibraryNotFoundError",
-    "current_async_library_cvar",
-    "thread_local",
-]
-
-from ._version import __version__
-
-from ._impl import (
-    current_async_library,
-    AsyncLibraryNotFoundError,
-    current_async_library_cvar,
-    thread_local,
-)
+version https://git-lfs.github.com/spec/v1
+oid sha256:f562442655eeef296e3f462d239490f4cf4e4d07db34791a75aacad6f5c60cf3
+size 335

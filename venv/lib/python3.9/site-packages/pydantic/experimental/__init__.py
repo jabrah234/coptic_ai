@@ -1,10 +1,3 @@
-"""The "experimental" module of pydantic contains potential new features that are subject to change."""
-
-import warnings
-
-from pydantic.warnings import PydanticExperimentalWarning
-
-warnings.warn(
-    'This module is experimental, its contents are subject to change and deprecation.',
-    category=PydanticExperimentalWarning,
-)
+version https://git-lfs.github.com/spec/v1
+oid sha256:8f4f1e44e7f3fb15b893f5fd5b89b6016dba215772177120d4ece5206035d6f9
+size 328

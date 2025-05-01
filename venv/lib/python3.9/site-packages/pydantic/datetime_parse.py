@@ -1,5 +1,3 @@
-"""The `datetime_parse` module is a backport module from V1."""
-
-from ._migration import getattr_migration
-
-__getattr__ = getattr_migration(__name__)
+version https://git-lfs.github.com/spec/v1
+oid sha256:402f9680cc4caffc10fe6357512ec055ffb684b121befb0f6353d0ca148639d9
+size 150

@@ -1,9 +1,3 @@
-from warnings import warn
-
-from .std import *  # NOQA
-from .std import __all__  # NOQA
-from .std import TqdmDeprecationWarning
-
-warn("This function will be removed in tqdm==5.0.0\n"
-     "Please use `tqdm.std.*` instead of `tqdm._tqdm.*`",
-     TqdmDeprecationWarning, stacklevel=2)
+version https://git-lfs.github.com/spec/v1
+oid sha256:2df2c2b89e9ba6c568f718a59ad057c849b5bc69d4085ae5896f398f727e9c3e
+size 283

@@ -1,8 +1,3 @@
-#!/Users/iphonegeek/Downloads/phoenix/venv/bin/python3
-# -*- coding: utf-8 -*-
-import re
-import sys
-from numpy.f2py.f2py2e import main
-if __name__ == '__main__':
-    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
-    sys.exit(main())
+version https://git-lfs.github.com/spec/v1
+oid sha256:eeaba2270e8ef30e8be38857ee8663d42b29ec49714753f37277a2ddfe172ff3
+size 252

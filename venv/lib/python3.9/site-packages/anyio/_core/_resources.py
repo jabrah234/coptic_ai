@@ -1,18 +1,3 @@
-from __future__ import annotations
-
-from ..abc import AsyncResource
-from ._tasks import CancelScope
-
-
-async def aclose_forcefully(resource: AsyncResource) -> None:
-    """
-    Close an asynchronous resource in a cancelled scope.
-
-    Doing this closes the resource without waiting on anything.
-
-    :param resource: the resource to close
-
-    """
-    with CancelScope() as scope:
-        scope.cancel()
-        await resource.aclose()
+version https://git-lfs.github.com/spec/v1
+oid sha256:35b994e4ee545f7c44c800a7926617dbc166c1d97e7fe9f2d2d1f29b6e9ed30d
+size 435

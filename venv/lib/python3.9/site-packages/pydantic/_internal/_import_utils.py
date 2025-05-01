@@ -1,20 +1,3 @@
-from functools import cache
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from pydantic import BaseModel
-    from pydantic.fields import FieldInfo
-
-
-@cache
-def import_cached_base_model() -> type['BaseModel']:
-    from pydantic import BaseModel
-
-    return BaseModel
-
-
-@cache
-def import_cached_field_info() -> type['FieldInfo']:
-    from pydantic.fields import FieldInfo
-
-    return FieldInfo
+version https://git-lfs.github.com/spec/v1
+oid sha256:4d18710f93ae63a094a2c8a805d05c254b34a26ec820e36265d60057bcd0f233
+size 402

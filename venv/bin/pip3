@@ -1,8 +1,3 @@
-#!/Users/iphonegeek/Downloads/phoenix/venv/bin/python3
-# -*- coding: utf-8 -*-
-import re
-import sys
-from pip._internal.cli.main import main
-if __name__ == '__main__':
-    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
-    sys.exit(main())
+version https://git-lfs.github.com/spec/v1
+oid sha256:5aa73c8cba84dd9707004d19b9a268a6feb1ebd1c7186c2425e0f61bc86b2bce
+size 257

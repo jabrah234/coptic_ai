@@ -1,12 +1,3 @@
-{
-    "collection": "Sayings of the Desert Fathers (UPSILON)",
-    "figures": [
-      {
-        "name": "Hyperechius",
-        "saying": {
-          "number": 1,
-          "text": "Abba Hyperechius said, 'As the lion is terrible to wild asses, so is the experienced monk to desires.'"
-        }
-      }
-    ]
-  }
+version https://git-lfs.github.com/spec/v1
+oid sha256:4ca6f8db7a227fe5354e8ecc97bd9bfffbbf14617798ae02ae4510d9a3a7cac4
+size 312

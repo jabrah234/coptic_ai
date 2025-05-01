@@ -1,34 +1,3 @@
-
-subroutine sum(x, res)
-  implicit none
-  real, intent(in) :: x(:)
-  real, intent(out) :: res
-
-  integer :: i
-
-  !print *, "sum: size(x) = ", size(x)
-
-  res = 0.0
-
-  do i = 1, size(x)
-    res = res + x(i)
-  enddo
-
-end subroutine sum
-
-function fsum(x) result (res)
-  implicit none
-  real, intent(in) :: x(:)
-  real :: res
-
-  integer :: i
-
-  !print *, "fsum: size(x) = ", size(x)
-
-  res = 0.0
-
-  do i = 1, size(x)
-    res = res + x(i)
-  enddo
-
-end function fsum
+version https://git-lfs.github.com/spec/v1
+oid sha256:a01c1b19295bafd3241728553b66a5763734d5dafd187accad289141e93c53ae
+size 460

@@ -418,3 +418,8 @@ iframe {
     background-color: #b89778;
     color: #2c2526;
 }
+
+.action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }

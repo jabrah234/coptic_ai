@@ -1,4 +1,12 @@
 /**
+ * CSS for disabled buttons (move to styles.css if separate)
+ * .action-btn:disabled {
+ *   opacity: 0.5;
+ *   cursor: not-allowed;
+ * }
+ */
+
+/**
  * Initializes DOM elements for the chatbot UI.
  */
 const chatBox = document.getElementById('chatBox');
@@ -623,8 +631,6 @@ const getSaintOfDay = (date) => {
   }
 };
 
-
-
 /**
  * Gets the appropriate Agpeya prayer based on the current time.
  * @returns {Object} The selected Agpeya prayer.
@@ -656,9 +662,11 @@ const handleAgpeya = async () => {
     console.error('Cannot handle Agpeya: chatBox or loading element is missing');
     return;
   }
-  if (state.buttonStates.agpethinkMode = true);
+  if (state.buttonStates.agpeya) return;
   state.buttonStates.agpeya = true;
   localStorage.setItem('buttonStates', JSON.stringify(state.buttonStates));
+  const button = document.getElementById('agpeyaButton');
+  if (button) button.disabled = true; // Disable button
   loading.style.display = 'block';
 
   try {
@@ -689,6 +697,8 @@ const handleSaint = async () => {
   if (state.buttonStates.saint) return;
   state.buttonStates.saint = true;
   localStorage.setItem('buttonStates', JSON.stringify(state.buttonStates));
+  const button = document.getElementById('saintButton');
+  if (button) button.disabled = true; // Disable button
   loading.style.display = 'block';
 
   try {
@@ -724,6 +734,8 @@ const handleScripture = async () => {
   if (state.buttonStates.scripture) return;
   state.buttonStates.scripture = true;
   localStorage.setItem('buttonStates', JSON.stringify(state.buttonStates));
+  const button = document.getElementById('scriptureButton');
+  if (button) button.disabled = true; // Disable button
   loading.style.display = 'block';
 
   try {
@@ -757,6 +769,8 @@ const handleDesertFathers = async () => {
   if (state.buttonStates.desertFathers) return;
   state.buttonStates.desertFathers = true;
   localStorage.setItem('buttonStates', JSON.stringify(state.buttonStates));
+  const button = document.getElementById('desertButton');
+  if (button) button.disabled = true; // Disable button
   loading.style.display = 'block';
 
   try {
@@ -793,6 +807,11 @@ const clearChat = () => {
   localStorage.setItem('buttonStates', JSON.stringify(state.buttonStates));
   state.lastDesertFather = null;
   state.lastBibleVerse = null;
+  // Re-enable all buttons
+  ['agpeyaButton', 'saintButton', 'scriptureButton', 'desertButton'].forEach(id => {
+    const button = document.getElementById(id);
+    if (button) button.disabled = false;
+  });
   generateInitialMessages();
 };
 
@@ -807,6 +826,14 @@ document.addEventListener('DOMContentLoaded', async () => {
       return;
     }
   }
+
+  // Initialize button states based on localStorage
+  ['agpeyaButton', 'saintButton', 'scriptureButton', 'desertButton'].forEach(id => {
+    const button = document.getElementById(id);
+    if (button && state.buttonStates[id.replace('Button', '')]) {
+      button.disabled = true;
+    }
+  });
 
   const savedChat = localStorage.getItem('chatContent');
   if (savedChat) {
@@ -835,7 +862,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       setTimeout(() => this.classList.remove('clicked'), 500);
     });
   });
-  
 
   const buttons = {
     agpeyaButton: handleAgpeya,

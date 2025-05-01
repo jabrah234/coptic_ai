@@ -1,5 +1,3 @@
-"""The `error_wrappers` module is a backport module from V1."""
-
-from ._migration import getattr_migration
-
-__getattr__ = getattr_migration(__name__)
+version https://git-lfs.github.com/spec/v1
+oid sha256:44aea6a804dcf72303f8a043f48252f47a4a0a9ad61ddf30a3ce019e6fb77d1f
+size 150

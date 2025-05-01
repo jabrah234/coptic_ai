@@ -1,8 +1,3 @@
-#!/Users/iphonegeek/Downloads/phoenix/venv/bin/python3
-# -*- coding: utf-8 -*-
-import re
-import sys
-from torch.distributed.run import main
-if __name__ == '__main__':
-    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
-    sys.exit(main())
+version https://git-lfs.github.com/spec/v1
+oid sha256:765bb4be2177fb2fc35a6da80d14c26cabbfef731b72e535949767f72f2ff7b4
+size 256

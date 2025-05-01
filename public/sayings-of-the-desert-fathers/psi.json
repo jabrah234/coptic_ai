@@ -1,26 +1,3 @@
-{
-    "collection": "Sayings of the Desert Fathers (PSI)",
-    "figures": [
-      {
-        "name": "Psenthaisius",
-        "saying": {
-          "number": 1,
-          "text": "Abba Psenthaisius, Abba Surus and Abba Psoius used to agree in saying this, 'Whenever we listened to the words of our Father, Abba Pachomius, we were greatly helped and spurred on with zeal for good works; we saw how, even when he kept silence, he taught us by his actions. We were amazed by him and we used to say to each other, \"We thought that all the saints were created as saints by God and never changed from their mother's womb, not like other men. We thought that sinners could not live devoutly, because they had been so created. But now we see the goodness of God manifested in our father, for see, he is of pagan origin and he has become devout; he has put on all the commandments of God. Thus even we also can follow him and become equal to the saints whom he himself has followed. Truly it is written: 'Come unto me, all you who labour and are heavy laden, and I will give you rest.' (Matt. 11.28) Let us die, then, and let us live with him, because he has brought us to God in the right way.\" '"
-        }
-      },
-      {
-        "name": "Surus",
-        "saying": {
-          "number": 1,
-          "text": "Abba Psenthaisius, Abba Surus and Abba Psoius used to agree in saying this, 'Whenever we listened to the words of our Father, Abba Pachomius, we were greatly helped and spurred on with zeal for good works; we saw how, even when he kept silence, he taught us by his actions. We were amazed by him and we used to say to each other, \"We thought that all the saints were created as saints by God and never changed from their mother's womb, not like other men. We thought that sinners could not live devoutly, because they had been so created. But now we see the goodness of God manifested in our father, for see, he is of pagan origin and he has become devout; he has put on all the commandments of God. Thus even we also can follow him and become equal to the saints whom he himself has followed. Truly it is written: 'Come unto me, all you who labour and are heavy laden, and I will give you rest.' (Matt. 11.28) Let us die, then, and let us live with him, because he has brought us to God in the right way.\" '"
-        }
-      },
-      {
-        "name": "Psoius",
-        "saying": {
-          "number": 1,
-          "text": "Abba Psenthaisius, Abba Surus and Abba Psoius used to agree in saying this, 'Whenever we listened to the words of our Father, Abba Pachomius, we were greatly helped and spurred on with zeal for good works; we saw how, even when he kept silence, he taught us by his actions. We were amazed by him and we used to say to each other, \"We thought that all the saints were created as saints by God and never changed from their mother's womb, not like other men. We thought that sinners could not live devoutly, because they had been so created. But now we see the goodness of God manifested in our father, for see, he is of pagan origin and he has become devout; he has put on all the commandments of God. Thus even we also can follow him and become equal to the saints whom he himself has followed. Truly it is written: 'Come unto me, all you who labour and are heavy laden, and I will give you rest.' (Matt. 11.28) Let us die, then, and let us live with him, because he has brought us to God in the right way.\" '"
-        }
-      }
-    ]
-  }
+version https://git-lfs.github.com/spec/v1
+oid sha256:f077279086fea1a922d17dc1325e7773d31594e4fd53a0de2bb4899d894023b1
+size 3470

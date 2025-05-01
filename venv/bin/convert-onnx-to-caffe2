@@ -1,8 +1,3 @@
-#!/Users/iphonegeek/Downloads/phoenix/venv/bin/python3
-# -*- coding: utf-8 -*-
-import re
-import sys
-from caffe2.python.onnx.bin.conversion import onnx_to_caffe2
-if __name__ == '__main__':
-    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
-    sys.exit(onnx_to_caffe2())
+version https://git-lfs.github.com/spec/v1
+oid sha256:314c61221aa679fa9b37bc9872513e0f347dc5d1c42d2be5d2df448db47f1552
+size 288

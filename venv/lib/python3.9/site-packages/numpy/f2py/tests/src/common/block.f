@@ -1,11 +1,3 @@
-      SUBROUTINE INITCB
-      DOUBLE PRECISION LONG
-      CHARACTER        STRING
-      INTEGER          OK
-    
-      COMMON  /BLOCK/ LONG, STRING, OK
-      LONG = 1.0
-      STRING = '2'
-      OK = 3
-      RETURN
-      END
+version https://git-lfs.github.com/spec/v1
+oid sha256:190d0f77e54c5f71f76befff7f64aea2c49dc0d5c7a41aa81a74038dff1a1bd8
+size 224

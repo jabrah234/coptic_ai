@@ -1,9 +1,3 @@
-from warnings import warn
-
-from .notebook import *  # NOQA
-from .notebook import __all__  # NOQA
-from .std import TqdmDeprecationWarning
-
-warn("This function will be removed in tqdm==5.0.0\n"
-     "Please use `tqdm.notebook.*` instead of `tqdm._tqdm_notebook.*`",
-     TqdmDeprecationWarning, stacklevel=2)
+version https://git-lfs.github.com/spec/v1
+oid sha256:06e1e22eec6eeae11f64568f256dd13e93dac5a55cb44400de47522520cbd61c
+size 307

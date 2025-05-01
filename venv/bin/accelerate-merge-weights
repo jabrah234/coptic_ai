@@ -1,8 +1,3 @@
-#!/Users/iphonegeek/Downloads/phoenix/venv/bin/python3
-# -*- coding: utf-8 -*-
-import re
-import sys
-from accelerate.commands.merge import main
-if __name__ == '__main__':
-    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
-    sys.exit(main())
+version https://git-lfs.github.com/spec/v1
+oid sha256:4e47f149be9bcfbcb21d1e38399a7d6835a54a15866f9f7a815f2e49fd3b3a84
+size 260

@@ -1,22 +1,3 @@
-{
-  "add_bos_token": false,
-  "add_prefix_space": false,
-  "added_tokens_decoder": {
-    "50256": {
-      "content": "<|endoftext|>",
-      "lstrip": false,
-      "normalized": true,
-      "rstrip": false,
-      "single_word": false,
-      "special": true
-    }
-  },
-  "bos_token": "<|endoftext|>",
-  "clean_up_tokenization_spaces": true,
-  "eos_token": "<|endoftext|>",
-  "errors": "replace",
-  "model_max_length": 1024,
-  "pad_token": "<|endoftext|>",
-  "tokenizer_class": "GPT2Tokenizer",
-  "unk_token": "<|endoftext|>"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:7178199c31914fa313a57c92a5ee745446099ac9096b8d4268021bf775eb19c9
+size 525

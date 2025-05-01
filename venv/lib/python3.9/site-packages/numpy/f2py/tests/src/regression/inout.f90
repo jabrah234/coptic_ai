@@ -1,9 +1,3 @@
-! Check that intent(in out) translates as intent(inout).
-! The separation seems to be a common usage.
-      subroutine foo(x)
-          implicit none
-          real(4), intent(in out) :: x
-          dimension x(3)
-          x(1) = x(1) + x(2) + x(3)
-          return
-      end
+version https://git-lfs.github.com/spec/v1
+oid sha256:0a91e980cadfd1ba80d56dcece8def2270f3d113fdd384bb2e4a5d007e8e0dc9
+size 277
