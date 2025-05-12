@@ -1,68 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Wouniatk: Coptic AI - Your guide to Coptic Orthodox faith, liturgy, scriptures, and traditions." />
+  <meta name="keywords" content="Coptic, Orthodox, AI, liturgy, Agpeya, scriptures, Desert Fathers, saints" />
+  <meta name="author" content="Coptic AI Team" />
+  <meta name="robots" content="index, follow" />
   <title>Ⲱⲟⲩⲛⲓⲁⲧⲕ: Coptic AI</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- PWA Configuration -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Coptic AI" />
+  <link rel="apple-touch-icon" href="/public/icons/coptic-cross-192x192.png" sizes="192x192" />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <meta name="theme-color" content="#4a1e0b" />
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="Ⲱⲟⲩⲛⲓⲁⲧⲕ: Coptic AI" />
+  <meta property="og:description" content="Explore Coptic Orthodox faith with AI-powered guidance on liturgy, scriptures, and traditions." />
+  <meta property="og:image" content="/public/icons/coptic-cross-192x192.png" />
+  <meta property="og:url" content="https://coptic-ai.org/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="Coptic_cross.svg" />
 </head>
-
 <body>
-  <header>
-    <img src="Coptic_cross.svg" alt="Coptic Cross" id="coptic-cross" />
+  <header role="banner">
+    <img src="logo.png" alt="Coptic Cross logo" id="coptic-cross" width="64" height="64" />
     <h1>Ⲱⲟⲩⲛⲓⲁⲧⲕ: Coptic AI</h1>
-    <p id="liturgical-context">Liturgical context will be displayed here</p>
+    <p id="liturgical-context" aria-live="polite">Liturgical context will be displayed here</p>
   </header>
-
-  <main>
-    <div class="chat-container">
-      <div id="greetingBox"></div>
-      <div id="chatBox"></div>
-    </div>
-
-    <!-- External AI Toggle Section -->
-    <div class="external-ai-toggle">
-      <button id="toggleIframeButton" class="action-btn toggle-btn" data-tooltip="Toggle Extended AI Chat">
-        <i class="fas fa-robot"></i> Extended Coptic Guide AI Chat
+  
+  <main id="main-content" role="main">
+    <section class="chat-container" aria-label="Chat interface">
+      <div id="greetingBox" aria-live="polite"></div>
+      <div id="chatBox" role="log" aria-live="polite"></div>
+    </section>
+    
+    <section class="external-ai-toggle" aria-label="Extended AI chat controls">
+      <button id="toggleIframeButton" class="action-btn toggle-btn" aria-expanded="false" aria-controls="externalAiContainer" data-tooltip="Toggle Extended AI Chat">
+        <i class="fas fa-robot" aria-hidden="true"></i>
+        <span>Show AI Chat</span>
+        <span class="sr-only">Toggle AI Chat</span>
       </button>
-
-      <div class="external-ai-container" id="externalAiContainer" style="display: none;">
-        <div class="iframe-loading-overlay" id="iframeLoading">
-          <i class="fas fa-spinner fa-spin"></i> Loading Coptic Guide AI...
+      <div class="external-ai-container" id="externalAiContainer" role="region" aria-hidden="true" style="display: none;">
+        <div class="iframe-loading-overlay" id="iframeLoading" aria-busy="true">
+          <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+          <span>Loading Coptic Guide AI...</span>
         </div>
-        <div id="iframeWrapper"></div>
-        <div id="iframeError" style="display: none; color: #e6d5b8; text-align: center; padding: 1rem;">
+        <div id="iframeWrapper" role="application">
+        <div id="iframeError" style="display: none; color: #e6d5b8; text-align: center; padding: 1rem;" role="alert">
           Unable to load Coptic Guide AI. Please try again later.
         </div>
       </div>
-    </div>
-
-    <div id="actions">
-      <button id="saintButton" class="action-btn" data-tooltip="Saint">
-        <i class="fas fa-cross"></i>
+    </section>
+    
+    <section id="actions" role="toolbar" aria-label="Action buttons">
+      <button id="saintButton" class="action-btn" aria-label="View Saint information" data-tooltip="Saint">
+        <i class="fas fa-cross" aria-hidden="true"></i>
+        <span class="button-label">Saint</span>
       </button>
-      <button id="agpeyaButton" class="action-btn" data-tooltip="Agpeya">
-        <i class="fas fa-book"></i>
+      <button id="agpeyaButton" class="action-btn" aria-label="Access Agpeya prayers" data-tooltip="Agpeya">
+        <i class="fas fa-book" aria-hidden="true"></i>
+        <span class="button-label">Agpeya</span>
       </button>
-      <button id="scriptureButton" class="action-btn" data-tooltip="Scripture">
-        <i class="fas fa-bible"></i>
+      <button id="scriptureButton" class="action-btn" aria-label="Read Scriptures" data-tooltip="Scripture">
+        <i class="fas fa-bible" aria-hidden="true"></i>
+        <span class="button-label">Scripture</span>
       </button>
-      <button id="desertButton" class="action-btn" data-tooltip="Desert Fathers">
-        <i class="fas fa-church"></i>
+      <button id="desertButton" class="action-btn" aria-label="Explore Desert Fathers teachings" data-tooltip="Desert Fathers">
+        <i class="fas fa-church" aria-hidden="true"></i>
+        <span class="button-label">Fathers</span>
       </button>
-      <button id="clearChatButton" class="action-btn" data-tooltip="Clear">
-        <i class="fas fa-trash"></i>
+      <button id="clearChatButton" class="action-btn" aria-label="Clear chat history" data-tooltip="Clear">
+        <i class="fas fa-trash" aria-hidden="true"></i>
+        <span class="button-label">Clear</span>
       </button>
-    </div>
-    <div id="loading" style="display:none;">
-      <i class="fas fa-spinner fa-spin"></i>
+      <button id="refreshButton" class="action-btn" aria-label="Refresh page" data-tooltip="Refresh">
+        <i class="fas fa-sync-alt" aria-hidden="true"></i>
+        <span class="button-label">Refresh</span>
+      </button>
+    </section>
+    
+    <div id="loading" style="display: none;" aria-busy="true" role="status">
+      <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+      <span class="sr-only">Loading...</span>
     </div>
   </main>
 
-  <script src="script.js"></script>
-</body>
+  <script src="script.js" defer></script>
+  <script>
+  // Function to check connectivity and redirect
+  function checkConnectivity() {
+    if (!navigator.onLine) {
+      window.location.href = '/public/offline.html';
+    }
+  }
 
+  // Check connectivity on load
+  document.addEventListener('DOMContentLoaded', () => {
+    checkConnectivity();
+
+    // Add event listener for refresh button to perform hard refresh
+    const refreshButton = document.getElementById('refreshButton');
+    if (refreshButton) {
+      refreshButton.addEventListener('click', () => {
+        window.location.reload(true);
+      });
+    }
+
+    // Check for $10/month text and show hard refresh button
+    const dialog = document.getElementById('radix-:R28m:');
+    const hardRefreshButton = document.getElementById('hardRefreshButton');
+    if (dialog && hardRefreshButton) {
+      const dialogText = dialog.textContent || dialog.innerText;
+      if (dialogText.includes('$10/month')) {
+        hardRefreshButton.style.display = 'block';
+      }
+      hardRefreshButton.addEventListener('click', () => {
+        window.location.reload(true);
+      });
+    }
+  });
+
+  // Listen for offline event
+  window.addEventListener('offline', () => {
+    window.location.href = '/public/offline.html';
+  });
+</script>
+</body>
 </html>

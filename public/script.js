@@ -861,6 +861,8 @@ const clearChat = () => {
   generateInitialMessages();
 };
 
+
+
 /**
  * Initializes the application on DOM load.
  */
@@ -939,7 +941,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       if (isHidden) {
         externalAiContainer.style.display = 'block';
-        toggleIframeButton.innerHTML = '<i class="fas fa-robot"></i> Hide Extended Coptic Guide AI Chat';
+        toggleIframeButton.innerHTML = '<i class="fas fa-robot"></i> Hide AI Chat';
 
         if (!iframeLoaded) {
           iframeLoading.style.display = 'block';
@@ -968,7 +970,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
       } else {
         externalAiContainer.style.display = 'none';
-        toggleIframeButton.innerHTML = '<i class="fas fa-robot"></i> Show Extended Coptic Guide AI Chat';
+        toggleIframeButton.innerHTML = '<i class="fas fa-robot"></i> Show AI Chat';
       }
     });
   }
