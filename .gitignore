@@ -1,8 +1,0 @@
-# Example .gitignore (keep only necessary exclusions)
-*.pyc
-__pycache__/
-.vscode/
-.idea/
-.DS_Store
-venv/
-fine_tuned_christian_model/
