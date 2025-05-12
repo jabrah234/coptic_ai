@@ -1,0 +1,81 @@
+{
+  "name": "Ⲱⲟⲩⲛⲓⲁⲧⲕ: Coptic AI",
+  "short_name": "Coptic AI",
+  "id": "/public/?homescreen=1",
+  "description": "A Coptic AI assistant for liturgical context, saints, Agpeya prayers, scriptures, and Desert Fathers wisdom.",
+  "start_url": "/public/index.html",
+  "display": "standalone",
+  "background_color": "#e6d5b8",
+  "theme_color": "#4a1e0b",
+  "icons": [
+    {
+      "src": "/public/icons/coptic-cross-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/public/icons/coptic-cross-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/public/icons/coptic-cross-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/public/screenshots/screenshot1.jpeg",
+      "sizes": "1080x1920",
+      "type": "image/jpeg",
+      "label": "Homepage",
+      "platform": "wide"
+    },
+    {
+      "src": "/public/screenshots/screenshot2.jpeg",
+      "sizes": "1080x1920",
+      "type": "image/jpeg",
+      "label": "AI Chat Interface",
+      "platform": "wide"
+    },
+    {
+      "src": "/public/screenshots/screenshot3.jpeg",
+      "sizes": "1080x1920",
+      "type": "image/jpeg",
+      "label": "Saints, Psalm, Scripture, Desert Fathers",
+      "platform": "wide"
+    }
+  ],
+  "scope": "/public/",
+  "orientation": "portrait",
+  "dir": "ltr",
+  "lang": "en",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "browser"
+  ],
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "categories": [
+    "education"
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.app.copticreader&pli=1",
+      "id": "com.app.copticreader"
+    },
+    {
+      "platform": "itunes",
+      "url": "https://apps.apple.com/us/app/coptic-reader/id649434138",
+      "id": "649434138"
+    }
+  ],
+  "prefer_related_applications": false
+}
