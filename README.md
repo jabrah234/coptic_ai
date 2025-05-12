@@ -48,10 +48,9 @@ Explore the Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI interface
 
 <img width="1512" alt="Screenshot 2025-05-11 at 8 44 18 PM" src="https://github.com/user-attachments/assets/57164a18-64e7-47f1-9283-467df128acd2" />
 
-![8EF67809-6064-496A-BDDF-8AEA879628DE_1_105_c](https://github.com/user-attachments/assets/534d383d-5943-491f-87b6-ca191a3f38ec)
+<img width="976" alt="Screenshot 2025-05-11 at 8 45 52 PM" src="https://github.com/user-attachments/assets/4cc7286f-766c-4dc4-a598-25e7df36c7d8" />
 
-![D9311D91-224F-49AC-BAAD-84919F61BF84_1_201_a](https://github.com/user-attachments/assets/c6212660-3dfa-481b-a4ff-94e3164159d1)
-
+<img width="673" alt="Screenshot 2025-05-11 at 8 46 45 PM" src="https://github.com/user-attachments/assets/fe9ea127-92ce-4d1e-a653-ebb9fafa0aa5" />
 
 <h2>🛠️ How It's Made</h2>
 
