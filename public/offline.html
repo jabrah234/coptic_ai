@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description"
+        content="Wouniatk: Coptic AI - Your guide to Coptic Orthodox faith, liturgy, scriptures, and traditions." />
+    <meta name="keywords" content="Coptic, Orthodox, AI, liturgy, Agpeya, scriptures, Desert Fathers, saints" />
+    <meta name="author" content="Coptic AI Team" />
+    <meta name="robots" content="index, follow" />
+    <title>Ⲱⲟⲩⲛⲓⲁⲧⲕ: Coptic AI - Offline Mode</title>
+
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Coptic AI" />
+    <link rel="apple-touch-icon" href="/public/icons/coptic-cross-192x192.png" sizes="192x192" />
+    <link rel="icon" href="logo.png" type="image/png" />
+    <meta name="theme-color" content="#4a1e0b" />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Ⲱⲟⲩⲛⲓⲁⲧⲕ: Coptic AI - Offline Mode" />
+    <meta property="og:description"
+        content="Explore Coptic Orthodox faith with AI-powered guidance on liturgy, scriptures, and traditions." />
+    <meta property="og:image" content="/public/icons/coptic-cross-192x192.png" />
+    <meta property="og:url" content="https://coptic-ai.org/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<style>.action-btn.disabled {
+  background-color: #cccccc; /* Grey background */
+  color: #666666; /* Darker grey text */
+  cursor: not-allowed;
+  opacity: 0.6;
+  pointer-events: none; /* Prevent interactions */
+}</style>
+<body>
+    <header role="banner">
+        <img src="logo.png" alt="Coptic Cross logo" id="coptic-cross" width="64" height="64" />
+        <h1>Ⲱⲟⲩⲛⲓⲁⲧⲕ: Coptic AI - Offline Mode</h1>
+        <p id="liturgical-context" aria-live="polite">Liturgical context will be displayed here</p>
+    </header>
+
+    <main id="main-content" role="main">
+        <section class="chat-container" aria-label="Chat interface">
+            <div id="greetingBox" aria-live="polite"></div>
+            <div id="chatBox" role="log" aria-live="polite"></div>
+        </section>
+
+        <section class="external-ai-toggle" aria-label="Extended AI chat controls">
+            <button id="toggleIframeButton" class="action-btn toggle-btn disabled" aria-expanded="false"
+                aria-controls="externalAiContainer" data-tooltip="Toggle Extended AI Chat" disabled>
+                <i class="fas fa-robot" aria-hidden="true"></i>
+                <span>Show Coptic Guide AI Chat</span>
+                <span class="sr-only">Toggle Coptic Guide AI Chat</span>
+            </button>
+            <div class="external-ai-container" id="externalAiContainer" role="region" aria-hidden="true"
+                style="display: none;">
+                <div class="iframe-loading-overlay" id="iframeLoading" aria-busy="true">
+                    <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                    <span>Loading Coptic Guide AI...</span>
+                </div>
+                <div id="iframeWrapper" role="application"></div>
+                <div id="iframeError" style="display: none; color: #e6d5b8; text-align: center; padding: 1rem;"
+                    role="alert">
+                    Unable to load Coptic Guide AI. Please try again later.
+                </div>
+            </div>
+        </section>
+
+        <section id="actions" role="toolbar" aria-label="Action buttons">
+            <button id="saintButton" class="action-btn" aria-label="View Saint information" data-tooltip="Saint">
+                <i class="fas fa-cross" aria-hidden="true"></i>
+            </button>
+            <button id="agpeyaButton" class="action-btn" aria-label="Access Agpeya prayers" data-tooltip="Agpeya">
+                <i class="fas fa-book" aria-hidden="true"></i>
+            </button>
+            <button id="scriptureButton" class="action-btn" aria-label="Read Scriptures" data-tooltip="Scripture">
+                <i class="fas fa-bible" aria-hidden="true"></i>
+            </button>
+            <button id="desertButton" class="action-btn" aria-label="Explore Desert Fathers teachings"
+                data-tooltip="Desert Fathers">
+                <i class="fas fa-church" aria-hidden="true"></i>
+            </button>
+            <button id="clearChatButton" class="action-btn" aria-label="Clear chat history" data-tooltip="Clear">
+                <i class="fas fa-trash" aria-hidden="true"></i>
+            </button>
+        </section>
+
+        <div id="loading" style="display: none;" aria-busy="true" role="status">
+            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
+    </main>
+    <script src="script.js" defer></script>
+    <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleIframeButton = document.getElementById('toggleIframeButton');
+    const externalAiContainer = document.getElementById('externalAiContainer');
+
+    // Keep the button disabled and container hidden
+    toggleIframeButton.classList.add('disabled');
+    toggleIframeButton.setAttribute('aria-disabled', 'true');
+    toggleIframeButton.setAttribute('disabled', 'true');
+    externalAiContainer.style.display = 'none';
+    externalAiContainer.setAttribute('aria-hidden', 'true');
+
+    // Optional: Inform users the feature is disabled
+    toggleIframeButton.addEventListener('click', () => {
+      alert('The Extended Coptic Guide AI Chat is unavailable offline.');
+    });
+
+    // Check connectivity and redirect to index.html when online
+    function checkConnectivity() {
+      if (navigator.onLine) {
+        window.location.href = '/public/index.html';
+      }
+    }
+
+    // Check connectivity on load
+    checkConnectivity();
+
+    // Listen for online event
+    window.addEventListener('online', () => {
+      window.location.href = '/public/index.html';
+    });
+  });
+</script>
+</body>
+
+</html>

@@ -382,7 +382,23 @@ const getLiturgicalPeriod = (date) => {
   const diffTimePascha = date - paschaDate;
   const daysSincePascha = Math.floor(diffTimePascha / (1000 * 60 * 60 * 24));
   if (daysSincePascha >= 0 && daysSincePascha < 50) {
-    const WeekOfHolyFifty = Math.ceil((daysSincePascha + 1) / 7);
+    // Find the first Monday after Pascha
+    const paschaDayOfWeek = paschaDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+    const daysToFirstMonday = paschaDayOfWeek === 0 ? 1 : (8 - paschaDayOfWeek) % 7;
+    const firstMonday = new Date(paschaDate);
+    firstMonday.setDate(paschaDate.getDate() + daysToFirstMonday);
+    
+    // Calculate days since the first Monday
+    const diffTimeFirstMonday = date - firstMonday;
+    const daysSinceFirstMonday = Math.floor(diffTimeFirstMonday / (1000 * 60 * 60 * 24));
+    
+    // Calculate the week (1-based, Monday to Sunday)
+    const WeekOfHolyFifty = Math.floor(daysSinceFirstMonday / 7) + 1;
+    
+    // Ensure week is at least 1 and not more than 7
+    if (WeekOfHolyFifty < 1) {
+      return '1st Week of Holy Fifty Days';
+    }
     return `${WeekOfHolyFifty}${WeekOfHolyFifty === 1 ? 'st' : WeekOfHolyFifty === 2 ? 'nd' : WeekOfHolyFifty === 3 ? 'rd' : 'th'} Week of Holy Fifty Days`;
   }
 
@@ -407,11 +423,33 @@ const loadSynaxarium = async (month, retries = 3) => {
     try {
       const response = await fetch(`synaxarium/${month}.json`);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      state.synaxariumData = await response.json();
+      const rawData = await response.json();
+
+      // Initialize state.synaxariumData
+      state.synaxariumData = {};
+
+      // Handle JSON structure: { "2_Bashans": [{ event, summary }, ...] }
+      if (typeof rawData === 'object' && !Array.isArray(rawData)) {
+        Object.keys(rawData).forEach(dateKey => {
+          const formattedKey = dateKey.replace('_', ' '); // Convert "2_Bashans" to "2 Bashans"
+          const events = rawData[dateKey];
+          if (Array.isArray(events)) {
+            state.synaxariumData[formattedKey] = {
+              feasts: events.map(e => e.event || ''),
+              summaries: events.map(e => e.summary || ''),
+            };
+          }
+        });
+      }
+
       console.log(`Synaxarium loaded for ${month}:`, Object.keys(state.synaxariumData).length, 'entries');
 
+      // Hardcoded override for Baramouda 20
       if (month === 'Baramouda') {
-        state.synaxariumData['20 Baramouda'] = { feasts: ['The Martyrdom of Saint Babnuda'] };
+        state.synaxariumData['20 Baramouda'] = {
+          feasts: ['The Martyrdom of Saint Babnuda'],
+          summaries: ['Commemoration of Saint Babnuda’s martyrdom'],
+        };
         console.log(`Updated Synaxarium for Baramouda 20 to Saint Babnuda`);
       }
       return;
@@ -419,17 +457,102 @@ const loadSynaxarium = async (month, retries = 3) => {
       console.error(`Attempt ${attempt} - Error loading Synaxarium for ${month}:`, error);
       if (attempt === retries) {
         state.synaxariumData = {
-          [`1 ${month}`]: { feasts: ['St. John the Baptist'] },
-          [`2 ${month}`]: { feasts: ['St. Mary the Virgin'] },
-          [`15 ${month}`]: { feasts: ['St. Anthony the Great'] },
+          [`1 ${month}`]: { feasts: ['St. John the Baptist'], summaries: ['Commemoration of St. John the Baptist'] },
+          [`2 ${month}`]: { feasts: ['St. Mary the Virgin'], summaries: ['Commemoration of St. Mary the Virgin'] },
+          [`15 ${month}`]: { feasts: ['St. Anthony the Great'], summaries: ['Commemoration of St. Anthony the Great'] },
         };
         if (month === 'Baramouda') {
-          state.synaxariumData['20 Baramouda'] = { feasts: ['The Martyrdom of Saint Babnuda'] };
+          state.synaxariumData['20 Baramouda'] = {
+            feasts: ['The Martyrdom of Saint Babnuda'],
+            summaries: ['Commemoration of Saint Babnuda’s martyrdom'],
+          };
           console.log(`Fallback: Updated Synaxarium for Baramouda 20 to Saint Babnuda`);
         }
       }
       await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
     }
+  }
+};
+
+/**
+ * Gets the saint of the day based on the Coptic date.
+ * @param {Date} date - The date to check.
+ * @returns {Object} The saint information.
+ */
+const getSaintOfDay = (date) => {
+  try {
+    const coptic = getCopticDate(date);
+    const { copticDate, month, day } = coptic;
+    const synaxariumEntry = state.synaxariumData[`${day} ${month}`];
+
+    if (!synaxariumEntry || !synaxariumEntry.feasts || !Array.isArray(synaxariumEntry.feasts)) {
+      return {
+        copticDate,
+        name: 'No Saint Recorded',
+        summary: 'No saints commemorated today',
+      };
+    }
+
+    const saintNames = synaxariumEntry.feasts
+      .map((feast, index) => {
+        let name = null;
+
+        if (feast.includes('Consecration') || feast.includes('altar')) {
+          const match = feast.match(/for (St\. |Saint )?([\w\s]+)(,|$)/);
+          name = match?.[2]?.trim() || null;
+        } else {
+          name = feast
+            .replace(/^(The )?(Departure of |Martyrdom of |Commemoration of )/, '')
+            .replace(/,.*/, '')
+            .replace(/^(St\. |Saint |Pope )/, '')
+            .replace(/\(.*?\)/g, '')
+            .trim();
+        }
+
+        // Normalize known saint name variants
+        switch (name) {
+          case 'Agabus':
+          case 'Alexandra':
+          case 'George':
+          case 'Nicholas':
+          case 'Job': // Explicitly allow Job
+            return name;
+          default:
+            if (name?.includes('Mark')) return 'Pope Mark VI';
+            return name || null;
+        }
+      })
+      .filter(Boolean); // Remove null or empty
+
+    // Helper to format names grammatically
+    const formatSaintList = (names) => {
+      if (names.length === 1) return names[0];
+      if (names.length === 2) return `${names[0]} and ${names[1]}`;
+      return `${names.slice(0, -1).join(', ')}, and ${names[names.length - 1]}`;
+    };
+
+    const formattedName = saintNames.length > 0
+      ? `Today's Saint Commemoration${saintNames.length > 1 ? 's' : ''}: ${formatSaintList(saintNames)}`
+      : 'No Saint Recorded';
+
+    const summary = saintNames.length > 0
+      ? synaxariumEntry.summaries
+          .filter((_, index) => synaxariumEntry.feasts[index]) // Include all summaries for valid feasts
+          .join('; ')
+      : 'No saints commemorated today';
+
+    return {
+      copticDate,
+      name: formattedName,
+      summary: summary || `${saintNames.length} saint${saintNames.length > 1 ? 's' : ''} commemorated today`,
+    };
+  } catch (error) {
+    console.error('Error in getSaintOfDay:', error);
+    return {
+      copticDate: 'Unknown Date',
+      name: 'Error Retrieving Saint',
+      summary: 'Unable to generate saint list due to an error',
+    };
   }
 };
 
@@ -555,83 +678,6 @@ const processSayings = (data, letter, format = 'key-value') => {
 };
 
 /**
- * Gets the saint of the day based on the Coptic date.
- * @param {Date} date - The date to check.
- * @returns {Object} The saint information.
- */
-const getSaintOfDay = (date) => {
-  try {
-    const coptic = getCopticDate(date);
-    const { copticDate, month, day } = coptic;
-    const synaxariumEntry = state.synaxariumData[`${day} ${month}`];
-
-    if (!synaxariumEntry || !synaxariumEntry.feasts) {
-      return {
-        copticDate,
-        name: 'No Saint Recorded',
-        summary: 'No saints commemorated today',
-      };
-    }
-
-    const saintNames = synaxariumEntry.feasts.map(feast => {
-      let name = null;
-
-      if (feast.includes('Consecration') || feast.includes('altar')) {
-        const match = feast.match(/for (St\. |Saint )?([\w\s]+)(,|$)/);
-        name = match?.[2]?.trim() || null;
-      } else {
-        name = feast
-          .replace(/^(The )?(Departure of |Martyrdom of |Commemoration of )/, '')
-          .replace(/,.*/, '')
-          .replace(/^(St\. |Saint |Pope )/, '')
-          .replace(/\(.*?\)/g, '')
-          .trim();
-      }
-
-      // Normalize some known saint name variants
-      switch (name) {
-        case 'Agabus':
-        case 'Alexandra':
-        case 'George':
-        case 'Nicholas':
-          return name;
-        default:
-          if (name?.includes('Mark')) return 'Pope Mark VI';
-          return name || null;
-      }
-    }).filter(Boolean); // Remove null or empty
-
-    // Helper to format names grammatically
-    const formatSaintList = (names) => {
-      if (names.length === 1) return names[0];
-      if (names.length === 2) return `${names[0]} and ${names[1]}`;
-      return `${names.slice(0, -1).join(', ')}, and ${names[names.length - 1]}`;
-    };
-
-    const formattedName = saintNames.length > 0
-      ? `Today's Saint Commemoration${saintNames.length > 1 ? 's' : ''}: ${formatSaintList(saintNames)}`
-      : 'No Saint Recorded';
-
-    const defaultSummary = saintNames.length > 0
-      ? `${saintNames.length} saint${saintNames.length > 1 ? 's' : ''} commemorated today`
-      : 'No saints commemorated today';
-
-    return {
-      copticDate,
-      name: formattedName,
-      summary: synaxariumEntry.summary || defaultSummary,
-    };
-  } catch (error) {
-    console.error('Error in getSaintOfDay:', error);
-    return {
-      copticDate: 'Unknown Date',
-      name: 'Error Retrieving Saint',
-      summary: 'Unable to generate saint list due to an error',
-    };
-  }
-};
-
-/**
  * Gets the appropriate Agpeya prayer based on the current time.
  * @returns {Object} The selected Agpeya prayer.
  */
@@ -704,7 +750,7 @@ const handleSaint = async () => {
   try {
     const coptic = getCopticDate(new Date());
     const { month } = coptic;
-    if (month && month !== 'Nasie') await loadSynaxarium(month);
+    if (month) await loadSynaxarium(month); // Load Synaxarium for all months, including Nasie
     const saint = getSaintOfDay(new Date());
     const response = saint.name === 'No Saint Recorded'
       ? `No Saint Recorded`
@@ -815,6 +861,8 @@ const clearChat = () => {
   generateInitialMessages();
 };
 
+
+
 /**
  * Initializes the application on DOM load.
  */
@@ -850,7 +898,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const { copticDate, month, copticYear } = coptic;
     const liturgicalPeriod = getLiturgicalPeriod(new Date());
     liturgicalContext.innerHTML = `${copticDate}, ${copticYear} • ${liturgicalPeriod}`;
-    if (month && month !== 'Nasie') await loadSynaxarium(month);
+    if (month) await loadSynaxarium(month); // Load Synaxarium for all months, including Nasie
   } catch (error) {
     console.error('Error updating liturgical context:', error);
     liturgicalContext.textContent = 'Error loading liturgical context';
@@ -893,7 +941,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       if (isHidden) {
         externalAiContainer.style.display = 'block';
-        toggleIframeButton.innerHTML = '<i class="fas fa-robot"></i> Hide Extended Coptic Guide AI Chat';
+        toggleIframeButton.innerHTML = '<i class="fas fa-robot"></i> Hide AI Chat';
 
         if (!iframeLoaded) {
           iframeLoading.style.display = 'block';
@@ -922,7 +970,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
       } else {
         externalAiContainer.style.display = 'none';
-        toggleIframeButton.innerHTML = '<i class="fas fa-robot"></i> Show Extended Coptic Guide AI Chat';
+        toggleIframeButton.innerHTML = '<i class="fas fa-robot"></i> Show AI Chat';
       }
     });
   }

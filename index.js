@@ -19,6 +19,8 @@ app.use(
 );
 app.use(bodyParser.json());
 app.use(express.static(path.join(path.resolve(), "public")));
+app.use('/icons', express.static(path.join(__dirname, 'public/icons')));
+
 
 const traditionPrompts = {
   "General Christian": `
