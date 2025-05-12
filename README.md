@@ -12,9 +12,9 @@ _Alt tag: Responsive chatbot interface displaying Coptic liturgical date and pra
 
 <h2>🌐 Live Demo</h2>
 
-* Try Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI
+Try Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI
   
-https://coptic-ai.org/
+* https://coptic-ai.org/
 
 <h2>🚀 Getting Started</h2>
 
