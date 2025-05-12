@@ -14,6 +14,7 @@ _Alt tag: Responsive chatbot interface displaying Coptic liturgical date and pra
 
 * Try Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI at 
 https://coptic-ai.netlify.app/
+
 https://coptic-ai.org/
 
 <h2>🚀 Getting Started</h2>
