@@ -46,7 +46,7 @@ To run Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI locally:
 
 Explore the Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI interface
 
-![14E84C64-FC2F-4115-884B-DD06256E5956_1_105_c](https://github.com/user-attachments/assets/dbb4686e-7a75-43ab-ab42-e28134e9d8cf)
+<img width="1512" alt="Screenshot 2025-05-11 at 8 44 18 PM" src="https://github.com/user-attachments/assets/57164a18-64e7-47f1-9283-467df128acd2" />
 
 ![8EF67809-6064-496A-BDDF-8AEA879628DE_1_105_c](https://github.com/user-attachments/assets/534d383d-5943-491f-87b6-ca191a3f38ec)
 
