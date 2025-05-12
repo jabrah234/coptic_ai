@@ -31,7 +31,7 @@ To run Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI locally:
 
 3. Serve the app using a local server (e.g., with VS Code’s Live Server extension or a simple HTTP server):
 
-        npx http-server
+        http-server
 
 4. Open http://localhost:8080 in your browser.
    
