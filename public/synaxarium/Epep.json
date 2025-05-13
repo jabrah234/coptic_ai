@@ -1,3 +1,211 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6ac5afc9ad5c8e786e2c2f7eb0a65c302f5aaed37aa0fbe1b20c118ca3e47b98
-size 10201
+{
+    "1 Epep": {
+        "feasts": [
+            "Martyrdom of St. Febronia the Ascetic",
+            "Departure of Sts. Bioukha and Tayaban"
+        ],
+        "summary": "St. Febronia, a virgin ascetic, was martyred under Diocletian after refusing to worship idols. Sts. Bioukha and Tayaban, priests of Tunah, lived virtuously and departed in peace."
+    },
+    "2 Epep": {
+        "feasts": [
+            "Departure of St. Thaddaeus, the Apostle"
+        ],
+        "summary": "St. Thaddaeus, one of the twelve apostles, preached the Gospel, converted many, and suffered persecution before departing in peace."
+    },
+    "3 Epep": {
+        "feasts": [
+            "Departure of St. Kyrillos I, 24th Pope of Alexandria",
+            "Departure of St. Celestine, Pope of Rome"
+        ],
+        "summary": "St. Kyrillos I, a pillar of faith, refuted heresies and led the Council of Ephesus. St. Celestine, bishop of Rome, opposed Nestorius and was restored to his throne."
+    },
+    "4 Epep": {
+        "feasts": [
+            "Commemoration of Relocation of Sts. Apakir and John's Relics"
+        ],
+        "summary": "The relics of martyrs Sts. Apakir and John were relocated to a church by St. Mark under St. Cyril's guidance, leading to many conversions."
+    },
+    "5 Epep": {
+        "feasts": [
+            "Martyrdom of Sts. Peter and Paul, the Apostles"
+        ],
+        "summary": "St. Peter, a fervent apostle, and St. Paul, a former persecutor turned preacher, were martyred in Rome under Nero."
+    },
+    "6 Epep": {
+        "feasts": [
+            "Martyrdom of St. Aoulimpas, the Apostle",
+            "Martyrdom of St. Theodosia and companions"
+        ],
+        "summary": "St. Aoulimpas, a disciple of St. Peter, was crucified under Nero. St. Theodosia and others were martyred after confessing Christ."
+    },
+    "7 Epep": {
+        "feasts": [
+            "Departure of St. Shenouda, the Archimandrite",
+            "Martyrdom of St. Ignatius, Bishop of Antioch"
+        ],
+        "summary": "St. Shenouda, a monastic leader, attended the Council of Ephesus. St. Ignatius was martyred in Rome under Trajan."
+    },
+    "8 Epep": {
+        "feasts": [
+            "Departure of St. Anba Bishoy",
+            "Martyrdom of Sts. Piroou, Athom, Balanah, Epime",
+            "Departure of St. Cyrus"
+        ],
+        "summary": "St. Bishoy, a desert monk, saw Christ in a vision. Sts. Piroou, Athom, Balanah, and Epime were martyred for their faith. St. Cyrus lived as a hermit."
+    },
+    "9 Epep": {
+        "feasts": [
+            "Martyrdom of St. Simon Cleophas, the Apostle",
+            "Departure of St. Cladianus, 9th Pope"
+        ],
+        "summary": "St. Simon Cleophas, bishop of Jerusalem, was martyred under Trajan. St. Cladianus served as a righteous patriarch."
+    },
+    "10 Epep": {
+        "feasts": [
+            "Martyrdom of St. Theodore, Bishop of Pentapolis",
+            "Martyrdom of St. Theodore, Bishop of Corinth",
+            "Departure of Anba Gabriel VII, 95th Pope"
+        ],
+        "summary": "St. Theodore of Pentapolis and St. Theodore of Corinth were martyred for their faith. Anba Gabriel VII renovated monasteries."
+    },
+    "11 Epep": {
+        "feasts": [
+            "Martyrdom of Sts. John and Simon",
+            "Departure of St. Isaiah, the hermit"
+        ],
+        "summary": "Sts. John and Simon, cousins, were martyred under Diocletian. St. Isaiah lived as a hermit in Scetis."
+    },
+    "12 Epep": {
+        "feasts": [
+            "Commemoration of Archangel Michael",
+            "Martyrdom of St. Abba Hour El-Siriakousy"
+        ],
+        "summary": "Archangel Michael is celebrated as a protector. St. Abba Hour was martyred after confessing Christ."
+    },
+    "13 Epep": {
+        "feasts": [
+            "Departure of St. Pisentius, Bishop of Qift",
+            "Martyrdom of St. Apamon of Toukh",
+            "Martyrdom of St. Abba Shenoute"
+        ],
+        "summary": "St. Pisentius was an ascetic bishop. St. Apamon and St. Shenoute were martyred for their faith during early Arab rule."
+    },
+    "14 Epep": {
+        "feasts": [
+            "Martyrdom of St. Procopius of Jerusalem",
+            "Departure of St. Peter V, 83rd Patriarch"
+        ],
+        "summary": "St. Procopius was martyred under Diocletian. St. Peter V led the church peacefully."
+    },
+    "15 Epep": {
+        "feasts": [
+            "Departure of St. Ephraem El-Soriani",
+            "Martyrdom of Sts. Cyriacus and Julietta",
+            "Martyrdom of St. Horesius of Soul"
+        ],
+        "summary": "St. Ephraem, a Syrian monk, met St. Basil. Sts. Cyriacus, Julietta, and Horesius were martyred for their faith."
+    },
+    "16 Epep": {
+        "feasts": [
+            "The Departure of St. John, of the Golden Gospel",
+            "The Recovery of the Holy Relics of St. George, the Great Martyr"
+        ],
+        "summary": "St. John, born in Rome, received a golden Gospel from his father. He became a monk, lived ascetically, and returned to his parents’ home disguised as a beggar, revealing his identity before his death. His relics were later enshrined in a church. The relics of St. George were brought to his church in Old Cairo by Fr. Marcus, fulfilling a vision, with many miracles manifested."
+    },
+    "17 Epep": {
+        "feasts": [
+            "The Martyrdom of St. Euphemia"
+        ],
+        "summary": "St. Euphemia was martyred after boldly condemning idol worship and expressing compassion for persecuted Christians. She endured severe torture before giving up her soul to the Lord."
+    },
+    "18 Epep": {
+        "feasts": [
+            "The Martyrdom of St. James the Apostle, Bishop of Jerusalem"
+        ],
+        "summary": "St. James, son of Alphaeus and bishop of Jerusalem, was known as James the Just. He presided over the Council of Jerusalem and was martyred by Jews who beat him after he proclaimed Christ’s divinity."
+    },
+    "19 Epep": {
+        "feasts": [
+            "The Martyrdom of Sts. Bidaba, Bishop of Qift, Anba Andrew, and Anba Christodoulas",
+            "The Martyrdom of St. Pantaleemon, the Physician",
+            "The Departure of Pope Youanis X, 85th Patriarch of Alexandria"
+        ],
+        "summary": "St. Bidaba, a bishop, with Andrew and Christodoulas, were martyred under Diocletian after confessing Christ. St. Pantaleemon, a physician, performed miracles and was martyred after refusing to deny Christ. Pope Youanis X, a righteous patriarch, served from 1363 to 1369 and was buried in Old Cairo."
+    },
+    "20 Epep": {
+        "feasts": [
+            "The Martyrdom of St. Theodore of Shotep"
+        ],
+        "summary": "St. Theodore, born in Shotep, became a general in Antioch. He killed a serpent to save a widow’s sons, confessed Christ, and was martyred under Emperor Lucianus. His body was later enshrined in churches."
+    },
+    "21 Epep": {
+        "feasts": [
+            "The Commemoration of the Lady, the Virgin Mary",
+            "The Departure of St. Sisinnios (Sosenius), the Eunich"
+        ],
+        "summary": "The Virgin Mary is commemorated as the mother of Christ. St. Sisinnios, a palace eunuch under Theodosius, served St. Cyril at the Council of Ephesus, gave his wealth to the poor, and departed in peace."
+    },
+    "22 Epep": {
+        "feasts": [
+            "The Commemoration of the Martyrdom of St. Macarius, the Son of Basilides (Wasilides) the Minister",
+            "The Commemoration of the Martyrdom of St. Leontius of Tripoli (Lawendius)"
+        ],
+        "summary": "St. Macarius, son of a chancellor, was martyred under Diocletian after refusing to worship idols, performing miracles during his torture. St. Leontius, a soldier from Tripoli, preached Christ, was tortured, and died in prison, his body preserved by a Christian woman."
+    },
+    "23 Epep": {
+        "feasts": [
+            "Martyrdom of St. Longinus the Soldier",
+            "Martyrdom of St. Marina of Antioch"
+        ],
+        "summary": "St. Longinus, a soldier at Christ’s crucifixion, believed and was martyred. St. Marina overcame the devil and was martyred."
+    },
+    "24 Epep": {
+        "feasts": [
+            "Martyrdom of St. Apanoub",
+            "Departure of St. Simeon I, 42nd Pope"
+        ],
+        "summary": "St. Apanoub, a young martyr, gave his wealth to the poor. St. Simeon I performed miracles and built churches."
+    },
+    "25 Epep": {
+        "feasts": [
+            "Departure of St. Thecla",
+            "Martyrdom of Sts. Isaac, Hilaria, Thecla, Mouji, Antonius, Abakragoun, Domadius",
+            "Consecration of St. Mercurius Church",
+            "Departure of St. Palamon"
+        ],
+        "summary": "St. Thecla followed St. Paul. Sts. Isaac, Hilaria, Thecla, Mouji, Antonius, Abakragoun, and Domadius were martyred. St. Mercurius’ church was consecrated. St. Palamon mentored St. Pachomius."
+    },
+    "26 Epep": {
+        "feasts": [
+            "Departure of St. Joseph, the Carpenter",
+            "Departure of St. Timothy, 22nd Pope"
+        ],
+        "summary": "St. Joseph, betrothed to Virgin Mary, died at 111. St. Timothy refuted Arian heresy."
+    },
+    "27 Epep": {
+        "feasts": [
+            "Consecration of St. Abba Fam’s Church",
+            "Martyrdom of St. Apamon"
+        ],
+        "summary": "St. Abba Fam’s church was consecrated. St. Apamon was martyred after enduring torture."
+    },
+    "28 Epep": {
+        "feasts": [
+            "Departure of St. Mary Magdalene"
+        ],
+        "summary": "St. Mary Magdalene, freed from demons, served Christ and preached after His resurrection."
+    },
+    "29 Epep": {
+        "feasts": [
+            "Commemoration of St. Andrew’s Relics Translocation",
+            "Martyrdom of St. Ouarshenoufa"
+        ],
+        "summary": "St. Andrew’s relics were moved to Constantinople. St. Ouarshenoufa was martyred for destroying an imperial edict."
+    },
+    "30 Epep": {
+        "feasts": [
+            "Martyrdom of Sts. Mercurius and Ephraem"
+        ],
+        "summary": "Sts. Mercurius and Ephraem, monks and kinsmen, were martyred for rejecting Arian offerings."
+    }
+}

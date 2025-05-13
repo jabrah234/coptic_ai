@@ -1,3 +1,194 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:aa6cf64837e3e2716239e0ca02c121c44e7a8008bfa333f861dc72ebc23bb7c1
-size 8595
+{
+    "1 Toba": {
+        "feasts": [
+            "The Martyrdom of St. Stephen the Archdeacon.",
+            "The Martyrdom of St. Lawindianus (Leontius)."
+        ],
+        "summary": "Commemorates the martyrdom of St. Stephen, the first Christian martyr, stoned for his faith, and St. Leontius, tortured and beheaded for refusing to worship idols."
+    },
+    "2 Toba": {
+        "feasts": [
+            "The Departure of St. Theonas, 16th Pope of Alexandria.",
+            "The Martyrdom of St. Callinicus, Bishop of Oseem."
+        ],
+        "summary": "Marks the departure of St. Theonas, who built a church for Virgin Mary, and the martyrdom of St. Callinicus, tortured and killed for his faith."
+    },
+    "3 Toba": {
+        "feasts": [
+            "The Commemoration of the Slain Children of Bethlehem by King Herod"
+        ],
+        "summary": "Commemorates the massacre of Bethlehem’s male children by King Herod, fulfilling Jeremiah’s prophecy of mourning."
+    },
+    "4 Toba": {
+        "feasts": [
+            "The Departure of St. John the Evangelist and Theologian"
+        ],
+        "summary": "Marks the departure of St. John, apostle and evangelist, who preached in Ephesus and wrote the Gospel, Revelation, and three epistles."
+    },
+    "5 Toba": {
+        "feasts": [
+            "The Martyrdom of St. Eusegnius (Eugenius) the Soldier"
+        ],
+        "summary": "Commemorates St. Eusegnius, a soldier martyred under Emperor Julian for boldly confessing Christ."
+    },
+    "6 Toba": {
+        "feasts": [
+            "The Commemoration of the Circumcision of the Lord Christ.",
+            "The Ascension of Elijah the Prophet.",
+            "The Departure of St. Marcianus, 8th Pope of Alexandria.",
+            "The Departure of St. Basil the Great, Bishop of Caesarea."
+        ],
+        "summary": "Celebrates Christ’s circumcision, Elijah’s ascent to heaven, the departure of Pope Marcianus, and St. Basil, Bishop of Caesarea, known for his liturgy and miracles."
+    },
+    "7 Toba": {
+        "feasts": [
+            "The Departure of St. Silvester, Pope of Rome"
+        ],
+        "summary": "Marks the departure of St. Silvester, Pope of Rome, who baptized Emperor Constantine and combated heresies."
+    },
+    "8 Toba": {
+        "feasts": [
+            "The Consecration of St. Macarius’ Church.",
+            "The Departure of St. Andronicus, 37th Pope of Alexandria.",
+            "The Departure of St. Benjamin, 38th Pope of Alexandria."
+        ],
+        "summary": "Commemorates the consecration of St. Macarius’ Church and the departures of Popes Andronicus and Benjamin, who faced persecution and restored churches."
+    },
+    "9 Toba": {
+        "feasts": [
+            "The Departure of Abba Abraam, Companion of Abba Gawarga"
+        ],
+        "summary": "Marks the departure of St. Abraam, a monk who led an ascetic life and was visited by Christ."
+    },
+    "10 Toba": {
+        "feasts": [
+            "Paramouni of Holy Theophany (Epiphany)"
+        ],
+        "summary": "A day of fasting in preparation for the Epiphany, blessing water and seeking purification."
+    },
+    "11 Toba": {
+        "feasts": [
+            "The Holy Theophany of Our Lord, Jesus Christ (Baptism of the Lord)"
+        ],
+        "summary": "Celebrates Christ’s baptism, where the Holy Trinity was revealed with the Father’s voice and the Spirit as a dove."
+    },
+    "12 Toba": {
+        "feasts": [
+            "The Commemoration of the Archangel Michael.",
+            "The Martyrdom of St. Theodore El-Mishreke (the Oriental).",
+            "The Martyrdom of St. Anatole (Anatolius)."
+        ],
+        "summary": "Honors Archangel Michael, and the martyrdoms of St. Theodore, a prince, and St. Anatole, both killed for their faith."
+    },
+    "13 Toba": {
+        "feasts": [
+            "The Commemoration of the Miracle at Cana of Galilee.",
+            "The Departure of St. Theophilus, the Monk.",
+            "The Martyrdom of St. Demiana."
+        ],
+        "summary": "Commemorates Christ’s first miracle at Cana, the departure of monk St. Theophilus, and the martyrdom of St. Demiana."
+    },
+    "14 Toba": {
+        "feasts": [],
+        "summary": "No specific saints or events commemorated on this day."
+    },
+    "15 Toba": {
+        "feasts": [],
+        "summary": "No specific saints or events commemorated on this day."
+    },
+    "16 Toba": {
+        "feasts": [],
+        "summary": "No specific saints or events commemorated on this day."
+    },
+    "17 Toba": {
+        "feasts": [],
+        "summary": "No specific saints or events commemorated on this day."
+    },
+    "18 Toba": {
+        "feasts": [],
+        "summary": "No specific saints or events commemorated on this day."
+    },
+    "19 Toba": {
+        "feasts": [],
+        "summary": "No specific saints or events commemorated on this day."
+    },
+    "20 Toba": {
+        "feasts": [
+            "The Departure of St. Prochorus, One of the Seventy Disciples.",
+            "The Commemoration of the Consecration of the Church of St. John.",
+            "The Martyrdom of Anba Behna and Anba Kloag, the Priest."
+        ],
+        "summary": "Marks the departure of St. Prochorus, a disciple and bishop, the consecration of St. John’s church, and the martyrdoms of Sts. Behna and Kloag."
+    },
+    "21 Toba": {
+        "feasts": [
+            "The Dormition of Our Lady, the Virgin Mary.",
+            "The Departure of St. Hilaria, Daughter of Emperor Zeno.",
+            "The Departure of St. Gregorius (Gregory of Nyssa)."
+        ],
+        "summary": "Commemorates the Virgin Mary’s dormition, St. Hilaria’s monastic life, and St. Gregory of Nyssa’s departure."
+    },
+    "22 Toba": {
+        "feasts": [
+            "The Departure of St. Anthony the Great (Antonius)"
+        ],
+        "summary": "Marks the departure of St. Anthony, father of monasticism, who lived ascetically and fought the devil’s temptations."
+    },
+    "23 Toba": {
+        "feasts": [
+            "The Martyrdom of St. Timothy, the Apostle.",
+            "The Departure of Pope Cyril IV, 110th Pope of Alexandria."
+        ],
+        "summary": "Commemorates the martyrdom of St. Timothy, bishop of Ephesus, and the departure of Pope Cyril IV, who advanced Coptic education."
+    },
+    "24 Toba": {
+        "feasts": [
+            "The Departure of St. Mary the Ascetic (The Shut-In).",
+            "The Martyrdom of Anba Bisada (St. Psati), the Priest."
+        ],
+        "summary": "Marks the departure of St. Mary, an ascetic who lived enclosed, and the martyrdom of St. Bisada, a priest killed for his faith."
+    },
+    "25 Toba": {
+        "feasts": [
+            "The Departure of St. Peter, the Worshipper.",
+            "The Martyrdom of St. Askala (Asela), the Ascetic."
+        ],
+        "summary": "Commemorates St. Peter, a reformed tax collector turned monk, and the martyrdom of St. Askala, an ascetic."
+    },
+    "26 Toba": {
+        "feasts": [
+            "The Martyrdom of the Forty-Nine Saints, Elders of Sheheat.",
+            "The Departure of St. Anastasia."
+        ],
+        "summary": "Honors the martyrdom of 49 elders of Sheheat by berbers and the departure of St. Anastasia, who lived as a monk in disguise."
+    },
+    "27 Toba": {
+        "feasts": [
+            "The Martyrdom of St. Sarapion.",
+            "The Commemoration of the Archangel Suriel.",
+            "The Relocation of the Relics of St. Timothy, the Apostle.",
+            "The Martyrdom of St. Abe-Fam, the Soldier."
+        ],
+        "summary": "Commemorates St. Sarapion’s martyrdom, Archangel Suriel, the transfer of St. Timothy’s relics, and St. Abe-Fam’s martyrdom."
+    },
+    "28 Toba": {
+        "feasts": [
+            "The Martyrdom of St. Clement.",
+            "The Martyrdom of St. Anba Kaou."
+        ],
+        "summary": "Marks the martyrdoms of St. Clement, tortured for his faith, and St. Kaou, beheaded for smashing an idol."
+    },
+    "29 Toba": {
+        "feasts": [
+            "The Departure of St. Eksani (St. Xene).",
+            "The Commemoration of St. Seriakos (Syriacus), the Fighter."
+        ],
+        "summary": "Commemorates St. Eksani, a noblewoman who became a nun, and St. Seriakos, a fighter for the faith."
+    },
+    "30 Toba": {
+        "feasts": [
+            "The Martyrdom of Saints Pistis, Helpis, Agape, and Their Mother, Sophia"
+        ],
+        "summary": "Honors the martyrdom of Sts. Pistis, Helpis, Agape, and their mother Sophia, killed for refusing to worship idols."
+    }
+}

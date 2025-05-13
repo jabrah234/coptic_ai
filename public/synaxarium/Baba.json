@@ -1,3 +1,200 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3226c7cd82d6e5290e79b4bec71c7872ed281a361516953d04b527ea73e66c4e
-size 9504
+{
+    "1 Baba": {
+      "feasts": [
+        "The Martyrdom of Saint Anastasia"
+      ],
+      "summary": "Saint Anastasia, a Roman noblewoman, chose a life of asceticism and was martyred under Emperor Decius for her Christian faith."
+    },
+    "2 Baba": {
+      "feasts": [
+        "The Coming of Saint Severus, Patriarch of Antioch, to Egypt"
+      ],
+      "summary": "St. Severus, Patriarch of Antioch, fled persecution and came to Egypt, where he performed miracles and strengthened the Orthodox faith."
+    },
+    "3 Baba": {
+      "feasts": [
+        "The Departure of St. Simon II, 51st Pope of the See of St. Mark.",
+        "The Martyrdom of St. John the Soldier."
+      ],
+      "summary": "St. Simon II, 51st Pope of Alexandria, lived a holy life and reposed after a short papacy. St. John the Soldier was martyred for his faith."
+    },
+    "4 Baba": {
+      "feasts": [
+        "The Martyrdom of St. Bacchus, the Friend of St. Sergius"
+      ],
+      "summary": "St. Bacchus, companion of St. Sergius, was martyred after severe torture. His body was divinely protected and honored by the faithful."
+    },
+    "5 Baba": {
+      "feasts": [
+        "The Martyrdom of St. Paul, Patriarch of Constantinople"
+      ],
+      "summary": "St. Paul, Patriarch of Constantinople, was exiled and martyred for opposing Arianism and defending the Orthodox faith."
+    },
+    "6 Baba": {
+      "feasts": [
+        "The Departure of the Righteous Hannah, the Prophetess Mother of Samuel, the Prophet"
+      ],
+      "summary": "Righteous Hannah, mother of Samuel the Prophet, prayed for a child and dedicated Samuel to God, living a life pleasing to the Lord."
+    },
+    "7 Baba": {
+      "feasts": [
+        "The Departure of St. Paul of Tamouh"
+      ],
+      "summary": "St. Paul of Tamouh led a life of asceticism and prayer, and was eventually buried with St. Bishoy, as foretold by the Lord."
+    },
+    "8 Baba": {
+      "feasts": [
+        "The Martyrdom of St. Matra.",
+        "The Martyrdom of the Saints Abba Hor, Tosia (Susanna) and Her Children, and Abba Agathon, the Hermit."
+      ],
+      "summary": "St. Matra and other saints were martyred for refusing to renounce their faith during times of persecution."
+    },
+    "9 Baba": {
+      "feasts": [
+        "The Departure of St. Eumenius, the Seventh Pope of the See of St. Mark.",
+        "The Eclipse of the Sun in the Year 958 A.M.",
+        "The Commemoration of St. Simon (Simeon) the Bishop."
+      ],
+      "summary": "St. Eumenius, the seventh Pope of Alexandria, was a wise leader. This day also marks a historic solar eclipse and commemorates St. Simon the Bishop."
+    },
+    "10 Baba": {
+      "feasts": [
+        "The Martyrdom of St. Sergius, the Friend of St. Bacchus"
+      ],
+      "summary": "St. Sergius, a soldier and companion of St. Bacchus, was martyred after enduring torture for his Christian faith."
+    },
+  "11 Baba": {
+    "feasts": [
+      "The Departure of St. James, Patriarch of Antioch.",
+      "The Departure of St. Pelagia."
+    ],
+    "summary": "St. James, Patriarch of Antioch, endured exile for defending the Orthodox faith and died in peace. St. Pelagia, once a sinner in Antioch, repented, was baptized, and lived as a hermit in Jerusalem, known for her deep penance and devotion.[3][6][9]"
+  },
+  "12 Baba": {
+    "feasts": [
+      "The Departure of Abba Demetrius I, 12th Pope of Alexandria.",
+      "The Martyrdom of St. Matthew the Evangelist.",
+      "The Commemoration of the Archangel Michael."
+    ],
+    "summary": "Abba Demetrius I, 12th Pope of Alexandria, was known for his purity and for establishing the Coptic calendar of feasts and fasts. St. Matthew the Evangelist was martyred after preaching widely, and the Church commemorates Archangel Michael on this day."
+  },
+  "13 Baba": {
+    "feasts": [
+      "The Departure of Saint Zacharias, the Monk"
+    ],
+    "summary": "St. Zacharias, raised in the desert by his father Karyos, became a humble and virtuous monk known for his asceticism and spiritual wisdom."
+  },
+  "14 Baba": {
+    "feasts": [
+      "The Departure of St. Philip, One of the Seven Deacons"
+    ],
+    "summary": "St. Philip, one of the Seven Deacons and a preacher of the Gospel, baptized the Ethiopian eunuch and brought many to the faith before departing in peace."
+  },
+  "15 Baba": {
+    "feasts": [
+      "The Martyrdom of Saint Panteleimon, the Physician"
+    ],
+    "summary": "St. Panteleimon, a physician, was martyred for healing in Christ’s name and refusing to renounce his faith, inspiring others to believe."
+  },
+  "16 Baba": {
+    "feasts": [
+      "The Departure of St. Agathon, 39th Pope of Alexandria.",
+      "The Commemoration of the Sts. Carpus, Apollos (Papylus) and Peter."
+    ],
+    "summary": "St. Agathon, 39th Pope of Alexandria, endured hardship to preserve the faith and was a wise leader. Also commemorated are the saints Carpus, Apollos, and Peter."
+  },
+  "17 Baba": {
+    "feasts": [
+      "The Departure of St. Dioscorus II 31st Pope of Alexandria"
+    ],
+    "summary": "St. Dioscorus II, 31st Pope of Alexandria, was known for his knowledge, teaching, and steadfastness in Orthodox doctrine."
+  },
+  "18 Baba": {
+    "feasts": [
+      "The Departure of the Honorable Father Saint Theophilus 23rd Pope of Alexandria"
+    ],
+    "summary": "St. Theophilus, 23rd Pope of Alexandria, was a disciple of St. Athanasius and a builder of churches, remembered for his wisdom and charity."
+  },
+  "19 Baba": {
+    "feasts": [
+      "The Assembly of the Council of Antioch against Paul of Samosata.",
+      "The Martyrdom of Sts. Theophilus and His Wife in Fayyum."
+    ],
+    "summary": "The Council of Antioch condemned the heresy of Paul of Samosata, affirming Christ’s divinity. St. Theophilus and his wife were martyred in Fayyum for their faith."
+  },
+  "20 Baba": {
+    "feasts": [
+      "The Departure of the Great St. John Colobos (the Short)"
+    ],
+    "summary": "St. John Colobos, known for his humility and obedience, became a great desert father and spiritual guide, performing miracles and departing in peace."
+},
+"21 Baba": {
+    "feasts": [
+      "The Commemoration of the Theotokos.",
+      "The Commemoration of the Relocation of the Body of Lazarus.",
+      "The Departure of Joel the Prophet.",
+      "The Departure of St. Freig (Abba Tegi, Anba Roweiss)."
+    ],
+    "summary": "This day commemorates the Virgin Mary, the relocation of Lazarus’s body to Constantinople, the departure of the Prophet Joel-who foretold the coming of the Holy Spirit-and the passing of St. Freig (Abba Roweiss), a humble ascetic known for miracles."
+  },
+  "22 Baba": {
+    "feasts": [
+      "The Martyrdom of Saint Luke the Evangelist"
+    ],
+    "summary": "St. Luke the Evangelist, one of the Seventy Apostles and author of the Gospel and Acts, was martyred in Rome after a life of preaching and miracles."
+  },
+  "23 Baba": {
+    "feasts": [
+      "The Departure of St. Yousab, 52nd Pope of Alexandria.",
+      "The Martyrdom of St. Dionysius, Bishop of Corinth."
+    ],
+    "summary": "St. Yousab, 52nd Pope of Alexandria, was a wise and charitable leader who defended the Church. St. Dionysius, Bishop of Corinth, was martyred for his faith."
+  },
+  "24 Baba": {
+    "feasts": [
+      "The Departure of the Righteous Father Abba Hilarion.",
+      "The Martyrdom of the Sts. Paul, Longinus and Deenah (Zena)."
+    ],
+    "summary": "Abba Hilarion, a pioneer of monasticism, lived a life of asceticism and miracles. Also commemorated are the martyrs Paul, Longinus, and Deenah."
+  },
+  "25 Baba": {
+    "feasts": [
+      "The Departure of the Saints Apollo and Abib.",
+      "The Commemoration of the Consecration of the Church of Saint Julius El-Akfahsee (Aqfahs)."
+    ],
+    "summary": "Sts. Apollo and Abib, renowned monks, are remembered for their holiness. The Church also commemorates the consecration of St. Julius El-Akfahsee’s church."
+  },
+  "26 Baba": {
+    "feasts": [
+      "The Martyrdom of Saint Timon the Apostle.",
+      "The Commemoration of the Seven Martyrs on the Mount of St. Antonius."
+    ],
+    "summary": "St. Timon, one of the Seventy Apostles and a deacon, was martyred for his faith. The day also honors seven martyrs of St. Antonius’s mount."
+  },
+  "27 Baba": {
+    "feasts": [
+      "The Martyrdom of the Righteous Father Saint Macarius Bishop of Edkow (Tkoou)"
+    ],
+    "summary": "St. Macarius, Bishop of Edkow, was martyred for defending the Orthodox faith and is remembered for his preaching and miracles."
+  },
+  "28 Baba": {
+    "feasts": [
+      "Martyrdom of the Sts. Marcian (Marcianus) and Mercurius"
+    ],
+    "summary": "Sts. Marcian and Mercurius, disciples of St. Paul of Constantinople, were martyred for opposing Arianism and are honored for their steadfast faith."
+  },
+  "29 Baba": {
+    "feasts": [
+      "The Martyrdom of St. Demetrius of Thessalonica"
+    ],
+    "summary": "St. Demetrius of Thessalonica was martyred for his Christian witness and is renowned for miracles, especially the flow of holy oil from his relics."
+  },
+  "30 Baba": {
+    "feasts": [
+      "The Commemoration of the Consecration of the Church of St. Mark the Evangelist and the Appearance of His Holy Head.",
+      "The Departure of St. Ibrahim (Ibraham) the Hermit."
+    ],
+    "summary": "This day marks the consecration of St. Mark’s church and the appearance of his head in Alexandria, as well as the departure of St. Ibrahim the hermit, known for his ascetic life."
+  }
+
+}
