@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -52,11 +53,24 @@
       <div class="external-ai-container" id="externalAiContainer" role="region" aria-hidden="true" style="display: none;">
         <div class="iframe-loading-overlay" id="iframeLoading" aria-busy="true">
           <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
-          <span>Loading Coptic Guide AI...</span>
+          <span>Loading Coptic Guide...</span>
         </div>
-        <div id="iframeWrapper" role="application">
+        <div id="iframeWrapper" role="application"></div>
         <div id="iframeError" style="display: none; color: #e6d5b8; text-align: center; padding: 1rem;" role="alert">
           Unable to load Coptic Guide AI. Please try again later.
+        </div>
+      </div>
+    </section>
+
+    <section class="external-ai-toggle" aria-label="Translation AI controls">
+      <div class="external-ai-container" id="translateAiContainer" role="region" aria-hidden="true" style="display: none;">
+        <div class="iframe-loading-overlay" id="translateLoading" aria-busy="true">
+          <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+          <span>Loading Thoth AI...</span>
+        </div>
+        <div id="translateWrapper" role="application"></div>
+        <div id="translateError" style="display: none; color: #e6d5b8; text-align: center; padding: 1rem;" role="alert">
+          Unable to load Translation AI. Please try again later.
         </div>
       </div>
     </section>
@@ -78,6 +92,11 @@
         <i class="fas fa-church" aria-hidden="true"></i>
         <span class="button-label">Fathers</span>
       </button>
+      
+      <button id="translateButton" class="action-btn toggle-btn" aria-expanded="false" aria-controls="translateAiContainer" data-tooltip="Coptic Translation">
+        <i class="fas fa-language" aria-hidden="true"></i>
+        <span class="button-label">Translate</span>
+      </button>
       <button id="clearChatButton" class="action-btn" aria-label="Clear chat history" data-tooltip="Clear">
         <i class="fas fa-trash" aria-hidden="true"></i>
         <span class="button-label">Clear</span>
@@ -96,43 +115,26 @@
 
   <script src="script.js" defer></script>
   <script>
-  // Function to check connectivity and redirect
-  function checkConnectivity() {
-    if (!navigator.onLine) {
-      window.location.href = '/public/offline.html';
-    }
-  }
-
-  // Check connectivity on load
-  document.addEventListener('DOMContentLoaded', () => {
-    checkConnectivity();
-
-    // Add event listener for refresh button to perform hard refresh
-    const refreshButton = document.getElementById('refreshButton');
-    if (refreshButton) {
-      refreshButton.addEventListener('click', () => {
-        window.location.reload(true);
-      });
-    }
-
-    // Check for $10/month text and show hard refresh button
-    const dialog = document.getElementById('radix-:R28m:');
-    const hardRefreshButton = document.getElementById('hardRefreshButton');
-    if (dialog && hardRefreshButton) {
-      const dialogText = dialog.textContent || dialog.innerText;
-      if (dialogText.includes('$10/month')) {
-        hardRefreshButton.style.display = 'block';
+      // Add event listener for refresh button to perform hard refresh
+      const refreshButton = document.getElementById('refreshButton');
+      if (refreshButton) {
+        refreshButton.addEventListener('click', () => {
+          window.location.reload(true);
+        });
       }
-      hardRefreshButton.addEventListener('click', () => {
-        window.location.reload(true);
-      });
-    }
-  });
 
-  // Listen for offline event
-  window.addEventListener('offline', () => {
-    window.location.href = '/public/offline.html';
-  });
-</script>
+      // Check for $10/month text and show hard refresh button
+      const dialog = document.getElementById('radix-:R28m:');
+      const hardRefreshButton = document.getElementById('hardRefreshButton');
+      if (dialog && hardRefreshButton) {
+        const dialogText = dialog.textContent || dialog.innerText;
+        if (dialogText.includes('$10/month')) {
+          hardRefreshButton.style.display = 'block';
+        }
+        hardRefreshButton.addEventListener('click', () => {
+          window.location.reload(true);
+        });
+      }
+  </script>
 </body>
 </html>
