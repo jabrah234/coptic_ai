@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d662baa3988b1aa66c8def3801fb90c25e514464f8c160ccc1d20b81f5e458d9
-size 396
+{
+  "name": "phoenix-ai",
+  "version": "1.0.0",
+  "description": "A religious AI for spiritual guidance",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
+    "express-rate-limit": "^6.7.0",
+    "node-cache": "^5.1.2",
+    "node-fetch": "^2.6.7"
+  }
+}
