@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a06897dba4faf75ce4893524271512161fd3e8d42d0d15b854dc42896327c519
-size 1524
+{
+  "An Abba of Rome (likely Arsenius)": [
+      { "text": "There was a monk from Rome who lived at Scetis near the church. He had a slave to serve him. The priest, knowing his bad health and the comfort in which he used to live, sent him what he needed of whatever anyone brought to the church. Having lived twenty-five years at Scetis he had acquired the gift of insight and became famous. One of the great Egyptians heard about him and came to see him, thinking he would find him leading a life of great corporal austerity..." }
+  ],
+  "Rufus": [
+      { "text": "A brother asked Abba Rufus, 'What is interior peace, and what use is it?' The old man said, 'Interior peace means to remain sitting in one's cell with fear and knowledge of God, holding far off the remembrance of wrongs suffered and pride of spirit. Such interior peace brings forth all the virtues, preserves the monk from the burning darts of the enemy, and does not allow him to be wounded by them. Yes, brother, acquire it. Keep in mind your future death, remembering that you do not know at what hour the thief will come. Likewise be watchful over your soul.'" }
+  ],
+  "Romanus": [
+      { "text": "When Abba Romanus was at the point of death, his disciples gathered round him and said, 'How ought we to conduct ourselves?' The old man said to them, 'I do not think I have ever told one of you to do something, without having first made the decision not to get angry, if what I said were not done; and so we have lived in peace all our days.'" }
+  ]
+}

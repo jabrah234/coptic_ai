@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:029aefdd81fe9b296ebf49dd0c88d0ea0168f6911f7ff7145c6be47cd827f91d
-size 686
+{
+    "Zeno": [
+        {
+            "text": "Abba Zeno, the disciple of blessed Silvanus said, 'Do not live in a famous place, do not settle close to a man with a great name, and do not lay foundations for building yourself a cell one day.'"
+        }
+    ],
+    "Zacharias": [
+        {
+            "text": "Abba Macarius said to Abba Zacharias, 'Tell me, what is the work of a monk?' He said to him, 'How is it that you are asking me, Father?' Abba Macarius said, 'Zacharias, my child, you inspire me with confidence. It is God who urges me to ask you.' Then Zacharias said to him, 'Father, in my opinion, he is a monk who does violence to himself in everything.'"
+        }
+    ]
+}

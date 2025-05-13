@@ -1,3 +1,82 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3787e54d4202df0ca9fddd4d0a648d5832c5db4a0567b6a35a46ee52257018ed
-size 7856
+{
+    "collection": "Sayings of the Desert Fathers and Mothers (Part 1 + Sigma/Sisoes)",
+    "figures": [
+      {
+        "name": "Sisoes",
+        "saying": {
+          "number": 1,
+          "text": "A brother whom another brother had wronged came to see Abba Sisoes and said to him, 'My brother has hurt me and I want to avenge myself.' The old man pleaded with him saying, 'No, my child, leave vengeance to God.' He said to him, 'I shall not rest until I have avenged myself.' The old man said, 'Brother, let us pray.' Then the old man stood up and said, 'God, we no longer need you to care for us, since we do justice for ourselves.' Hearing these words, the brothers fell at the old man's feet, saying, 'I will no longer seek justice from my brother; forgive me, abba.'"
+        }
+      },
+      {
+        "name": "Silvanus",
+        "saying": {
+          "number": 1,
+          "text": "Abba Silvanus and his disciple Zacharias went to a certain monastery one day. They were given something to eat a little before taking the road and when they got outside his disciple found some water beside the path and wanted to drink. The old man said to him, 'Zacharias, it is a fast today.' The latter said to him, 'But, Father, have we not eaten?' The old man said to him, 'What we have eaten came through charity but, my child, let us keep our own fast.'"
+        }
+      },
+      {
+        "name": "Simon",
+        "saying": {
+          "number": 1,
+          "text": "A magistrate came to see Abba Simon one day. When he heard of it, he put on his apron and went out to attend to a palm-tree. When the visitors arrived they called out to him, 'Old man, where is the anchorite?' He replied, 'There is no anchorite here.' Hearing these words, they went away again."
+        }
+      },
+      {
+        "name": "Sopatrus",
+        "saying": {
+          "number": 1,
+          "text": "Someone asked Abba Sopatrus, 'Give me a commandment, abba, and I will keep it.' He said to him, 'Do not allow a woman to come into your cell and do not read apocryphal literature. Do not get involved in discussions about the image. Although this is not heresy, there is too much ignorance and liking for dispute between the two parties in this matter. It is impossible for a creature to understand the truth of it.'"
+        }
+      },
+      {
+        "name": "Sarmatas",
+        "saying": {
+          "number": 1,
+          "text": "Abba Sarmatas said, 'I prefer a sinful man who knows he has sinned and repents, to a man who has not sinned and considers himself to be righteous.'"
+        }
+      },
+      {
+        "name": "Serapion",
+        "saying": {
+          "number": 1,
+          "text": "One day Abba Serapion passed through an Egyptian village and there he saw a courtesan who stayed in her own cell. The old man said to her, 'Expect me this evening, for I should like to come and spend the night with you.' She replied, 'Very well, abba.' She got ready and made the bed. When evening came, the old man came to see her and entered her cell and said to her, 'Have you got the bed ready?' She said, 'Yes, abba.' Then he closed the door and said to her, 'Wait a bit, for we have a rule of prayer and I must fulfil that first.' So the old man began his prayers. He took the psalter and at each psalm he said a prayer for the courtesan, begging God that she might be converted and saved, and God heard him. The woman stood trembling and praying beside the old man. When he had completed the whole psalter the woman fell to the ground. Then the old man, beginning the Epistle, read a great deal from the apostle and completed his prayers. The woman was filled with compunction and understood that he had not come to see her to commit sin but to save her soul and she fell at his feet, saying, 'Abba, do me this kindness and take we where I can please God.' So the old man took her to a monastery of virgins and entrusted her to the amma and he said, 'Take this sister and do not put any yoke or commandment on her as on the other sisters, but if she wants something, give it her and allow her to walk as she wishes.' After some days the courtesan said, 'I am a sinner; I wish to eat every second day.' A little later she said, 'I have committed many sins and I wish to eat every fourth day.' A few days later she besought the amma saying, 'Since I have grieved God greatly by my sins, do me the kindness of putting me in a cell and shutting it completely and giving me a little bread and some work through the window.' The amma did so and the woman pleased God all the rest of her life."
+        }
+      },
+      {
+        "name": "Serinus",
+        "saying": {
+          "number": 1,
+          "text": "They said of Abba Serinus that he used to work hard and always ate two small loaves. Abba Job, his companion and himself a great ascetic, went to see him and said, 'I am careful about what I do in the cell, but when I come out I do as the brothers do.' Abba Serinus said to him, 'There is no great virtue in keeping to your regime in your cell, but there is if you keep it when you come out of your cell.'"
+        }
+      },
+      {
+        "name": "Spyridon",
+        "saying": {
+          "number": 1,
+          "text": "It was said of Spyridon that he took care of his flock of sheep with such great holiness that he was judged worthy to be a shepherd of men too. He was called to the episcopate of one of the cities of Cyprus named Trimithuntes. Although he was charged with the episcopate, because of his great humility he pastured his sheep too. Now in the middle of the night some robbers came to the sheepfold secretly and tried to steal the sheep. But God, who saves the shepherd, saved the sheep also. Through an invisible power, the robbers found themselves bound to the sheepfold. Now at daybreak the shepherd comes to his sheep, and when he came and found the robbers with their hands behind their backs he understood what had happened. He said a prayer and released the robbers, then reprimanded them, and admonished them at length to give themselves henceforth to hardship and righteous suffering and no longer to live unrighteously. Then he freed them and gave them a ram, adding with a good grace, 'So that you do not have the appearance of having watched in vain.'"
+        }
+      },
+      {
+        "name": "Saius",
+        "saying": {
+          "number": 1,
+          "text": "It was said that Abba Saius and Abba Moue lived together. Abba Saius was very obedient, but he was very rigid. To test him, the old man said to him, 'Go and steal.' Through obedience Abba Saius went to steal from the brethren, giving thanks to the Lord in everything. Abba Moue took the things and returned them secretly. Now once when they were on the road, Abba Saius was overcome with weakness and the old man left him there exhausted and went to say to the brethren, 'Go and carry Saius, because he is lying there helpless.' So they went and brought him in."
+        }
+      },
+      {
+        "name": "Sarah",
+        "saying": {
+          "number": 1,
+          "text": "It was related of Amma Sarah that for thirteen years she waged warfare against the demon of fornication. She never prayed that the warfare should cease but she said, 'O God, give me strength.'"
+        }
+      },
+      {
+        "name": "Syncletica",
+        "saying": {
+          "number": 1,
+          "text": "Amma Syncletica said, 'In the beginning there are a great many battles and a good deal of suffering for those who are advancing towards God and afterwards, ineffable joy. It is like those who wish to light a fire; at first they are choked by the smoke and cry, and by this means obtain what they seek (as it is said: \"Our God is a consuming fire\" [Heb. 12.24]): so we also must kindle the divine fire in ourselves through tears and hard work.'"
+        }
+      }
+    ]
+  }

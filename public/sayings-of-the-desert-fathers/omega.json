@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:940d4cd256663933677ffbe3202e449f9d8402bcd2e92fc2bf768cfada0d5ca0
-size 443
+{
+    "collection": "Sayings of the Desert Fathers (OMEGA)",
+    "figures": [
+      {
+        "name": "Or",
+        "saying": {
+          "number": 1,
+          "text": "It was said of Abba Or and Abba Theodore that as they were building a cell out of clay, they said to one another, 'If God should visit us now, what should we do?' Then, weeping, they left the clay there and each of them went back into his cell."
+        }
+      }
+    ]
+  }
