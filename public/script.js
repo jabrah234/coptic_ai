@@ -42,17 +42,16 @@ const state = {
   })(),
 };
 
-// Static Agpeya data
 const copticData = {
   agpeya: [
-    { id: 1, hour: 'First Hour', text: 'Blessed is the man who has not walked in the counsel of the ungodly... Psalm 1:1' },
-    { id: 2, hour: 'Third Hour', text: 'The Lord shall hear you in the day of your trouble... Psalm 19:1' },
-    { id: 3, hour: 'Sixth Hour', text: 'Save me, O God, by Your name... Psalm 53:1' },
-    { id: 4, hour: 'Ninth Hour', text: 'Sing to the Lord a new song... Psalm 95:1' },
-    { id: 5, hour: 'Eleventh Hour', text: 'Praise the Lord, all you nations... Psalm 116:1' },
-    { id: 6, hour: 'Twelfth Hour', text: 'Out of the depths I have cried to You... Psalm 129:1' },
-    { id: 7, hour: 'Veil Hour', text: 'When I cried out, God of my righteousness heard me... Psalm 4:1' },
-    { id: 8, hour: 'Midnight Hour', text: 'Blessed are the blameless in the way... Psalm 118:1' },
+    { id: 1, hour: 'First Hour', text: 'Blessed is the man who has not walked in the counsel of the ungodly, and has not stood in the way of the sinners, and has not sat in the seat of the evil men. Psalm 1:1' },
+    { id: 2, hour: 'Third Hour', text: 'The Lord shall hear you in the day of your trouble, the name of the God of Jacob defend you. Psalm 19:1' },
+    { id: 3, hour: 'Sixth Hour', text: 'Save me, O God, by Your name, and judge me by Your power. Psalm 53:1' },
+    { id: 4, hour: 'Ninth Hour', text: 'Sing to the Lord a new song; sing to the Lord, all the earth. Psalm 95:1' },
+    { id: 5, hour: 'Eleventh Hour', text: 'Praise the Lord, all you nations: let all the peoples praise Him. Psalm 116:1' },
+    { id: 6, hour: 'Twelfth Hour', text: 'Out of the depths I have cried to You, O Lord. Psalm 129:1' },
+    { id: 7, hour: 'Veil Hour', text: 'When I cried out, God of my righteousness heard me: in tribulation You have made room for me; have compassion upon me, O Lord, and hear my prayer. Psalm 4:1' },
+    { id: 8, hour: 'Midnight Hour', text: 'Blessed are the blameless in the way, who walk in the law of the Lord. Psalm 118:1' },
   ],
 };
 

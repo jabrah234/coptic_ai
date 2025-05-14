@@ -9,19 +9,19 @@
   "theme_color": "#4a1e0b",
   "icons": [
     {
-      "src": "/public/icons/coptic-cross-192x192.png",
+      "src": "/icons/coptic-cross-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/public/icons/coptic-cross-512x512.png",
+      "src": "/icons/coptic-cross-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/public/icons/coptic-cross-maskable-512x512.png",
+      "src": "/icons/coptic-cross-maskable-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
