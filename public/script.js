@@ -799,18 +799,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const coptic = getCopticDate(new Date());
     const liturgicalPeriod = getLiturgicalPeriod(new Date());
     liturgicalContext.innerHTML = `${coptic.copticDate}, ${coptic.copticYear} • ${liturgicalPeriod}`;
-    
-    // Display saint of the day
-    const eventName = getSaintEventName(coptic.month, coptic.day, liturgicalPeriod);
-    clearGreeting();
-    chatBox.appendChild(createChatMessage(eventName, 'ai'));
-    localStorage.setItem('chatContent', chatBox.innerHTML);
-    chatBox.scrollTop = chatBox.scrollHeight;
   } catch (error) {
     console.error('Error during initialization:', error);
     liturgicalContext.textContent = 'Error loading liturgical context';
     clearGreeting();
-    chatBox.appendChild(createChatMessage('Error retrieving current saint.', 'ai'));
+    chatBox.appendChild(createChatMessage('Error initializing application.', 'ai'));
     localStorage.setItem('chatContent', chatBox.innerHTML);
     chatBox.scrollTop = chatBox.scrollHeight;
   }
