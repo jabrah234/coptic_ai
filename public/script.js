@@ -265,15 +265,17 @@ const getCopticDate = (gregorianDate) => {
     if (isNaN(date.getTime())) throw new Error('Invalid Gregorian date');
 
     const gregorianYear = date.getFullYear();
-    let copticYear = gregorianYear === 2025 ? 1741 : Math.floor((date - new Date(-283, 8, 29)) / (1000 * 60 * 60 * 24) / 365.25) + 1;
+    const copticYear = Math.floor((date - new Date(284, 8, 29)) / (1000 * 60 * 60 * 24) / 365.25) + 284;
 
     const isLeap = isCopticLeap(copticYear);
     const daysInYear = isLeap ? 366 : 365;
 
     let copticNewYear = new Date(gregorianYear, 8, 11); // September 11
+    if (isLeap && (gregorianYear % 4 === 0 && gregorianYear % 100 !== 0) || (gregorianYear % 400 === 0)) {
+      copticNewYear = new Date(gregorianYear, 8, 12); // September 12 in Gregorian leap years
+    }
     if (date < copticNewYear) {
       copticNewYear.setFullYear(gregorianYear - 1);
-      if (gregorianYear !== 2025) copticYear -= 1;
     }
 
     const daysSinceNewYear = Math.floor((date - copticNewYear) / (1000 * 60 * 60 * 24));
@@ -287,11 +289,6 @@ const getCopticDate = (gregorianDate) => {
     } else {
       monthIndex = Math.floor(totalCopticDays / 30);
       day = (totalCopticDays % 30) + 1;
-    }
-
-    // Hardcode for May 13, 2025
-    if (date.toDateString() === new Date(2025, 4, 13).toDateString()) {
-      return { copticDate: 'Bashans 5', month: 'Bashans', day: 5, copticYear: 1741 };
     }
 
     const month = copticMonths[monthIndex];
@@ -410,9 +407,10 @@ const loadAllSynaxarium = async (retries = 3) => {
         state.synaxariumData[month] = {};
         Object.keys(rawData).forEach(dateKey => {
           const formattedKey = dateKey.replace('_', ' ');
+          const events = Array.isArray(rawData[dateKey]) ? rawData[dateKey] : [rawData[dateKey]];
           state.synaxariumData[month][formattedKey] = {
-            event: rawData[dateKey].event || 'No Saint Recorded',
-            summary: rawData[dateKey].summary || 'No summary available'
+            event: events[0]?.event || 'No Saint Recorded',
+            summary: events[0]?.summary || 'No summary available'
           };
         });
 
@@ -801,9 +799,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     const coptic = getCopticDate(new Date());
     const liturgicalPeriod = getLiturgicalPeriod(new Date());
     liturgicalContext.innerHTML = `${coptic.copticDate}, ${coptic.copticYear} • ${liturgicalPeriod}`;
+    
+    // Display saint of the day
+    const eventName = getSaintEventName(coptic.month, coptic.day, liturgicalPeriod);
+    clearGreeting();
+    chatBox.appendChild(createChatMessage(eventName, 'ai'));
+    localStorage.setItem('chatContent', chatBox.innerHTML);
+    chatBox.scrollTop = chatBox.scrollHeight;
   } catch (error) {
     console.error('Error during initialization:', error);
     liturgicalContext.textContent = 'Error loading liturgical context';
+    clearGreeting();
+    chatBox.appendChild(createChatMessage('Error retrieving current saint.', 'ai'));
+    localStorage.setItem('chatContent', chatBox.innerHTML);
+    chatBox.scrollTop = chatBox.scrollHeight;
   }
 
   document.querySelectorAll('#actions .action-btn').forEach(btn => {
@@ -869,40 +878,40 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // Translation AI Iframe Toggle
-let translateIframeLoaded = false;
-if (requiredElements.translateButton && requiredElements.translateAiContainer) {
-  requiredElements.translateButton.addEventListener('click', () => {
-    const isHidden = requiredElements.translateAiContainer.style.display === 'none';
-    requiredElements.translateButton.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
-    requiredElements.translateAiContainer.setAttribute('aria-hidden', isHidden ? 'false' : 'true');
-    if (isHidden) {
-      requiredElements.translateAiContainer.style.display = 'block';
-      requiredElements.translateButton.innerHTML = '<i class="fas fa-language" aria-hidden="true"></i><span class="button-label">Translate</span><span class="sr-only">Hide Translation AI</span>';
-      if (!translateIframeLoaded) {
-        requiredElements.translateLoading.style.display = 'block';
-        const iframe = document.createElement('iframe');
-        iframe.src = 'https://udify.app/chat/5ZZkrzj9sfa4ejsT';
-        iframe.width = '800';
-        iframe.height = '500';
-        iframe.style.maxWidth = '100%';
-        iframe.style.border = 'none';
-        iframe.title = 'English to Coptic Translation AI';
-        iframe.loading = 'lazy';
-        iframe.onload = () => {
-          requiredElements.translateLoading.style.display = 'none';
-          translateIframeLoaded = true;
-        };
-        iframe.onerror = () => {
-          requiredElements.translateLoading.style.display = 'none';
-          requiredElements.translateError.style.display = 'block';
-          console.error('Failed to load Translation AI iframe.');
-        };
-        requiredElements.translateWrapper.appendChild(iframe);
+  let translateIframeLoaded = false;
+  if (requiredElements.translateButton && requiredElements.translateAiContainer) {
+    requiredElements.translateButton.addEventListener('click', () => {
+      const isHidden = requiredElements.translateAiContainer.style.display === 'none';
+      requiredElements.translateButton.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+      requiredElements.translateAiContainer.setAttribute('aria-hidden', isHidden ? 'false' : 'true');
+      if (isHidden) {
+        requiredElements.translateAiContainer.style.display = 'block';
+        requiredElements.translateButton.innerHTML = '<i class="fas fa-language" aria-hidden="true"></i><span class="button-label">Translate</span><span class="sr-only">Hide Translation AI</span>';
+        if (!translateIframeLoaded) {
+          requiredElements.translateLoading.style.display = 'block';
+          const iframe = document.createElement('iframe');
+          iframe.src = 'https://udify.app/chat/5ZZkrzj9sfa4ejsT';
+          iframe.width = '800';
+          iframe.height = '500';
+          iframe.style.maxWidth = '100%';
+          iframe.style.border = 'none';
+          iframe.title = 'English to Coptic Translation AI';
+          iframe.loading = 'lazy';
+          iframe.onload = () => {
+            requiredElements.translateLoading.style.display = 'none';
+            translateIframeLoaded = true;
+          };
+          iframe.onerror = () => {
+            requiredElements.translateLoading.style.display = 'none';
+            requiredElements.translateError.style.display = 'block';
+            console.error('Failed to load Translation AI iframe.');
+          };
+          requiredElements.translateWrapper.appendChild(iframe);
+        }
+      } else {
+        requiredElements.translateAiContainer.style.display = 'none';
+        requiredElements.translateButton.innerHTML = '<i class="fas fa-language" aria-hidden="true"></i><span class="button-label">Translate</span><span class="sr-only">Show Translation AI</span>';
       }
-    } else {
-      requiredElements.translateAiContainer.style.display = 'none';
-      requiredElements.translateButton.innerHTML = '<i class="fas fa-language" aria-hidden="true"></i><span class="button-label">Translate</span><span class="sr-only">Show Translation AI</span>';
-    }
-  });
-}
+    });
+  }
 });

@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="description" content="Wouniatk: Coptic AI - Your guide to Coptic Orthodox faith, liturgy, scriptures, and traditions." />
+  <meta name="description"
+    content="Wouniatk: Coptic AI - Your guide to Coptic Orthodox faith, liturgy, scriptures, and traditions." />
   <meta name="keywords" content="Coptic, Orthodox, AI, liturgy, Agpeya, scriptures, Desert Fathers, saints" />
   <meta name="author" content="Coptic AI Team" />
   <meta name="robots" content="index, follow" />
   <title>Ⲱⲟⲩⲛⲓⲁⲧⲕ: Coptic AI</title>
-  
+
   <!-- PWA Configuration -->
   <link rel="manifest" href="manifest.json" />
   <meta name="mobile-web-app-capable" content="yes" />
@@ -18,43 +20,52 @@
   <link rel="apple-touch-icon" href="/public/icons/coptic-cross-192x192.png" sizes="192x192" />
   <link rel="icon" href="logo.png" type="image/png" />
   <meta name="theme-color" content="#4a1e0b" />
-  
+
   <!-- Open Graph / Social Media -->
   <meta property="og:title" content="Ⲱⲟⲩⲛⲓⲁⲧⲕ: Coptic AI" />
-  <meta property="og:description" content="Explore Coptic Orthodox faith with AI-powered guidance on liturgy, scriptures, and traditions." />
+  <meta property="og:description"
+    content="Explore Coptic Orthodox faith with AI-powered guidance on liturgy, scriptures, and traditions." />
   <meta property="og:image" content="/public/icons/coptic-cross-192x192.png" />
   <meta property="og:url" content="https://coptic-ai.org/" />
   <meta property="og:type" content="website" />
 
   <!-- Styles -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <header role="banner">
     <img src="logo.png" alt="Coptic Cross logo" id="coptic-cross" width="64" height="64" />
     <h1>Ⲱⲟⲩⲛⲓⲁⲧⲕ: Coptic AI</h1>
     <p id="liturgical-context" aria-live="polite">Liturgical context will be displayed here</p>
   </header>
-  
+
   <main id="main-content" role="main">
     <section class="chat-container" aria-label="Chat interface">
       <div id="greetingBox" aria-live="polite"></div>
       <div id="chatBox" role="log" aria-live="polite"></div>
     </section>
-    
+
     <section class="external-ai-toggle" aria-label="Extended AI chat controls">
-      <button id="toggleIframeButton" class="action-btn toggle-btn" aria-expanded="false" aria-controls="externalAiContainer" data-tooltip="Toggle Extended AI Chat">
+      <button id="toggleIframeButton" class="action-btn toggle-btn" aria-expanded="false"
+        aria-controls="externalAiContainer" data-tooltip="Toggle Extended AI Chat">
         <i class="fas fa-robot" aria-hidden="true"></i>
         <span>Show AI Chat</span>
         <span class="sr-only">Toggle AI Chat</span>
       </button>
-      <div class="external-ai-container" id="externalAiContainer" role="region" aria-hidden="true" style="display: none;">
+      <div class="external-ai-container" id="externalAiContainer" role="region" aria-hidden="true"
+        style="display: none;">
         <div class="iframe-loading-overlay" id="iframeLoading" aria-busy="true">
           <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
           <span>Loading Coptic Guide...</span>
         </div>
         <div id="iframeWrapper" role="application"></div>
+        <p style="text-align: center; color: #e6d5b8; margin-top: 0.5rem;">
+          Coptic Guide by YesChat
+        </p>
         <div id="iframeError" style="display: none; color: #e6d5b8; text-align: center; padding: 1rem;" role="alert">
           Unable to load Coptic Guide AI. Please try again later.
         </div>
@@ -62,18 +73,22 @@
     </section>
 
     <section class="external-ai-toggle" aria-label="Translation AI controls">
-      <div class="external-ai-container" id="translateAiContainer" role="region" aria-hidden="true" style="display: none;">
+      <div class="external-ai-container" id="translateAiContainer" role="region" aria-hidden="true"
+        style="display: none;">
         <div class="iframe-loading-overlay" id="translateLoading" aria-busy="true">
           <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
           <span>Loading Thoth AI...</span>
         </div>
         <div id="translateWrapper" role="application"></div>
+        <p style="text-align: center; color: #e6d5b8; margin-top: 0.5rem;">
+          THOTH AI by Prof. So Miyagawa (University of Tsukuba)
+        </p>
         <div id="translateError" style="display: none; color: #e6d5b8; text-align: center; padding: 1rem;" role="alert">
-          Unable to load Translation AI. Please try again later.
+          Unable to load Thoth AI. Please try again later.
         </div>
       </div>
     </section>
-    
+
     <section id="actions" role="toolbar" aria-label="Action buttons">
       <button id="saintButton" class="action-btn" aria-label="View Saint information" data-tooltip="Saint">
         <i class="fas fa-cross" aria-hidden="true"></i>
@@ -87,12 +102,14 @@
         <i class="fas fa-bible" aria-hidden="true"></i>
         <span class="button-label">Scripture</span>
       </button>
-      <button id="desertButton" class="action-btn" aria-label="Explore Desert Fathers teachings" data-tooltip="Desert Fathers">
+      <button id="desertButton" class="action-btn" aria-label="Explore Desert Fathers teachings"
+        data-tooltip="Desert Fathers">
         <i class="fas fa-church" aria-hidden="true"></i>
         <span class="button-label">Fathers</span>
       </button>
-      
-      <button id="translateButton" class="action-btn toggle-btn" aria-expanded="false" aria-controls="translateAiContainer" data-tooltip="Coptic Translation">
+
+      <button id="translateButton" class="action-btn toggle-btn" aria-expanded="false"
+        aria-controls="translateAiContainer" data-tooltip="Coptic Translation">
         <i class="fas fa-language" aria-hidden="true"></i>
         <span class="button-label">Translate</span>
       </button>
@@ -105,7 +122,7 @@
         <span class="button-label">Refresh</span>
       </button>
     </section>
-    
+
     <div id="loading" style="display: none;" aria-busy="true" role="status">
       <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
       <span class="sr-only">Loading...</span>
@@ -114,26 +131,14 @@
 
   <script src="script.js" defer></script>
   <script>
-      // Add event listener for refresh button to perform hard refresh
-      const refreshButton = document.getElementById('refreshButton');
-      if (refreshButton) {
-        refreshButton.addEventListener('click', () => {
-          window.location.reload(true);
-        });
-      }
-
-      // Check for $10/month text and show hard refresh button
-      const dialog = document.getElementById('radix-:R28m:');
-      const hardRefreshButton = document.getElementById('hardRefreshButton');
-      if (dialog && hardRefreshButton) {
-        const dialogText = dialog.textContent || dialog.innerText;
-        if (dialogText.includes('$10/month')) {
-          hardRefreshButton.style.display = 'block';
-        }
-        hardRefreshButton.addEventListener('click', () => {
-          window.location.reload(true);
-        });
-      }
+    // Add event listener for refresh button to perform hard refresh
+    const refreshButton = document.getElementById('refreshButton');
+    if (refreshButton) {
+      refreshButton.addEventListener('click', () => {
+        window.location.reload(true);
+      });
+    }
   </script>
 </body>
+
 </html>
