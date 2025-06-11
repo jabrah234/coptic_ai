@@ -1,13 +1,10 @@
 /**
- * CSS for disabled buttons (move to styles.css if separate)
- * .action-btn:disabled {
- *   opacity: 0.5;
- *   cursor: not-allowed;
- * }
+ * List of known Desert Mothers (Ammas) for gender identification.
  */
+const knownAmmas = ['Sarah', 'Syncletica', 'Theodora'];
 
 /**
- * Initializes DOM elements for the chatbot UI.
+ * DOM elements for the chatbot UI.
  */
 const chatBox = document.getElementById('chatBox');
 const loading = document.getElementById('loading');
@@ -17,7 +14,7 @@ const now = new Date();
 const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
 /**
- * Global state for the application.
+ * Global state.
  */
 const state = {
   synaxariumData: {},
@@ -36,30 +33,35 @@ const state = {
       }
       return { agpeya: false, saint: false, scripture: false, desertFathers: false };
     } catch (error) {
-      console.error('Error parsing buttonStates from localStorage:', error);
+      console.error('Error parsing buttonStates:', error);
       return { agpeya: false, saint: false, scripture: false, desertFathers: false };
     }
   })(),
 };
 
-// Static Agpeya data
+/**
+ * Coptic data including Agpeya prayers.
+ */
 const copticData = {
   agpeya: [
-    { id: 1, hour: 'First Hour', text: 'Blessed is the man who has not walked in the counsel of the ungodly, and has not stood in the way of the sinners, and has not sat in the seat of the evil men. Psalm 1:1' },
-    { id: 2, hour: 'Third Hour', text: 'The Lord shall hear you in the day of your trouble; the name of the God of Jacob defend you. Psalm 19:1' },
-    { id: 3, hour: 'Sixth Hour', text: 'Save me, O God, by Your name, and judge me by Your power. Psalm 53:1' },
-    { id: 4, hour: 'Ninth Hour', text: 'Sing to the Lord a new song; sing to the Lord, all the earth. Psalm 95:1' },
-    { id: 5, hour: 'Eleventh Hour', text: 'Praise the Lord, all you nations; let all the peoples praise Him. Psalm 116:1' },
-    { id: 6, hour: 'Twelfth Hour', text: 'Out of the depths I have cried to You, O Lord. Psalm 129:1' },
-    { id: 7, hour: 'Veil Hour', text: 'When I cried out, God of my righteousness heard me: in tribulation You have made room for me; have compassion upon me, O Lord, and hear my prayer. Psalm 4:1' },
-    { id: 8, hour: 'Midnight Hour', text: 'Blessed are the blameless in the way, who walk in the law of the Lord. Psalm 118:1' },
-  ],
+    { id: 1, hour: 'First Hour', text: 'Blessed is the man who has not walked in the counsel of the ungodly, and has not stood in the way of the sinners, and has not sat in the seat of the evil men.', book: 'Psalm', chapter: 1, verse: 1 },
+    { id: 2, hour: 'Third Hour', text: 'The Lord shall hear you in the day of your trouble, the name of the God of Jacob defend you.', book: 'Psalm', chapter: 19, verse: 1 },
+    { id: 3, hour: 'Sixth Hour', text: 'Save me, O God, by Your name, and judge me by Your power.', book: 'Psalm', chapter: 53, verse: 1 },
+    { id: 4, hour: 'Ninth Hour', text: 'Sing to the Lord a new song; sing to the Lord, all the earth.', book: 'Psalm', chapter: 95, verse: 1 },
+    { id: 5, hour: 'Eleventh Hour', text: 'Praise the Lord, all you nations: let all the peoples praise Him.', book: 'Psalm', chapter: 116, verse: 1 },
+    { id: 6, hour: 'Twelfth Hour', text: 'Out of the depths I have cried to You...', book: 'Psalm', chapter: 129, verse: 1 },
+    { id: 7, hour: 'Veil Hour', text: 'When I cried out, God of my righteousness heard me: in tribulation You have made room for me; have compassion upon me, O Lord, and hear my prayer. ', book: 'Psalm', chapter: 4, verse: 1 },
+    { id: 8, hour: 'Midnight Hour', text: 'Blessed are the blameless in the way, who walk in the law of the Lord. ', book: 'Psalm', chapter: 118, verseStart: 1, verseEnd: 3 }
+  ]
 };
 
+// Coptic months
+const copticMonths = ['Tout', 'Baba', 'Hator', 'Kiahk', 'Toba', 'Amshir', 'Baramhat', 'Baramouda', 'Bashans', 'Paona', 'Epep', 'Mesra', 'Nasie'];
+
 /**
- * Decodes HTML entities (for strings like <strong>Abba</strong>)
- * @param {string} str - The string to decode
- * @returns {string} The decoded string
+ * Decodes HTML entities.
+ * @param {string} str - String to decode.
+ * @returns {string} Decoded string.
  */
 function decodeHTMLEntities(str) {
   const txt = document.createElement('textarea');
@@ -68,9 +70,9 @@ function decodeHTMLEntities(str) {
 }
 
 /**
- * Strips <strong> tags from a string (if they exist)
- * @param {string} str
- * @returns {string}
+ * Strips <strong> tags.
+ * @param {string} str - String to process.
+ * @returns {string} String without <strong> tags.
  */
 function stripStrongTags(str) {
   return str.replace(/<\/?strong>/gi, '');
@@ -78,55 +80,48 @@ function stripStrongTags(str) {
 
 /**
  * Creates a chat message element.
- * @param {string} content - The message content.
- * @param {string} sender - The sender ('user' or 'ai').
- * @param {boolean} isCentered - Whether to center the message.
- * @param {boolean} isDesertFathers - Whether to apply Desert Fathers styling.
- * @returns {HTMLElement} The created message element.
+ * @param {string|Object} content - Message content.
+ * @param {string} sender - Sender ('user' or 'ai').
+ * @param {boolean} isCentered - Center the message.
+ * @param {boolean} isDesertFathers - Apply Desert Fathers styling.
+ * @param {boolean} isAgpeya - Apply Agpeya styling.
+ * @returns {HTMLElement} Message element.
  */
-const createChatMessage = (content, sender, isCentered = false, isDesertFathers = false) => {
+const createChatMessage = (content, sender, isCentered = false, isDesertFathers = false, isAgpeya = false) => {
   const messageDiv = document.createElement('div');
   messageDiv.className = `chat-message ${sender}`;
-  
   const bubbleDiv = document.createElement('div');
   bubbleDiv.className = `message-bubble${isCentered ? ' centered' : ''}`;
-  
+
   if (isDesertFathers) {
-    const cleanContent = stripStrongTags(content);
-    const splitContent = cleanContent.split(': ');
-    const fatherPart = splitContent[0] || 'Unknown Father';
-    const sayingText = splitContent.length > 1 ? splitContent.slice(1).join(': ') : 'No saying available';
-
-    const fatherNode = document.createTextNode(fatherPart + ': ');
-    const sayingNode = document.createTextNode(sayingText);
-
-    bubbleDiv.appendChild(fatherNode);
-    bubbleDiv.appendChild(sayingNode);
-  } else {
-    const hasHtmlTags = /<[a-z][\s\S]*>/i.test(content);
-    if (hasHtmlTags) {
-      bubbleDiv.innerHTML = content;
+    const match = content.match(/"([^"]+)" (Abba|Amma) (.+)/);
+    if (match) {
+      const sayingText = match[1];
+      const prefix = match[2];
+      const name = match[3];
+      bubbleDiv.innerHTML = `<span>"${sayingText}"</span><span style="font-style:italic;"> - ${prefix} ${name}</span>`;
     } else {
       bubbleDiv.textContent = content;
     }
+  } else if (isAgpeya) {
+    const { text, book, chapter, verse, verseStart, verseEnd, hour } = content;
+    const verseText = verse ? `${verse}` : `${verseStart}-${verseEnd}`;
+    bubbleDiv.innerHTML = `<span>"${text}"</span>${book && chapter ? `<span style="font-style:italic;"> (${book} ${chapter}:${verseText})</span>` : ''}<span style="font-weight:bold;"> - ${hour}</span>`;
+  } else {
+    bubbleDiv[/<[a-z][\s\S]*>/i.test(content) ? 'innerHTML' : 'textContent'] = content;
   }
-  
+
   messageDiv.appendChild(bubbleDiv);
-  
-  setTimeout(() => {
-    if (messageDiv) {
-      messageDiv.className += ' fade-in';
-    }
-  }, 10);
+  setTimeout(() => messageDiv.className += ' fade-in', 10);
   return messageDiv;
 };
 
 /**
- * Displays an initial greeting message in the chat.
+ * Displays initial greeting.
  */
 const generateInitialMessages = () => {
   if (!greetingBox || !chatBox) {
-    console.error('Cannot generate initial messages: greetingBox or chatBox is missing');
+    console.error('Missing greetingBox or chatBox');
     return;
   }
   greetingBox.innerHTML = '';
@@ -135,64 +130,58 @@ const generateInitialMessages = () => {
 };
 
 /**
- * Clears the greeting box with a fade-out animation.
+ * Clears greeting box.
  */
 const clearGreeting = () => {
   if (!greetingBox) {
-    console.error('Cannot clear greeting: greetingBox is missing');
+    console.error('Missing greetingBox');
     return;
   }
   const messages = greetingBox.getElementsByClassName('chat-message');
   for (const message of messages) {
     message.className += ' fade-out';
   }
-  setTimeout(() => {
-    if (greetingBox) {
-      greetingBox.innerHTML = '';
-    }
-  }, 300);
+  setTimeout(() => greetingBox.innerHTML = '', 300);
 };
 
 /**
- * Gets a random item from an array.
- * @param {Array} array - The array to select from.
- * @returns {*} A random item or null if the array is empty.
+ * Gets random item from array.
+ * @param {Array} array - Array to select from.
+ * @returns {*} Random item or null.
  */
 const getRandomItem = (array) => {
-  if (!array || array.length === 0) {
-    console.error('getRandomItem received an empty or undefined array');
+  if (!array || !array.length) {
+    console.error('Empty or undefined array');
     return null;
   }
   return array[Math.floor(Math.random() * array.length)];
 };
 
 /**
- * Fetches and selects a random Bible verse.
- * @returns {Promise<Object>} The selected verse object.
+ * Fetches random Bible verse.
+ * @returns {Promise<Object>} Verse object.
  */
 const getRandomBibleVerse = async () => {
   const allBooks = [
     ...(state.newTestamentData?.books || []),
     ...(state.oldTestamentData?.books || []),
-    ...(state.deuterocanonicalData?.books || []),
+    ...(state.deuterocanonicalData?.books || [])
   ];
 
-  if (allBooks.length === 0) {
-    console.error('No Bible data loaded from JSON files.');
-    return { book: 'Error', chapter: 0, verse: 0, text: 'Unable to retrieve a verse: No Bible data loaded.', translation: '' };
+  if (!allBooks.length) {
+    console.error('No Bible data loaded');
+    return { book: 'Error', chapter: 0, verse: 0, text: 'Unable to retrieve verse', translation: '' };
   }
 
-  let verse = null;
-  let verseKey = null;
-  let book = null;
+  let verse, verseKey, book;
   const maxAttempts = 10;
   let attempts = 0;
 
   while (attempts < maxAttempts) {
     const tempBook = getRandomItem(allBooks);
-    if (tempBook && tempBook.verses && tempBook.name) {
+    if (tempBook?.verses?.length && tempBook.name) {
       const tempVerse = getRandomItem(tempBook.verses);
-      if (tempVerse && tempVerse.chapter && tempVerse.verse && tempVerse.text) {
+      if (tempVerse?.chapter && tempVerse.verse && tempVerse.text) {
         const tempVerseKey = `${tempBook.name} ${tempVerse.chapter}:${tempVerse.verse}`;
         if (!(allBooks.length > 1 && tempVerseKey === state.lastBibleVerse)) {
           book = tempBook;
@@ -206,29 +195,22 @@ const getRandomBibleVerse = async () => {
   }
 
   if (!book || !verse || !verseKey) {
-    console.error('No valid verse selected after maximum attempts.');
-    return { book: 'Error', chapter: 0, verse: 0, text: 'Unable to retrieve a verse: Invalid data.', translation: '' };
+    console.error('No valid verse selected');
+    return { book: 'Error', chapter: 0, verse: 0, text: 'Unable to retrieve verse', translation: '' };
   }
 
   state.lastBibleVerse = verseKey;
-  const result = {
-    book: book.name,
-    chapter: verse.chapter,
-    verse: verse.verse,
-    text: verse.text,
-    translation: '',
-  };
-  return result;
+  return { book: book.name, chapter: verse.chapter, verse: verse.verse, text: verse.text, translation: '' };
 };
 
 /**
- * Selects a random Desert Fathers saying.
- * @returns {Object} The selected saying.
+ * Selects random Desert Fathers saying.
+ * @returns {Object} Saying object.
  */
 const getRandomDesertFathersSaying = () => {
-  if (state.desertFathersData.length === 0) {
-    console.error('No Desert Fathers sayings loaded from JSON files.');
-    return { father: 'Error', text: 'Unable to retrieve a saying: No Desert Fathers data loaded.' };
+  if (!state.desertFathersData.length) {
+    console.error('No Desert Fathers sayings loaded');
+    return { father: 'Error', text: 'Unable to retrieve saying', gender: 'male' };
   }
 
   let sayingEntry;
@@ -241,28 +223,20 @@ const getRandomDesertFathersSaying = () => {
   } while (sayingEntry.father === state.lastDesertFather && attempts < maxAttempts && state.desertFathersData.length > 1);
 
   state.lastDesertFather = sayingEntry.father;
-  return {
-    father: sayingEntry.father,
-    text: sayingEntry.text,
-  };
+  return { father: sayingEntry.father, text: sayingEntry.text, gender: sayingEntry.gender };
 };
 
-const copticMonths = [
-  'Tout', 'Baba', 'Hator', 'Kiahk', 'Toba', 'Amshir',
-  'Baramhat', 'Baramouda', 'Bashans', 'Paona', 'Epep', 'Mesore', 'Nasie',
-];
-
 /**
- * Determines if a Coptic year is a leap year.
- * @param {number} copticYear - The Coptic year.
- * @returns {boolean} True if it's a leap year.
+ * Checks if Coptic year is leap year.
+ * @param {number} copticYear - Coptic year.
+ * @returns {boolean} True if leap year.
  */
 const isCopticLeap = (copticYear) => ((copticYear + 1) % 4) === 0;
 
 /**
- * Converts a Gregorian date to a Coptic date.
- * @param {Date|string} gregorianDate - The Gregorian date.
- * @returns {Object} The Coptic date object.
+ * Converts Gregorian to Coptic date.
+ * @param {Date|string} gregorianDate - Gregorian date.
+ * @returns {Object} Coptic date object.
  */
 const getCopticDate = (gregorianDate) => {
   try {
@@ -270,46 +244,29 @@ const getCopticDate = (gregorianDate) => {
     if (isNaN(date.getTime())) throw new Error('Invalid Gregorian date');
 
     const gregorianYear = date.getFullYear();
-    let copticYear;
-
-    // Static override for 2025
-    if (gregorianYear === 2025) {
-      copticYear = 1741;
-    } else {
-      // Calculate the Coptic year for other years
-      const copticEpoch = new Date(-283, 8, 29); // Coptic epoch: September 29, -283
-      const diffDays = Math.floor((date - copticEpoch) / (1000 * 60 * 60 * 24));
-      copticYear = Math.floor(diffDays / 365.25) + 1;
-    }
-
+    const copticYear = gregorianYear - 283 + (date < new Date(gregorianYear, 8, 11) ? -1 : 0);
     const isLeap = isCopticLeap(copticYear);
     const daysInYear = isLeap ? 366 : 365;
 
-    let copticNewYear = new Date(gregorianYear, 8, 11); // September 11
+    let copticNewYear = new Date(gregorianYear, 8, 11);
+    if (isLeap && (gregorianYear % 4 === 0 && gregorianYear % 100 !== 0) || (gregorianYear % 400 === 0)) {
+      copticNewYear = new Date(gregorianYear, 8, 12);
+    }
     if (date < copticNewYear) {
       copticNewYear.setFullYear(gregorianYear - 1);
-      if (gregorianYear !== 2025) {
-        copticYear -= 1; // Adjust Coptic year if before September 11
-      }
     }
 
     const daysSinceNewYear = Math.floor((date - copticNewYear) / (1000 * 60 * 60 * 24));
     let totalCopticDays = daysSinceNewYear;
-    if (totalCopticDays < 0) {
-      totalCopticDays += daysInYear;
-    }
+    if (totalCopticDays < 0) totalCopticDays += daysInYear;
 
     let monthIndex, day;
-    if (totalCopticDays < 360) {
-      monthIndex = Math.floor(totalCopticDays / 30);
-      day = (totalCopticDays % 30) + 1;
-    } else {
+    if (totalCopticDays >= 360) {
       monthIndex = 12;
       day = totalCopticDays - 360 + 1;
-    }
-
-    if (monthIndex >= copticMonths.length) {
-      monthIndex = monthIndex % copticMonths.length;
+    } else {
+      monthIndex = Math.floor(totalCopticDays / 30);
+      day = (totalCopticDays % 30) + 1;
     }
 
     const month = copticMonths[monthIndex];
@@ -320,366 +277,200 @@ const getCopticDate = (gregorianDate) => {
   }
 };
 
-/**
- * Calculates the date of Pascha for a given year (Coptic calendar, returned in Gregorian).
- * @param {number} year - The Gregorian year.
- * @returns {Date} The date of Coptic Pascha.
- */
-const getPaschaDate = (year) => {
-  if (year === 2025) return new Date(2025, 3, 20); // April 20, 2025
 
-  const a = year % 19;
-  const b = Math.floor(year / 100);
-  const c = year % 100;
-  const d = Math.floor(b / 4);
-  const e = b % 4;
-  const f = Math.floor((b + 8) / 25);
-  const g = Math.floor((b - f + 1) / 3);
-  const h = (19 * a + b - d - g + 15) % 30;
-  const i = Math.floor(c / 4);
-  const k = c % 4;
-  const l = (32 + 2 * e + 2 * i - h - k) % 7;
-  const m = Math.floor((a + 11 * h + 22 * l) / 451);
-  const month = Math.floor((h + l - 7 * m + 114) / 31) - 1;
-  const day = ((h + l - 7 * m + 114) % 31) + 1;
 
-  const pascha = new Date(year, month, day);
-  pascha.setDate(pascha.getDate() + 7);
-  return pascha;
-};
+
 
 /**
- * Determines the current liturgical period based on the date.
- * @param {Date} date - The date to check.
- * @returns {string} The liturgical period.
- */
-const getLiturgicalPeriod = (date) => {
-  const year = date.getFullYear();
-  const paschaDate = getPaschaDate(year);
-  
-  const pentecostDate = new Date(paschaDate);
-  pentecostDate.setDate(paschaDate.getDate() + 50);
-
-  const nativityFastStart = new Date(year, 10, 25);
-  const nativityFastEnd = new Date(year + 1, 0, 6);
-
-  const greatLentStart = new Date(paschaDate);
-  greatLentStart.setDate(paschaDate.getDate() - 49);
-  const greatLentEnd = new Date(paschaDate);
-
-  if (date >= nativityFastStart && date <= nativityFastEnd) {
-    const daysSinceStart = Math.floor((date - nativityFastStart) / (1000 * 60 * 60 * 24));
-    const WeekOfNativityFast = Math.ceil((daysSinceStart + 1) / 7);
-    return `${WeekOfNativityFast}${WeekOfNativityFast === 1 ? 'st' : WeekOfNativityFast === 2 ? 'nd' : WeekOfNativityFast === 3 ? 'rd' : 'th'} Week of Nativity Fast`;
-  }
-
-  if (date >= greatLentStart && date < paschaDate) {
-    const daysSinceStart = Math.floor((date - greatLentStart) / (1000 * 60 * 60 * 24));
-    const WeekOfGreatLent = Math.ceil((daysSinceStart + 1) / 3.5) * 2;
-    return `${WeekOfGreatLent}${WeekOfGreatLent === 1 ? 'st' : WeekOfGreatLent === 2 ? 'nd' : WeekOfGreatLent === 3 ? 'rd' : 'th'} Week of Great Lent`;
-  }
-
-  const diffTimePascha = date - paschaDate;
-  const daysSincePascha = Math.floor(diffTimePascha / (1000 * 60 * 60 * 24));
-  if (daysSincePascha >= 0 && daysSincePascha < 50) {
-    // Find the first Monday after Pascha
-    const paschaDayOfWeek = paschaDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-    const daysToFirstMonday = paschaDayOfWeek === 0 ? 1 : (8 - paschaDayOfWeek) % 7;
-    const firstMonday = new Date(paschaDate);
-    firstMonday.setDate(paschaDate.getDate() + daysToFirstMonday);
-    
-    // Calculate days since the first Monday
-    const diffTimeFirstMonday = date - firstMonday;
-    const daysSinceFirstMonday = Math.floor(diffTimeFirstMonday / (1000 * 60 * 60 * 24));
-    
-    // Calculate the week (1-based, Monday to Sunday)
-    const WeekOfHolyFifty = Math.floor(daysSinceFirstMonday / 7) + 1;
-    
-    // Ensure week is at least 1 and not more than 7
-    if (WeekOfHolyFifty < 1) {
-      return '1st Week of Holy Fifty Days';
-    }
-    return `${WeekOfHolyFifty}${WeekOfHolyFifty === 1 ? 'st' : WeekOfHolyFifty === 2 ? 'nd' : WeekOfHolyFifty === 3 ? 'rd' : 'th'} Week of Holy Fifty Days`;
-  }
-
-  const diffTimePentecost = date - pentecostDate;
-  const daysSincePentecost = Math.floor(diffTimePentecost / (1000 * 60 * 60 * 24));
-  if (daysSincePentecost >= 0 && daysSincePentecost < 49) {
-    const WeekOfPentecost = Math.ceil((daysSincePentecost + 1) / 7);
-    return `${WeekOfPentecost}${WeekOfPentecost === 1 ? 'st' : WeekOfPentecost === 2 ? 'nd' : WeekOfPentecost === 3 ? 'rd' : 'th'} Week of Pentecost`;
-  }
-
-  return 'Annual';
-};
-
-/**
- * Loads Synaxarium data for a given Coptic month with retry mechanism.
- * @param {string} month - The Coptic month.
- * @param {number} retries - Number of retry attempts.
+ * Loads Synaxarium JSON files from synaxarium/.
+ * @param {number} retries - Retry attempts.
  * @returns {Promise<void>}
  */
-const loadSynaxarium = async (month, retries = 3) => {
-  for (let attempt = 1; attempt <= retries; attempt++) {
-    try {
-      const response = await fetch(`synaxarium/${month}.json`);
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const rawData = await response.json();
-
-      // Initialize state.synaxariumData
-      state.synaxariumData = {};
-
-      // Handle JSON structure: { "2_Bashans": [{ event, summary }, ...] }
-      if (typeof rawData === 'object' && !Array.isArray(rawData)) {
+const loadAllSynaxarium = async (retries = 3) => {
+  state.synaxariumData = {};
+  for (const month of copticMonths) {
+    let attempt = 1;
+    let success = false;
+    while (attempt <= retries && !success) {
+      try {
+        const response = await fetch(`/synaxarium/${month}.json`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const rawData = await response.json();
+        state.synaxariumData[month] = {};
+        
         Object.keys(rawData).forEach(dateKey => {
-          const formattedKey = dateKey.replace('_', ' '); // Convert "2_Bashans" to "2 Bashans"
-          const events = rawData[dateKey];
-          if (Array.isArray(events)) {
-            state.synaxariumData[formattedKey] = {
-              feasts: events.map(e => e.event || ''),
-              summaries: events.map(e => e.summary || ''),
-            };
+          const data = rawData[dateKey];
+          let events;
+          
+          // Handle your specific data structure
+          if (data.feasts && Array.isArray(data.feasts)) {
+            events = data.feasts.map(feast => ({ event: feast, summary: 'No summary' }));
+          } else if (Array.isArray(data)) {
+            events = data.map(event => ({ event, summary: 'No summary' }));
+          } else {
+            events = [{ event: data?.event || 'No Saint Recorded', summary: data?.summary || 'No summary' }];
           }
+          
+          state.synaxariumData[month][dateKey] = events;
         });
+        
+        console.log(`Synaxarium loaded for ${month}: ${Object.keys(state.synaxariumData[month]).length} entries`);
+        success = true;
+      } catch (error) {
+        console.error(`Error fetching synaxarium/${month}.json (Attempt ${attempt}):`, error);
+        attempt++;
+        // ... rest of error handling
       }
-
-      console.log(`Synaxarium loaded for ${month}:`, Object.keys(state.synaxariumData).length, 'entries');
-
-      // Hardcoded override for Baramouda 20
-      if (month === 'Baramouda') {
-        state.synaxariumData['20 Baramouda'] = {
-          feasts: ['The Martyrdom of Saint Babnuda'],
-          summaries: ['Commemoration of Saint Babnuda’s martyrdom'],
-        };
-        console.log(`Updated Synaxarium for Baramouda 20 to Saint Babnuda`);
-      }
-      return;
-    } catch (error) {
-      console.error(`Attempt ${attempt} - Error loading Synaxarium for ${month}:`, error);
-      if (attempt === retries) {
-        state.synaxariumData = {
-          [`1 ${month}`]: { feasts: ['St. John the Baptist'], summaries: ['Commemoration of St. John the Baptist'] },
-          [`2 ${month}`]: { feasts: ['St. Mary the Virgin'], summaries: ['Commemoration of St. Mary the Virgin'] },
-          [`15 ${month}`]: { feasts: ['St. Anthony the Great'], summaries: ['Commemoration of St. Anthony the Great'] },
-        };
-        if (month === 'Baramouda') {
-          state.synaxariumData['20 Baramouda'] = {
-            feasts: ['The Martyrdom of Saint Babnuda'],
-            summaries: ['Commemoration of Saint Babnuda’s martyrdom'],
-          };
-          console.log(`Fallback: Updated Synaxarium for Baramouda 20 to Saint Babnuda`);
-        }
-      }
-      await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
     }
   }
 };
 
 /**
- * Gets the saint of the day based on the Coptic date.
- * @param {Date} date - The date to check.
- * @returns {Object} The saint information.
+ * Retrieves saints' names for a Coptic date.
+ * @param {string} month - Coptic month.
+ * @param {number} day - Coptic day.
+ * @param {string} liturgicalPeriod - Liturgical period.
+ * @returns {Array<string>} Array of saint names.
  */
-const getSaintOfDay = (date) => {
+const getSaintInfo = (month, day) => {
   try {
-    const coptic = getCopticDate(date);
-    const { copticDate, month, day } = coptic;
-    const synaxariumEntry = state.synaxariumData[`${day} ${month}`];
-
-    if (!synaxariumEntry || !synaxariumEntry.feasts || !Array.isArray(synaxariumEntry.feasts)) {
-      return {
-        copticDate,
-        name: 'No Saint Recorded',
-        summary: 'No saints commemorated today',
-      };
+    if (!month || !copticMonths.includes(month) || !day || day < 1 || (month !== 'Nasie' && day > 30) || (month === 'Nasie' && day > 6)) {
+      throw new Error(`Invalid Coptic date: ${month} ${day}`);
     }
+    const dateKey = `${day} ${month}`;
+    const monthData = state.synaxariumData[month];
+    if (!monthData || !monthData[dateKey]) {
+      console.warn(`No events for ${dateKey}`);
+      return ['No Saint Recorded'];
+    }
+    const events = monthData[dateKey];
+console.log(`Events for ${dateKey}:`, events);
+    // Extract saint names from events
+    const saintNames = [];
+    events
+      .filter(event => event && event.event && typeof event.event === 'string')
+      .forEach(event => {
+        let cleanName = event.event
+          .replace(/^(Commemoration|Martyrdom|Departure|Appearance|Consecration|Assembly)\s*(of\s*(the\s*)?)?/i, '')
+          .replace(/\s*(the\s*)?(Saint|Martyr|Prophet|Evangelist|Pope|Father|Bishop|Archbishop|Patriarch|Virgin|Mother|Disciple|Apostle|Righteous|Holy)?\s*/gi, '')
+          .replace(/,\s*(the\s*)?\d+\w*\.\s*(Pope\s*of\s*Alexandria)?/gi, '')
+          .trim();
+        // Split names joined by 'and'
+        const names = cleanName.split(/\s+and\s+/i).map(name => name.trim());
+        names.forEach(name => {
+          if (name && name !== 'No Saint Recorded') saintNames.push(name);
+        });
+      });
 
-    const saintNames = synaxariumEntry.feasts
-      .map((feast, index) => {
-        let name = null;
-
-        if (feast.includes('Consecration') || feast.includes('altar')) {
-          const match = feast.match(/for (St\. |Saint )?([\w\s]+)(,|$)/);
-          name = match?.[2]?.trim() || null;
-        } else {
-          name = feast
-            .replace(/^(The )?(Departure of |Martyrdom of |Commemoration of )/, '')
-            .replace(/,.*/, '')
-            .replace(/^(St\. |Saint |Pope )/, '')
-            .replace(/\(.*?\)/g, '')
-            .trim();
-        }
-
-        // Normalize known saint name variants
-        switch (name) {
-          case 'Agabus':
-          case 'Alexandra':
-          case 'George':
-          case 'Nicholas':
-          case 'Job': // Explicitly allow Job
-            return name;
-          default:
-            if (name?.includes('Mark')) return 'Pope Mark VI';
-            return name || null;
-        }
-      })
-      .filter(Boolean); // Remove null or empty
-
-    // Helper to format names grammatically
-    const formatSaintList = (names) => {
-      if (names.length === 1) return names[0];
-      if (names.length === 2) return `${names[0]} and ${names[1]}`;
-      return `${names.slice(0, -1).join(', ')}, and ${names[names.length - 1]}`;
-    };
-
-    const formattedName = saintNames.length > 0
-      ? `Today's Saint Commemoration${saintNames.length > 1 ? 's' : ''}: ${formatSaintList(saintNames)}`
-      : 'No Saint Recorded';
-
-    const summary = saintNames.length > 0
-      ? synaxariumEntry.summaries
-          .filter((_, index) => synaxariumEntry.feasts[index]) // Include all summaries for valid feasts
-          .join('; ')
-      : 'No saints commemorated today';
-
-    return {
-      copticDate,
-      name: formattedName,
-      summary: summary || `${saintNames.length} saint${saintNames.length > 1 ? 's' : ''} commemorated today`,
-    };
+    return saintNames.length ? saintNames : ['No Saint Recorded'];
   } catch (error) {
-    console.error('Error in getSaintOfDay:', error);
-    return {
-      copticDate: 'Unknown Date',
-      name: 'Error Retrieving Saint',
-      summary: 'Unable to generate saint list due to an error',
-    };
+    console.error(`Error in getSaintInfo for ${month} ${day}:`, error);
+    return ['Error retrieving saint'];
   }
 };
 
 /**
- * Loads Bible data from JSON files with retry mechanism.
- * @param {number} retries - Number of retry attempts.
+ * Loads Bible data.
+ * @param {number} retries - Retry attempts.
  * @returns {Promise<void>}
  */
 const loadBibleData = async (retries = 3) => {
   const files = ['new_testament.json', 'old_testament.json', 'deuterocanonical.json'];
   const dataKeys = ['newTestamentData', 'oldTestamentData', 'deuterocanonicalData'];
-
   for (let i = 0; i < files.length; i++) {
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
         const response = await fetch(files[i]);
-        if (response.ok) {
-          state[dataKeys[i]] = await response.json();
-          console.log(`${dataKeys[i].replace('Data', '')} loaded:`, state[dataKeys[i]].books?.length || 0, 'books');
-          break;
-        } else {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        state[dataKeys[i]] = await response.json();
+        console.log(`${dataKeys[i].replace('Data', '')} loaded: ${state[dataKeys[i]].books?.length || 0} books`);
+        break;
       } catch (error) {
-        console.error(`Attempt ${attempt} - Failed to fetch ${files[i]}:`, error.message);
-        if (attempt === retries) {
-          console.warn(`${dataKeys[i].replace('Data', '')} not loaded after ${retries} attempts.`);
-        }
+        console.error(`Attempt ${attempt} - Failed to fetch ${files[i]}:`, error);
+        if (attempt === retries) console.warn(`${dataKeys[i].replace('Data', '')} not loaded`);
         await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
       }
     }
   }
-
-  console.log('Bible data loaded:', {
-    newTestamentBooks: state.newTestamentData?.books?.length || 0,
-    oldTestamentBooks: state.oldTestamentData?.books?.length || 0,
-    deuterocanonicalBooks: state.deuterocanonicalData?.books?.length || 0,
-  });
 };
 
 /**
- * Loads Desert Fathers sayings from JSON files with retry mechanism.
- * @param {number} retries - Number of retry attempts.
+ * Loads Desert Fathers sayings.
+ * @param {number} retries - Retry attempts.
  * @returns {Promise<void>}
  */
 const loadDesertFathersData = async (retries = 3) => {
-  const greekAlphabet = [
-    'alpha', 'beta', 'gamma', 'delta', 'epsilon', 'zeta', 'eta', 'theta', 'iota', 'kappa',
-    'lambda', 'mu', 'nu', 'xi', 'omicron', 'pi', 'rho', 'sigma', 'tau', 'upsilon', 'phi', 'chi', 'psi', 'omega',
-  ];
-
-  const promises = greekAlphabet.map(async (letter) => {
+  const greekAlphabet = ['alpha', 'beta', 'gamma', 'delta', 'epsilon', 'zeta', 'eta', 'theta', 'iota', 'kappa', 'lambda', 'mu', 'nu', 'xi', 'omicron', 'pi', 'rho', 'sigma', 'tau', 'upsilon', 'phi', 'chi', 'psi', 'omega'];
+  const promises = greekAlphabet.map(async letter => {
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
         const response = await fetch(`sayings-of-the-desert-fathers/${letter}.json`);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
         const format = greekAlphabet.indexOf(letter) <= greekAlphabet.indexOf('omicron') ? 'key-value' : 'figures';
-        console.log(`${letter}.json loaded successfully:`, format === 'key-value' ? Object.keys(data).length : (data?.figures?.length || 0), format === 'key-value' ? 'entries' : 'figures');
         processSayings(data, letter, format);
         break;
       } catch (error) {
-        console.error(`Attempt ${attempt} - Failed to fetch ${letter}.json:`, error.message);
-        if (attempt === retries) {
-          console.warn(`${letter}.json not loaded after ${retries} attempts.`);
-        }
+        console.error(`Attempt ${attempt} - Failed to fetch ${letter}.json:`, error);
+        if (attempt === retries) console.warn(`${letter}.json not loaded`);
         await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
       }
     }
   });
-
   await Promise.all(promises);
-  console.log('Desert Fathers sayings loaded:', state.desertFathersData.length, 'sayings');
+  console.log('Desert Fathers sayings loaded:', state.desertFathersData.length);
 };
 
 /**
- * Processes Desert Fathers sayings data.
- * @param {Object|Array} data - The data to process.
- * @param {string} letter - The Greek letter associated with the data.
- * @param {string} format - The format of the data ('key-value' or 'figures').
+ * Processes Desert Fathers sayings.
+ * @param {Object|Array} data - Data to process.
+ * @param {string} letter - Greek letter.
+ * @param {string} format - Data format.
  */
 const processSayings = (data, letter, format = 'key-value') => {
   let sayingsCount = 0;
-  console.log(`Processing ${letter}: Initial data =`, data);
-
   if (format === 'key-value') {
     if (data && typeof data === 'object' && !Array.isArray(data)) {
-      console.log(`Processing ${letter} as key-value format`);
       for (const father in data) {
         if (data.hasOwnProperty(father) && Array.isArray(data[father])) {
+          const cleanName = father.replace(/^(Abba|Amma)\s+/i, '').trim();
+          const isAmma = knownAmmas.some(amma => cleanName.toLowerCase() === amma.toLowerCase());
           for (const saying of data[father]) {
             if (saying.text) {
-              state.desertFathersData.push({ father, text: saying.text });
+              state.desertFathersData.push({ father: cleanName, text: saying.text, gender: isAmma ? 'female' : 'male' });
               sayingsCount++;
-              console.log(`Added saying from ${father} in ${letter}`);
             }
           }
         }
       }
     } else if (Array.isArray(data)) {
-      console.log(`Processing ${letter} as array format`);
       for (const entry of data) {
         if (entry.name && entry.saying) {
-          state.desertFathersData.push({ father: entry.name, text: entry.saying });
+          const cleanName = entry.name.replace(/^(Abba|Amma)\s+/i, '').trim();
+          const isAmma = knownAmmas.some(amma => cleanName.toLowerCase() === amma.toLowerCase());
+          state.desertFathersData.push({ father: cleanName, text: entry.saying, gender: isAmma ? 'female' : 'male' });
           sayingsCount++;
-          console.log(`Added saying from ${entry.name} in ${letter}`);
         }
       }
     }
   } else if (format === 'figures') {
     if (data?.figures) {
-      console.log(`Processing ${letter} as figures format`);
       for (const figure of data.figures) {
         if (figure.name && figure.saying?.text) {
-          state.desertFathersData.push({ father: figure.name, text: figure.saying.text });
+          const cleanName = figure.name.replace(/^(Abba|Amma)\s+/i, '').trim();
+          const isAmma = knownAmmas.some(amma => cleanName.toLowerCase() === amma.toLowerCase());
+          state.desertFathersData.push({ father: cleanName, text: figure.saying.text, gender: isAmma ? 'female' : 'male' });
           sayingsCount++;
         }
       }
     }
   }
-
-  console.log(`Processed ${letter}: ${sayingsCount} sayings added.`);
+  console.log(`Processed ${letter}: ${sayingsCount} sayings`);
 };
 
 /**
- * Gets the appropriate Agpeya prayer based on the current time.
- * @returns {Object} The selected Agpeya prayer.
+ * Gets time-based Agpeya prayer.
+ * @returns {Object} Selected prayer.
  */
 const getTimeBasedAgpeyaPrayer = () => {
   const hours = new Date().getHours();
@@ -691,40 +482,37 @@ const getTimeBasedAgpeyaPrayer = () => {
     { range: [15, 17], hour: 'Ninth Hour' },
     { range: [17, 18], hour: 'Eleventh Hour' },
     { range: [18, 19], hour: 'Twelfth Hour' },
-    { range: [19, 24], hour: 'Veil Hour' },
+    { range: [19, 24], hour: 'Veil Hour' }
   ];
-
-  const timeSlot = prayerTimes.find(slot => hours >= slot.range[0] && hours < slot.range[1]);
+  const timeSlot = prayerTimes.find(slot => hours >= slot.range[0] && hours < slot[1]);
   const selectedHour = timeSlot ? timeSlot.hour : 'First Hour';
-
   return copticData.agpeya.find(prayer => prayer.hour === selectedHour) || copticData.agpeya[0];
 };
 
 /**
- * Handles the Agpeya prayer request.
+ * Handles Agpeya prayer request.
  */
 const handleAgpeya = async () => {
   if (!chatBox || !loading) {
-    console.error('Cannot handle Agpeya: chatBox or loading element is missing');
+    console.error('Missing chatBox or loading element');
     return;
   }
   if (state.buttonStates.agpeya) return;
   state.buttonStates.agpeya = true;
   localStorage.setItem('buttonStates', JSON.stringify(state.buttonStates));
   const button = document.getElementById('agpeyaButton');
-  if (button) button.disabled = true; // Disable button
+  if (button) button.disabled = true;
   loading.style.display = 'block';
 
   try {
     const prayer = getTimeBasedAgpeyaPrayer();
-    const response = `${prayer.hour}: ${prayer.text}`;
     clearGreeting();
-    chatBox.appendChild(createChatMessage(response, 'ai'));
+    chatBox.appendChild(createChatMessage(prayer, 'ai', false, false, true));
     localStorage.setItem('chatContent', chatBox.innerHTML);
   } catch (error) {
     console.error('Error in handleAgpeya:', error);
     clearGreeting();
-    chatBox.appendChild(createChatMessage('Error retrieving Agpeya prayer.', 'ai'));
+    chatBox.appendChild(createChatMessage('Error retrieving Agpeya prayer', 'ai'));
     localStorage.setItem('chatContent', chatBox.innerHTML);
   } finally {
     loading.style.display = 'none';
@@ -733,35 +521,63 @@ const handleAgpeya = async () => {
 };
 
 /**
- * Handles the saint of the day request.
+ * Handles saint of the day request.
  */
 const handleSaint = async () => {
+  const chatBox = document.getElementById('chatBox');
+  const loading = document.getElementById('loading');
+  const button = document.getElementById('saintButton');
+
   if (!chatBox || !loading) {
-    console.error('Cannot handle Saint: chatBox or loading element is missing');
+    console.error('Missing chatBox or loading element');
     return;
   }
+
   if (state.buttonStates.saint) return;
   state.buttonStates.saint = true;
   localStorage.setItem('buttonStates', JSON.stringify(state.buttonStates));
-  const button = document.getElementById('saintButton');
-  if (button) button.disabled = true; // Disable button
+  if (button) button.disabled = true;
+
   loading.style.display = 'block';
 
   try {
-    const coptic = getCopticDate(new Date());
-    const { month } = coptic;
-    if (month) await loadSynaxarium(month); // Load Synaxarium for all months, including Nasie
-    const saint = getSaintOfDay(new Date());
-    const response = saint.name === 'No Saint Recorded'
-      ? `No Saint Recorded`
-      : `${saint.name}`;
+    // Load Synaxarium if not already loaded
+    if (!Object.keys(state.synaxariumData).length) {
+      console.log('Loading Synaxarium data...');
+      await loadAllSynaxarium();
+    }
+
+    // Get current coptic date
+const coptic = getCopticDate(new Date());
+    const month = coptic.month.charAt(0).toUpperCase() + coptic.month.slice(1).toLowerCase();
+    const day = parseInt(coptic.day);
+
+    console.log(`Looking up feasts for: ${day} ${month}`);
+
+    // Get the events for this date
+    const dateKey = `${day} ${month}`;
+    const monthData = state.synaxariumData[month];
+    
+    if (!monthData || !monthData[dateKey]) {
+      clearGreeting();
+      chatBox.appendChild(createChatMessage('No saints recorded for this date', 'ai'));
+      return;
+    }
+
+    const events = monthData[dateKey];
     clearGreeting();
-    chatBox.appendChild(createChatMessage(response, 'ai'));
+
+    // Just display each feast exactly as it appears in the JSON
+    events.forEach(eventObj => {
+      const feast = eventObj.event || eventObj;
+      chatBox.appendChild(createChatMessage(feast, 'ai'));
+    });
+
     localStorage.setItem('chatContent', chatBox.innerHTML);
   } catch (error) {
     console.error('Error in handleSaint:', error);
     clearGreeting();
-    chatBox.appendChild(createChatMessage('Error retrieving saint.', 'ai'));
+    chatBox.appendChild(createChatMessage('Error retrieving saint info', 'ai'));
     localStorage.setItem('chatContent', chatBox.innerHTML);
   } finally {
     loading.style.display = 'none';
@@ -769,19 +585,20 @@ const handleSaint = async () => {
   }
 };
 
+
 /**
- * Handles the scripture verse request.
+ * Handles scripture verse request.
  */
 const handleScripture = async () => {
   if (!chatBox || !loading) {
-    console.error('Cannot handle Scripture: chatBox or loading element is missing');
+    console.error('Missing chatBox or loading element');
     return;
   }
   if (state.buttonStates.scripture) return;
   state.buttonStates.scripture = true;
   localStorage.setItem('buttonStates', JSON.stringify(state.buttonStates));
   const button = document.getElementById('scriptureButton');
-  if (button) button.disabled = true; // Disable button
+  if (button) button.disabled = true;
   loading.style.display = 'block';
 
   try {
@@ -789,14 +606,14 @@ const handleScripture = async () => {
       await loadBibleData();
     }
     const verse = await getRandomBibleVerse();
-    const response = `${verse.text} ${verse.book} ${verse.chapter}:${verse.verse}`;
+    const response = `"${verse.text}" (${verse.book} ${verse.chapter}:${verse.verse})`;
     clearGreeting();
     chatBox.appendChild(createChatMessage(response, 'ai'));
     localStorage.setItem('chatContent', chatBox.innerHTML);
   } catch (error) {
-    console.error('Error displaying scripture:', error.message);
+    console.error('Error in handleScripture:', error);
     clearGreeting();
-    chatBox.appendChild(createChatMessage('Error displaying scripture verse.', 'ai'));
+    chatBox.appendChild(createChatMessage('Error retrieving scripture', 'ai'));
     localStorage.setItem('chatContent', chatBox.innerHTML);
   } finally {
     loading.style.display = 'none';
@@ -805,33 +622,32 @@ const handleScripture = async () => {
 };
 
 /**
- * Handles the Desert Fathers saying request.
+ * Handles Desert Fathers saying request.
  */
 const handleDesertFathers = async () => {
   if (!chatBox || !loading) {
-    console.error('Cannot handle Desert Fathers: chatBox or loading element is missing');
+    console.error('Missing chatBox or loading element');
     return;
   }
   if (state.buttonStates.desertFathers) return;
   state.buttonStates.desertFathers = true;
   localStorage.setItem('buttonStates', JSON.stringify(state.buttonStates));
   const button = document.getElementById('desertButton');
-  if (button) button.disabled = true; // Disable button
+  if (button) button.disabled = true;
   loading.style.display = 'block';
 
   try {
     const saying = getRandomDesertFathersSaying();
-    const redundantPrefix = new RegExp(`^Abba ${saying.father}\\s*(said,?|says,?)\\s*`, 'i');
-    const decodedText = decodeHTMLEntities(saying.text);
-    const cleanedText = stripStrongTags(decodedText.replace(redundantPrefix, '')).trim();
-    const response = cleanedText ? `Abba ${saying.father}: ${cleanedText}` : `Abba ${saying.father}: No saying available`;
+    const prefix = saying.gender === 'female' ? 'Amma' : 'Abba';
+    const cleanedText = stripStrongTags(decodeHTMLEntities(saying.text)).trim();
+    const response = cleanedText ? `"${cleanedText}" ${prefix} ${saying.father}` : `"No saying available" ${prefix} ${saying.father}`;
     clearGreeting();
     chatBox.appendChild(createChatMessage(response, 'ai', false, true));
     localStorage.setItem('chatContent', chatBox.innerHTML);
   } catch (error) {
     console.error('Error in handleDesertFathers:', error);
     clearGreeting();
-    chatBox.appendChild(createChatMessage('Error retrieving Desert Fathers saying.', 'ai'));
+    chatBox.appendChild(createChatMessage('Error retrieving saying', 'ai'));
     localStorage.setItem('chatContent', chatBox.innerHTML);
   } finally {
     loading.style.display = 'none';
@@ -840,11 +656,11 @@ const handleDesertFathers = async () => {
 };
 
 /**
- * Clears the chat and resets the state.
+ * Clears chat and resets state.
  */
 const clearChat = () => {
   if (!chatBox) {
-    console.error('Cannot clear chat: chatBox is missing');
+    console.error('Missing chatBox');
     return;
   }
   chatBox.innerHTML = '';
@@ -853,7 +669,6 @@ const clearChat = () => {
   localStorage.setItem('buttonStates', JSON.stringify(state.buttonStates));
   state.lastDesertFather = null;
   state.lastBibleVerse = null;
-  // Re-enable all buttons
   ['agpeyaButton', 'saintButton', 'scriptureButton', 'desertButton'].forEach(id => {
     const button = document.getElementById(id);
     if (button) button.disabled = false;
@@ -861,21 +676,143 @@ const clearChat = () => {
   generateInitialMessages();
 };
 
-
-
 /**
- * Initializes the application on DOM load.
+ * Initializes iframe functionality.
  */
-document.addEventListener('DOMContentLoaded', async () => {
-  const requiredElements = { chatBox, loading, liturgicalContext, greetingBox };
+function initializeIframes() {
+  const requiredElements = {
+    toggleIframeButton: document.getElementById('toggleIframeButton'),
+    externalAiContainer: document.getElementById('externalAiContainer'),
+    iframeLoading: document.getElementById('iframeLoading'),
+    iframeWrapper: document.getElementById('iframeWrapper'),
+    iframeError: document.getElementById('iframeError'),
+    translateButton: document.getElementById('translateButton'),
+    translateAiContainer: document.getElementById('translateAiContainer'),
+    translateLoading: document.getElementById('translateLoading'),
+    translateWrapper: document.getElementById('translateWrapper'),
+    translateError: document.getElementById('translateError')
+  };
+
   for (const [key, element] of Object.entries(requiredElements)) {
     if (!element) {
       console.error(`Missing DOM element: ${key}`);
+      chatBox?.appendChild(createChatMessage(`Error: Missing ${key} element`, 'ai'));
       return;
     }
   }
 
-  // Initialize button states based on localStorage
+  let iframeLoaded = false;
+  let translateIframeLoaded = false;
+
+  const loadIframe = (container, wrapper, loading, error, src, title, isTranslate = false) => {
+    loading.style.display = 'block';
+    const iframe = document.createElement('iframe');
+    iframe.src = src;
+    iframe.width = '800';
+    iframe.height = '500';
+    iframe.style.maxWidth = '100%';
+    iframe.style.border = 'none';
+    iframe.className = 'responsive-iframe';
+    iframe.title = title;
+    iframe.loading = 'lazy';
+    if (isTranslate) {
+      iframe.setAttribute('allow', 'microphone');
+    }
+    iframe.onload = () => {
+      loading.style.display = 'none';
+      if (isTranslate) {
+        translateIframeLoaded = true;
+        console.log('Thoth AI iframe loaded');
+      } else {
+        iframeLoaded = true;
+        console.log('YesChat iframe loaded');
+      }
+    };
+    iframe.onerror = (e) => {
+      loading.style.display = 'none';
+      error.style.display = 'block';
+      console.error(`Failed to load ${isTranslate ? 'Thoth AI' : 'YesChat'} iframe:`, e);
+    };
+    wrapper.appendChild(iframe);
+  };
+
+  requiredElements.toggleIframeButton.addEventListener('click', () => {
+    const isHidden = requiredElements.externalAiContainer.style.display === 'none';
+    requiredElements.toggleIframeButton.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+    requiredElements.externalAiContainer.setAttribute('aria-hidden', isHidden ? 'false' : 'true');
+    if (isHidden) {
+      requiredElements.externalAiContainer.style.display = 'block';
+      requiredElements.toggleIframeButton.innerHTML = '<i class="fas fa-robot" aria-hidden="true"></i><span>Hide AI Chat</span><span class="sr-only">Hide AI Chat</span>';
+      if (!iframeLoaded) {
+        loadIframe(
+          requiredElements.externalAiContainer,
+          requiredElements.iframeWrapper,
+          requiredElements.iframeLoading,
+          requiredElements.iframeError,
+          'https://www.yeschat.ai/i/gpts-9t563I1Lfm8-Coptic-Guide',
+          'Coptic Guide AI Chat'
+        );
+      }
+    } else {
+      requiredElements.externalAiContainer.style.display = 'none';
+      requiredElements.toggleIframeButton.innerHTML = '<i class="fas fa-robot" aria-hidden="true"></i><span>Show AI Chat</span><span class="sr-only">Show AI Chat</span>';
+    }
+  });
+
+  requiredElements.translateButton.addEventListener('click', () => {
+    const isHidden = requiredElements.translateAiContainer.style.display === 'none';
+    requiredElements.translateButton.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+    requiredElements.translateAiContainer.setAttribute('aria-hidden', isHidden ? 'false' : 'true');
+    if (isHidden) {
+      requiredElements.translateAiContainer.style.display = 'block';
+      requiredElements.translateButton.innerHTML = '<i class="fas fa-language" aria-hidden="true"></i><span class="button-label">Translate</span><span class="sr-only">Translate</span>';
+      if (!translateIframeLoaded) {
+        loadIframe(
+          requiredElements.translateAiContainer,
+          requiredElements.translateWrapper,
+          requiredElements.translateLoading,
+          requiredElements.translateError,
+          'https://udify.app/chat/5ZZkrzj9sfa4ejsT',
+          'English to Coptic Translation AI',
+          true
+        );
+      }
+    } else {
+      requiredElements.translateAiContainer.style.display = 'none';
+      requiredElements.translateButton.innerHTML = '<i class="fas fa-language" aria-hidden="true"></i><span class="button-label">Translate</span><span class="sr-only">Translation</span>';
+    }
+  });
+}
+
+/**
+ * Initializes application.
+ */
+document.addEventListener('DOMContentLoaded', async () => {
+  const requiredElements = {
+    chatBox,
+    loading,
+    liturgicalContext,
+    greetingBox,
+    toggleIframeButton: document.getElementById('toggleIframeButton'),
+    externalAiContainer: document.getElementById('externalAiContainer'),
+    iframeWrapper: document.getElementById('iframeWrapper'),
+    iframeLoading: document.getElementById('iframeLoading'),
+    iframeError: document.getElementById('iframeError'),
+    translateButton: document.getElementById('translateButton'),
+    translateAiContainer: document.getElementById('translateAiContainer'),
+    translateWrapper: document.getElementById('translateWrapper'),
+    translateLoading: document.getElementById('translateLoading'),
+    translateError: document.getElementById('translateError')
+  };
+
+  for (const [key, element] of Object.entries(requiredElements)) {
+    if (!element) {
+      console.error(`Missing DOM element: ${key}`);
+      chatBox?.appendChild(createChatMessage(`Error: Missing ${key} element`, 'ai'));
+      return;
+    }
+  }
+
   ['agpeyaButton', 'saintButton', 'scriptureButton', 'desertButton'].forEach(id => {
     const button = document.getElementById(id);
     if (button && state.buttonStates[id.replace('Button', '')]) {
@@ -893,15 +830,17 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   try {
+    await loadAllSynaxarium();
     await loadDesertFathersData();
     const coptic = getCopticDate(new Date());
-    const { copticDate, month, copticYear } = coptic;
-    const liturgicalPeriod = getLiturgicalPeriod(new Date());
-    liturgicalContext.innerHTML = `${copticDate}, ${copticYear} • ${liturgicalPeriod}`;
-    if (month) await loadSynaxarium(month); // Load Synaxarium for all months, including Nasie
+    liturgicalContext.innerHTML = `${coptic.copticDate}, ${coptic.copticYear}`;
   } catch (error) {
-    console.error('Error updating liturgical context:', error);
-    liturgicalContext.textContent = 'Error loading liturgical context';
+    console.error('Initialization error:', error);
+    liturgicalContext.textContent = 'Error loading context';
+    clearGreeting();
+    chatBox.appendChild(createChatMessage('Error initializing app', 'ai'));
+    localStorage.setItem('chatContent', chatBox.innerHTML);
+    chatBox.scrollTop = chatBox.scrollHeight;
   }
 
   document.querySelectorAll('#actions .action-btn').forEach(btn => {
@@ -917,6 +856,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     scriptureButton: handleScripture,
     desertButton: handleDesertFathers,
     clearChatButton: clearChat,
+    refreshButton: () => window.location.reload(true)
   };
 
   for (const [id, handler] of Object.entries(buttons)) {
@@ -924,54 +864,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (button) {
       button.addEventListener('click', handler);
     } else {
-      console.error(`${id} not found in DOM`);
+      console.error(`${id} not found`);
     }
   }
 
-  const toggleIframeButton = document.getElementById('toggleIframeButton');
-  const externalAiContainer = document.getElementById('externalAiContainer');
-  const iframeWrapper = document.getElementById('iframeWrapper');
-  const iframeLoading = document.getElementById('iframeLoading');
-  const iframeError = document.getElementById('iframeError');
-  let iframeLoaded = false;
-
-  if (toggleIframeButton && externalAiContainer) {
-    toggleIframeButton.addEventListener('click', () => {
-      const isHidden = externalAiContainer.style.display === 'none';
-
-      if (isHidden) {
-        externalAiContainer.style.display = 'block';
-        toggleIframeButton.innerHTML = '<i class="fas fa-robot"></i> Hide AI Chat';
-
-        if (!iframeLoaded) {
-          iframeLoading.style.display = 'block';
-
-          const iframe = document.createElement('iframe');
-          iframe.src = 'https://www.yeschat.ai/i/gpts-9t563I1Lfm8-Coptic-Guide';
-          iframe.width = '800';
-          iframe.height = '500';
-          iframe.style.maxWidth = '100%';
-          iframe.style.border = 'none';
-          iframe.title = 'Coptic Guide AI Chat';
-          iframe.loading = 'lazy';
-
-          iframe.onload = () => {
-            iframeLoading.style.display = 'none';
-            iframeLoaded = true;
-          };
-
-          iframe.onerror = () => {
-            iframeLoading.style.display = 'none';
-            iframeError.style.display = 'block';
-            console.error('Failed to load Coptic Guide AI iframe.');
-          };
-
-          iframeWrapper.appendChild(iframe);
-        }
-      } else {
-        externalAiContainer.style.display = 'none';
-        toggleIframeButton.innerHTML = '<i class="fas fa-robot"></i> Show AI Chat';
-      }
+  const input = document.querySelector('input');
+  if (input) {
+    input.addEventListener('focus', () => {
+      document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
     });
   }
+
+  initializeIframes();
 });

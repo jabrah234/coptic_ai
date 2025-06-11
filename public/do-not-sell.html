@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Do Not Sell My Personal Information - Coptic AI" />
+  <meta name="keywords" content="Coptic, Orthodox, Privacy, Do Not Sell, CCPA, Data Protection" />
+  <meta name="author" content="Coptic AI Team" />
+  <meta name="robots" content="noindex, follow" />
+  <title>Do Not Sell My Personal Information – Ⲱⲟⲩⲛⲓⲁⲧⲕ: Coptic AI</title>
+
+  <!-- Styles and Icons -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <meta name="theme-color" content="#4a1e0b" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #e6d5b8;
+      background-color: #1f0f0a;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    header {
+      padding-top: env(safe-area-inset-top);
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+      padding-bottom: 1rem;
+      background-color: #3e2f2f;
+      border-bottom: 2px solid #b89778;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: #e6d5b8;
+      margin: 0;
+    }
+
+    main {
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #ffdfb3;
+      margin-top: 2.5rem;
+      font-size: 1.5rem;
+      border-bottom: 1px solid #77462d;
+      padding-bottom: 0.5rem;
+    }
+
+    p,
+    li {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+      list-style-type: disc;
+    }
+
+    a {
+      color: #ffcf87;
+      text-decoration: underline;
+      word-break: break-word;
+    }
+
+    .contact-info {
+      background-color: #3e2f2f;
+      border: 1px solid #b89778;
+      border-radius: 6px;
+      padding: 1rem;
+      margin: 1rem 0;
+      font-size: 1.1rem;
+    }
+
+    .site-footer {
+      background-color: #4a1e0b;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+      color: #e6d5b8;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .site-footer a {
+      color: #ffdfb3;
+    }
+
+    .status-bar-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: env(safe-area-inset-top);
+      background-color: #3e2f2f;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    @media screen and (max-width: 600px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="status-bar-bg" aria-hidden="true"></div>
+
+  <header role="banner">
+    <h1>Do Not Sell My Personal Information – Ⲱⲟⲩⲛⲓⲁⲧⲕ</h1>
+  </header>
+
+  <main id="main-content" role="main">
+    <p><strong>Effective Date:</strong> May 30, 2025</p>
+
+    <section>
+      <h2>Introduction</h2>
+      <p>
+        Our platform integrates third-party AI services such as <strong>YesChat</strong>. These third parties may collect and process personal information independently according to their own privacy policies.
+      </p>
+      <p>
+        We do <strong>not</strong> sell your personal information. However, if you wish to exercise your rights to opt out of any data sale or make privacy requests regarding data handled by YesChat, please contact them directly.
+      </p>
+
+      <h2>YesChat Contact Information</h2>
+      <div class="contact-info" role="region" aria-label="YesChat contact information">
+        <strong>Support Email:</strong><br />
+        <a href="mailto:support@yeschat.ai">support@yeschat.ai</a><br />
+        <a href="https://yeschat.ai/privacy" target="_blank" rel="noopener noreferrer">YesChat Privacy Policy</a>
+      </div>
+
+      <h2>Our Contact Information</h2>
+      <p>If you have questions about your personal information with us or wish to make any privacy-related requests, please contact:</p>
+      <div class="contact-info" role="region" aria-label="Contact information for Coptic AI">
+        <strong>Email:</strong><br />
+        <a href="mailto:jacob.h.abraham@gmail.com">jacob.h.abraham@gmail.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <p>&copy; <span id="currentYear"></span> Ⲱⲟⲩⲛⲓⲁⲧⲕ: Coptic AI</p>
+    <p>
+      View our <a href="tos.html">Terms of Service</a> or return to the <a href="index.html">Home</a>.
+    </p>
+  </footer>
+
+  <script>
+    // Set current year automatically
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
