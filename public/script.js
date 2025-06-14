@@ -50,8 +50,8 @@ const copticData = {
     { id: 4, hour: 'Ninth Hour', text: 'Sing to the Lord a new song; sing to the Lord, all the earth.', book: 'Psalm', chapter: 95, verse: 1 },
     { id: 5, hour: 'Eleventh Hour', text: 'Praise the Lord, all you nations: let all the peoples praise Him.', book: 'Psalm', chapter: 116, verse: 1 },
     { id: 6, hour: 'Twelfth Hour', text: 'Out of the depths I have cried to You...', book: 'Psalm', chapter: 129, verse: 1 },
-    { id: 7, hour: 'Veil Hour', text: 'When I cried out, God of my righteousness heard me: in tribulation You have made room for me; have compassion upon me, O Lord, and hear my prayer. ', book: 'Psalm', chapter: 4, verse: 1 },
-    { id: 8, hour: 'Midnight Hour', text: 'Blessed are the blameless in the way, who walk in the law of the Lord. ', book: 'Psalm', chapter: 118, verseStart: 1, verseEnd: 3 }
+    { id: 7, hour: 'Veil Hour', text: 'When I cried out, God of my righteousness heard me: in tribulation You have made room for me; have compassion upon me, O Lord, and hear my prayer.', book: 'Psalm', chapter: 4, verse: 1 },
+    { id: 8, hour: 'Midnight Hour', text: 'Blessed are the blameless in the way, who walk in the law of the Lord.', book: 'Psalm', chapter: 118, verseStart: 1, verseEnd: 3 }
   ]
 };
 
@@ -94,21 +94,31 @@ const createChatMessage = (content, sender, isCentered = false, isDesertFathers 
   bubbleDiv.className = `message-bubble${isCentered ? ' centered' : ''}`;
 
   if (isDesertFathers) {
-    const match = content.match(/"([^"]+)" (Abba|Amma) (.+)/);
-    if (match) {
-      const sayingText = match[1];
-      const prefix = match[2];
-      const name = match[3];
-      bubbleDiv.innerHTML = `<span>"${sayingText}"</span><span style="font-style:italic;"> - ${prefix} ${name}</span>`;
+    if (typeof content === 'string') {
+      const match = content.match(/"([^"]+)" (Abba|Amma) (.+)/);
+      if (match) {
+        const sayingText = match[1];
+        const prefix = match[2];
+        const name = match[3];
+        bubbleDiv.innerHTML = `<span>"${sayingText}"</span><span style="font-style:italic;"> - ${prefix} ${name}</span>`;
+      } else {
+        bubbleDiv.textContent = content;
+      }
     } else {
-      bubbleDiv.textContent = content;
+      bubbleDiv.textContent = 'Invalid Desert Fathers saying';
+      console.error('Invalid Desert Fathers content:', content);
     }
   } else if (isAgpeya) {
-    const { text, book, chapter, verse, verseStart, verseEnd, hour } = content;
-    const verseText = verse ? `${verse}` : `${verseStart}-${verseEnd}`;
-    bubbleDiv.innerHTML = `<span>"${text}"</span>${book && chapter ? `<span style="font-style:italic;"> (${book} ${chapter}:${verseText})</span>` : ''}<span style="font-weight:bold;"> - ${hour}</span>`;
+    if (content && typeof content === 'object' && content.text && content.hour) {
+      const { text, book, chapter, verse, verseStart, verseEnd, hour } = content;
+      const verseText = verse ? `${verse}` : verseStart && verseEnd ? `${verseStart}-${verseEnd}` : '';
+      bubbleDiv.innerHTML = `<span>"${text}"</span>${book && chapter && verseText ? `<span style="font-style:italic;"> (${book} ${chapter}:${verseText})</span>` : ''}<span style="font-weight:bold;"> - ${hour}</span>`;
+    } else {
+      bubbleDiv.textContent = 'Invalid Agpeya prayer';
+      console.error('Invalid Agpeya content:', content);
+    }
   } else {
-    bubbleDiv[/<[a-z][\s\S]*>/i.test(content) ? 'innerHTML' : 'textContent'] = content;
+    bubbleDiv[/<[a-z][\s\S]*>/i.test(content) ? 'innerHTML' : 'textContent'] = content || 'Error: No content provided';
   }
 
   messageDiv.appendChild(bubbleDiv);
@@ -277,10 +287,6 @@ const getCopticDate = (gregorianDate) => {
   }
 };
 
-
-
-
-
 /**
  * Loads Synaxarium JSON files from synaxarium/.
  * @param {number} retries - Retry attempts.
@@ -297,29 +303,30 @@ const loadAllSynaxarium = async (retries = 3) => {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const rawData = await response.json();
         state.synaxariumData[month] = {};
-        
+
         Object.keys(rawData).forEach(dateKey => {
           const data = rawData[dateKey];
           let events;
-          
-          // Handle your specific data structure
+
           if (data.feasts && Array.isArray(data.feasts)) {
             events = data.feasts.map(feast => ({ event: feast, summary: 'No summary' }));
           } else if (Array.isArray(data)) {
             events = data.map(event => ({ event, summary: 'No summary' }));
           } else {
-            events = [{ event: data?.event || 'No Saint Recorded', summary: data?.summary || 'No summary' }];
+            events = [{ event: data?.event || 'No Saint Recorded', summary: 'No summary' }];
           }
-          
+
           state.synaxariumData[month][dateKey] = events;
         });
-        
+
         console.log(`Synaxarium loaded for ${month}: ${Object.keys(state.synaxariumData[month]).length} entries`);
         success = true;
       } catch (error) {
         console.error(`Error fetching synaxarium/${month}.json (Attempt ${attempt}):`, error);
         attempt++;
-        // ... rest of error handling
+        if (attempt > retries) {
+          console.warn(`Failed to load synaxarium for ${month}`);
+        }
       }
     }
   }
@@ -329,7 +336,6 @@ const loadAllSynaxarium = async (retries = 3) => {
  * Retrieves saints' names for a Coptic date.
  * @param {string} month - Coptic month.
  * @param {number} day - Coptic day.
- * @param {string} liturgicalPeriod - Liturgical period.
  * @returns {Array<string>} Array of saint names.
  */
 const getSaintInfo = (month, day) => {
@@ -344,8 +350,8 @@ const getSaintInfo = (month, day) => {
       return ['No Saint Recorded'];
     }
     const events = monthData[dateKey];
-console.log(`Events for ${dateKey}:`, events);
-    // Extract saint names from events
+    console.log(`Events for ${dateKey}:`, events);
+
     const saintNames = [];
     events
       .filter(event => event && event.event && typeof event.event === 'string')
@@ -355,7 +361,7 @@ console.log(`Events for ${dateKey}:`, events);
           .replace(/\s*(the\s*)?(Saint|Martyr|Prophet|Evangelist|Pope|Father|Bishop|Archbishop|Patriarch|Virgin|Mother|Disciple|Apostle|Righteous|Holy)?\s*/gi, '')
           .replace(/,\s*(the\s*)?\d+\w*\.\s*(Pope\s*of\s*Alexandria)?/gi, '')
           .trim();
-        // Split names joined by 'and'
+
         const names = cleanName.split(/\s+and\s+/i).map(name => name.trim());
         names.forEach(name => {
           if (name && name !== 'No Saint Recorded') saintNames.push(name);
@@ -470,23 +476,129 @@ const processSayings = (data, letter, format = 'key-value') => {
 
 /**
  * Gets time-based Agpeya prayer.
- * @returns {Object} Selected prayer.
+ * @returns {Promise<Object>} Selected prayer.
  */
-const getTimeBasedAgpeyaPrayer = () => {
-  const hours = new Date().getHours();
-  const prayerTimes = [
-    { range: [0, 6], hour: 'Midnight Hour' },
-    { range: [6, 9], hour: 'First Hour' },
-    { range: [9, 12], hour: 'Third Hour' },
-    { range: [12, 15], hour: 'Sixth Hour' },
-    { range: [15, 17], hour: 'Ninth Hour' },
-    { range: [17, 18], hour: 'Eleventh Hour' },
-    { range: [18, 19], hour: 'Twelfth Hour' },
-    { range: [19, 24], hour: 'Veil Hour' }
-  ];
-  const timeSlot = prayerTimes.find(slot => hours >= slot.range[0] && hours < slot[1]);
-  const selectedHour = timeSlot ? timeSlot.hour : 'First Hour';
-  return copticData.agpeya.find(prayer => prayer.hour === selectedHour) || copticData.agpeya[0];
+const getTimeBasedAgpeyaPrayer = async () => {
+  try {
+    // Get current date for consistent slot definitions
+    const baseDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+    // Fetch user location
+    let latitude, longitude, timezone;
+    try {
+      const ipRes = await fetch('https://ipapi.co/json/');
+      if (!ipRes.ok) throw new Error(`IP API failed with status ${ipRes.status}`);
+      const ipData = await ipRes.json();
+      if (!ipData.latitude || !ipData.longitude || !ipData.timezone) throw new Error('Invalid IP API response');
+      ({ latitude, longitude, timezone } = ipData);
+      console.log('Location:', { latitude, longitude, timezone });
+    } catch (error) {
+      console.warn('IP API failed, using fallback location:', error);
+      latitude = 40.7128; // New York as fallback (approx. EDT)
+      longitude = -74.0060;
+      timezone = 'America/New_York';
+    }
+
+    // Fetch sunrise/sunset data
+    let sunrise, solarNoon, sunset;
+    try {
+      const sunRes = await fetch(`https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude}&date=${baseDate.toISOString().split('T')[0]}&formatted=0`);
+      if (!sunRes.ok) throw new Error(`Sun API failed with status ${sunRes.status}`);
+      const sunData = await sunRes.json();
+      if (!sunData.results || !sunData.results.sunrise) throw new Error('Invalid Sun API response');
+      sunrise = new Date(new Date(sunData.results.sunrise).toLocaleString('en-US', { timeZone: timezone }));
+      solarNoon = new Date(new Date(sunData.results.solar_noon).toLocaleString('en-US', { timeZone: timezone }));
+      sunset = new Date(new Date(sunData.results.sunset).toLocaleString('en-US', { timeZone: timezone }));
+      console.log('Sun Data:', {
+        sunrise: sunrise.toISOString(),
+        solarNoon: solarNoon.toISOString(),
+        sunset: sunset.toISOString()
+      });
+    } catch (error) {
+      console.warn('Sun API failed, using fallback times:', error);
+      sunrise = new Date(baseDate.getTime());
+      sunrise.setHours(6, 0, 0, 0);
+      solarNoon = new Date(baseDate.getTime());
+      solarNoon.setHours(12, 0, 0, 0);
+      sunset = new Date(baseDate.getTime());
+      sunset.setHours(18, 0, 0, 0);
+      console.log('Fallback Sun Data:', {
+        sunrise: sunrise.toISOString(),
+        solarNoon: solarNoon.toISOString(),
+        sunset: sunset.toISOString()
+      });
+    }
+
+    // Get current time in user's timezone
+    const currentTime = new Date(new Date().toLocaleString('en-US', { timeZone: timezone }));
+    console.log('Current Time:', currentTime.toISOString());
+
+    // Normalize time slots to the current date
+    const hourMap = [
+  {
+    hour: 'Midnight Hour',
+    from: baseDate.setHours(0, 0, 0, 0),
+    to: new Date(baseDate).setHours(5, 59, 59, 999) // Ends before First Hour
+  },
+  {
+    hour: 'First Hour',
+    from: new Date(baseDate).setHours(6, 0, 0, 0),
+    to: new Date(baseDate).setHours(8, 59, 59, 999) // Ends before Third Hour
+  },
+  {
+    hour: 'Third Hour',
+    from: new Date(baseDate).setHours(9, 0, 0, 0),
+    to: new Date(baseDate).setHours(11, 59, 59, 999) // Ends before Sixth Hour
+  },
+  {
+    hour: 'Sixth Hour',
+    from: new Date(baseDate).setHours(12, 0, 0, 0),
+    to: new Date(baseDate).setHours(14, 59, 59, 999) // Ends before Ninth Hour
+  },
+  {
+    hour: 'Ninth Hour',
+    from: new Date(baseDate).setHours(15, 0, 0, 0),
+    to: new Date(baseDate).setHours(16, 59, 59, 999) // Ends before Eleventh Hour
+  },
+  {
+    hour: 'Eleventh Hour',
+    from: new Date(baseDate).setHours(17, 0, 0, 0),
+    to: new Date(baseDate).setHours(17, 59, 59, 999) // Ends before Twelfth Hour
+  },
+  {
+    hour: 'Twelfth Hour',
+    from: new Date(baseDate).setHours(18, 0, 0, 0),
+    to: new Date(baseDate).setHours(18, 59, 59, 999) // Ends before Veil Hour
+  },
+  {
+    hour: 'Veil Hour',
+    from: new Date(baseDate).setHours(19, 0, 0, 0),
+    to: new Date(baseDate).setHours(23, 59, 59, 999) // Ends at midnight
+  }
+];
+
+    // Log time slots for debugging
+    console.log('Hour Map:', hourMap.map(slot => ({
+      hour: slot.hour,
+      from: new Date(slot.from).toISOString(),
+      to: new Date(slot.to).toISOString()
+    })));
+
+    // Find matching slot
+    const slot = hourMap.find(({ from, to }) => currentTime.getTime() >= from && currentTime.getTime() < to);
+    const selectedHour = slot ? slot.hour : 'First Hour';
+    console.log('Selected Agpeya Hour:', selectedHour);
+
+    // Find matching prayer
+    const normalize = str => str.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
+    const prayer = copticData.agpeya.find(p => normalize(p.hour) === normalize(selectedHour)) || copticData.agpeya[0];
+    console.log('Selected Prayer:', prayer);
+
+    return prayer;
+  } catch (error) {
+    console.error('Error in getTimeBasedAgpeyaPrayer:', error);
+    return copticData.agpeya[0]; // Fallback to First Hour
+  }
 };
 
 /**
@@ -505,7 +617,10 @@ const handleAgpeya = async () => {
   loading.style.display = 'block';
 
   try {
-    const prayer = getTimeBasedAgpeyaPrayer();
+    const prayer = await getTimeBasedAgpeyaPrayer();
+    if (!prayer || !prayer.text || !prayer.hour) {
+      throw new Error('Invalid prayer object returned');
+    }
     clearGreeting();
     chatBox.appendChild(createChatMessage(prayer, 'ai', false, false, true));
     localStorage.setItem('chatContent', chatBox.innerHTML);
@@ -524,40 +639,32 @@ const handleAgpeya = async () => {
  * Handles saint of the day request.
  */
 const handleSaint = async () => {
-  const chatBox = document.getElementById('chatBox');
-  const loading = document.getElementById('loading');
-  const button = document.getElementById('saintButton');
-
   if (!chatBox || !loading) {
     console.error('Missing chatBox or loading element');
     return;
   }
-
   if (state.buttonStates.saint) return;
   state.buttonStates.saint = true;
   localStorage.setItem('buttonStates', JSON.stringify(state.buttonStates));
+  const button = document.getElementById('saintButton');
   if (button) button.disabled = true;
-
   loading.style.display = 'block';
 
   try {
-    // Load Synaxarium if not already loaded
     if (!Object.keys(state.synaxariumData).length) {
       console.log('Loading Synaxarium data...');
       await loadAllSynaxarium();
     }
 
-    // Get current coptic date
-const coptic = getCopticDate(new Date());
+    const coptic = getCopticDate(new Date());
     const month = coptic.month.charAt(0).toUpperCase() + coptic.month.slice(1).toLowerCase();
     const day = parseInt(coptic.day);
 
     console.log(`Looking up feasts for: ${day} ${month}`);
 
-    // Get the events for this date
     const dateKey = `${day} ${month}`;
     const monthData = state.synaxariumData[month];
-    
+
     if (!monthData || !monthData[dateKey]) {
       clearGreeting();
       chatBox.appendChild(createChatMessage('No saints recorded for this date', 'ai'));
@@ -567,7 +674,6 @@ const coptic = getCopticDate(new Date());
     const events = monthData[dateKey];
     clearGreeting();
 
-    // Just display each feast exactly as it appears in the JSON
     events.forEach(eventObj => {
       const feast = eventObj.event || eventObj;
       chatBox.appendChild(createChatMessage(feast, 'ai'));
@@ -584,7 +690,6 @@ const coptic = getCopticDate(new Date());
     chatBox.scrollTop = chatBox.scrollHeight;
   }
 };
-
 
 /**
  * Handles scripture verse request.
