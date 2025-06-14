@@ -47,11 +47,13 @@ To run Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI locally:
 
 Explore the Ⲱⲩⲛⲓⲁⲧⲕ: Coptic AI interface
 
-<img width="1512" alt="Screenshot 2025-05-11 at 8 44 18 PM" src="https://github.com/user-attachments/assets/57164a18-64e7-47f1-9283-467df128acd2" />
+![6B2230CF-EC23-48DE-A9BF-AA09C688B81A](https://github.com/user-attachments/assets/244a58b9-64e4-4c7a-b6a9-2ef7ae1126d1)
 
-<img width="976" alt="Screenshot 2025-05-11 at 8 45 52 PM" src="https://github.com/user-attachments/assets/4cc7286f-766c-4dc4-a598-25e7df36c7d8" />
+![BF25F80E-0FF2-417D-A27C-14FA073CB772](https://github.com/user-attachments/assets/dac74c83-5be8-4a19-bbf3-8c723cbbfe66)
 
-<img width="673" alt="Screenshot 2025-05-11 at 8 46 45 PM" src="https://github.com/user-attachments/assets/fe9ea127-92ce-4d1e-a653-ebb9fafa0aa5" />
+![32260B8F-C18B-4241-AD44-F7BE60C623E1](https://github.com/user-attachments/assets/3369900d-598b-4580-8b2d-aaafdea61efb)
+
+![E2D79394-741A-4D17-A9BF-9A8241E98E08](https://github.com/user-attachments/assets/27edbc8a-148e-4d16-a77f-a8828791a3f7)
 
 <h2>🛠️ How It's Made</h2>
 
